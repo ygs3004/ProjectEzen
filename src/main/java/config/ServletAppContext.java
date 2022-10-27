@@ -1,7 +1,11 @@
 package config;
+import mapper.MyStudyMapper;
+import mapper.UserMapper;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,11 +19,11 @@ import org.springframework.web.servlet.config.annotation.*;
 // Controller 어노테이션이 셋팅되어 있는 클래스를 Controller로 등록한다.
 @EnableWebMvc
 //스캔할 패키지를 지정한다.
-//@ComponentScan(basePackages = "kr.co.ezenac.dao")
-//@ComponentScan(basePackages = "kr.co.ezenac.service")
-//@ComponentScan(basePackages = "kr.co.ezenac.beans")
+@ComponentScan(basePackages = "dao")
+@ComponentScan(basePackages = "service")
+@ComponentScan(basePackages = "mapper")
 @ComponentScan(basePackages = "controller")
-@PropertySource("/WEB-INF/propeties/db.properties")
+@PropertySource("/WEB-INF/properties/db.properties")
 public class ServletAppContext implements WebMvcConfigurer {
 
     @Value("${db.classname}")
@@ -73,6 +77,29 @@ public class ServletAppContext implements WebMvcConfigurer {
         return factory;
     }
 
+    // 쿼리문 실행을 위한 객체
+    @Bean
+    public MapperFactoryBean<MyStudyMapper> getMyStudyMapper(SqlSessionFactory factory) throws Exception{
+        MapperFactoryBean<MyStudyMapper> factoryBean = new MapperFactoryBean<>(MyStudyMapper.class);
+        factoryBean.setSqlSessionFactory(factory);
+        return factoryBean;
+    }
+
+    @Bean
+    public MapperFactoryBean<UserMapper> getTopMenuMapper(SqlSessionFactory factory) throws Exception{
+        MapperFactoryBean<UserMapper> factoryBean = new MapperFactoryBean<>(UserMapper.class);
+        factoryBean.setSqlSessionFactory(factory);
+        return factoryBean;
+    }
+
+    //@PropertySource 를 붙여 프로퍼티 파일을 로드하려면 정의해야 하는 @Bean
+    //특이점은 스프링 버전 5.0.5.RELEASE에서 이 Bean을 설정하지 않아도 정상적으로 동작
+    //ReloadableResourceBundleMessageSource을 등록했을시 @Value가 properties 값을 제대로 불러오지 못했고, 이 빈을 등록한 후 정상 동작
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
+
 /*
     // 쿼리문 실행을 위한 객체
     @Bean
@@ -104,13 +131,5 @@ public class ServletAppContext implements WebMvcConfigurer {
         return res;
     }
 */
-
-    //@PropertySource 를 붙여 프로퍼티 파일을 로드하려면 정의해야 하는 @Bean
-    //특이점은 스프링 버전 5.0.5.RELEASE에서 이 Bean을 설정하지 않아도 정상적으로 동작
-    //ReloadableResourceBundleMessageSource을 등록했을시 @Value가 properties 값을 제대로 불러오지 못했고, 이 빈을 등록한 후 정상 동작
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
 
 }

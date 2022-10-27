@@ -156,6 +156,13 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- 롬복 -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.24</version>
+    </dependency>
+
     <!--로그 라이브러리-->
     <dependency>
       <groupId>log4j</groupId>

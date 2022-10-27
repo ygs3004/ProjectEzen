@@ -1,5 +1,4 @@
 drop table board;
-drop table reply;
 drop table users;
 
 CREATE TABLE board(
@@ -46,21 +45,10 @@ CREATE TABLE MENTOROOM
     , CONTENT VARCHAR2(1000)
 );
 
-CREATE TABLE HWBOARD
-(
-    HWNO NUMBER NOT NULL
-    , HWNAME VARCHAR2(300) NOT NULL
-    , HWCONTENT VARCHAR2(300) NOT NULL
-    , WRITER VARCHAR2(50) NOT NULL
-    , HWREGDATE DATE
-    , HWDEADLINE DATE
-    , CONSTRAINT HWBOARD_PK PRIMARY KEY(HWNO) ENABLE
-);
 
 select * from board;
 select * from reply;
 select * from users;
 select  * from MENTOROOM;
-select * from HWBOARD;
 
 

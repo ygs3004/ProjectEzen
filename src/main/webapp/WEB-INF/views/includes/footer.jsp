@@ -57,7 +57,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image-->
-              <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cabin.png" alt="..." />
+              <img class="img-fluid rounded mb-5" src="/assets/img/portfolio/cabin.png" alt="..." />
               <!-- Portfolio Modal - Text-->
               <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" data-bs-dismiss="modal">
@@ -89,7 +89,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image-->
-              <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="..." />
+              <img class="img-fluid rounded mb-5" src="/assets/img/portfolio/cake.png" alt="..." />
               <!-- Portfolio Modal - Text-->
               <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" data-bs-dismiss="modal">
@@ -121,7 +121,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image-->
-              <img class="img-fluid rounded mb-5" src="assets/img/portfolio/circus.png" alt="..." />
+              <img class="img-fluid rounded mb-5" src="/assets/img/portfolio/circus.png" alt="..." />
               <!-- Portfolio Modal - Text-->
               <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" data-bs-dismiss="modal">
@@ -153,7 +153,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image-->
-              <img class="img-fluid rounded mb-5" src="assets/img/portfolio/game.png" alt="..." />
+              <img class="img-fluid rounded mb-5" src="/assets/img/portfolio/game.png" alt="..." />
               <!-- Portfolio Modal - Text-->
               <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" data-bs-dismiss="modal">
@@ -185,7 +185,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image-->
-              <img class="img-fluid rounded mb-5" src="assets/img/portfolio/safe.png" alt="..." />
+              <img class="img-fluid rounded mb-5" src="/assets/img/portfolio/safe.png" alt="..." />
               <!-- Portfolio Modal - Text-->
               <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" data-bs-dismiss="modal">
@@ -217,7 +217,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image-->
-              <img class="img-fluid rounded mb-5" src="assets/img/portfolio/submarine.png" alt="..." />
+              <img class="img-fluid rounded mb-5" src="/assets/img/portfolio/submarine.png" alt="..." />
               <!-- Portfolio Modal - Text-->
               <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" data-bs-dismiss="modal">
@@ -234,11 +234,11 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
+<script src="/js/scripts.js"></script>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <!-- * *                               SB Forms JS                               * *-->
 <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<%--<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>--%>
 </body>
 </html>

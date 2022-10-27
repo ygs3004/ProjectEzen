@@ -8,17 +8,19 @@ public class MentoRoom {
     private String career;
     private String school;
     private String capacity;
+    private String nowCapacity;
     private String StudyStart;
     private String StudyEnd;
     private String content;
 
-    public MentoRoom(String user_id, String title, String name, String career, String school, String capacity, String studyStart, String studyEnd, String content) {
+    public MentoRoom(String user_id, String title, String name, String career, String school, String capacity, String nowCapacity, String studyStart, String studyEnd, String content) {
         this.user_id = user_id;
         this.title = title;
         this.name = name;
         this.career = career;
         this.school = school;
         this.capacity = capacity;
+        this.nowCapacity = nowCapacity;
         StudyStart = studyStart;
         StudyEnd = studyEnd;
         this.content = content;
@@ -70,6 +72,14 @@ public class MentoRoom {
 
     public void setCapacity(String capacity) {
         this.capacity = capacity;
+    }
+
+    public String getNowCapacity() {
+        return nowCapacity;
+    }
+
+    public void setNowCapacity(String nowCapacity) {
+        this.nowCapacity = nowCapacity;
     }
 
     public String getStudyStart() {
