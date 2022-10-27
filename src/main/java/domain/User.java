@@ -1,7 +1,7 @@
 package domain;
 
 public class User {
-
+    private int user_idx;
     private String user_role;
     private String user_name;
     private String user_id;
@@ -12,6 +12,7 @@ public class User {
     private String user_gender;
     private String user_school;
 
+    private boolean userIdExist;
     public String getUser_role() {
         return user_role;
     }
@@ -83,4 +84,24 @@ public class User {
     public void setUser_school(String user_school) {
         this.user_school = user_school;
     }
+
+
+    public User() {
+        this.userIdExist = false;
+    }
+    public int getUser_idx() {
+        return user_idx;
+    }
+    public void setUser_idx(int user_idx) {
+        this.user_idx = user_idx;
+    }
+    public boolean isUserIdExist() {
+        return userIdExist;
+    }
+
+    public void setUserIdExist(boolean userIdExist) {
+        this.userIdExist = userIdExist;
+    }
+
+
 }
