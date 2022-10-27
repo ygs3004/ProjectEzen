@@ -10,7 +10,6 @@ public class MyStudyMentorController {
 
     @GetMapping("/Mentor")
     public String myStudyMentor(){
-        String asdf;
         return "/MyStudy/Mentor";
     }
 
