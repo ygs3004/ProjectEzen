@@ -85,7 +85,7 @@
 </script>
 <body>
 
-<c:import url="/WEB-INF/includes/header.jsp"/>
+<c:import url="/WEB-INF/views/includes/header.jsp"/>
 <h1 align="center">회원 가입</h1>
 <div class="container" style="margin-top:100px">
     <div class="row">
@@ -178,7 +178,7 @@
     </div>
 </div>
 
-<c:import url="/WEB-INF/includes/footer.jsp"/>
+<c:import url="/WEB-INF/views/includes/footer.jsp"/>
 
 </body>
 </html>
