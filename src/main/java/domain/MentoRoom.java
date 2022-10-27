@@ -12,6 +12,18 @@ public class MentoRoom {
     private String StudyEnd;
     private String content;
 
+    public MentoRoom(String user_id, String title, String name, String career, String school, String capacity, String studyStart, String studyEnd, String content) {
+        this.user_id = user_id;
+        this.title = title;
+        this.name = name;
+        this.career = career;
+        this.school = school;
+        this.capacity = capacity;
+        StudyStart = studyStart;
+        StudyEnd = studyEnd;
+        this.content = content;
+    }
+
     public String getUser_id() {
         return user_id;
     }
