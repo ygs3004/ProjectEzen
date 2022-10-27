@@ -1,5 +1,6 @@
 package service;
 
+import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class UserService {
         } else {
             return false;
         }
+    }
+    public void addUserInfo(User joinUserBean) {
+        userDao.addUserInfo(joinUserBean);
     }
 }
 

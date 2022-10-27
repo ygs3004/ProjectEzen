@@ -37,6 +37,8 @@
             return
         }
 
+
+        /*'#user_id'*/
         $.ajax({
             url : '${root}user/checkUserIdExist/' + user_id,
             type : 'get',
@@ -65,7 +67,7 @@
         }
 
         $.ajax({
-            url : '${root}user/checkEmailExist/' + user_email,
+            url : '${'#user_email'}user/checkEmailExist/' + user_email,
             type : 'get',
             dataType : 'text',
             success : function(result){
@@ -96,11 +98,13 @@
                     <form:form action="${root }user/join_pro" method='post' modelAttribute="joinUserBean">
                         <form:hidden path="userIdExist"/>
                       <div class="form-group">
-                          멘토로 가입하기 <form:radiobutton path="user_role" ></form:radiobutton>
+                          멘토로 가입하기 <form:radiobutton path="user_role" value="1"></form:radiobutton>
                           <br>
-                          멘티로 가입하기 <form:radiobutton path="user_role" ></form:radiobutton>
+                          멘티로 가입하기 <form:radiobutton path="user_role" value="2"></form:radiobutton>
                           <br>
                       </div>
+
+
                         <!-- 이름 -->
                           <div class="form-group">
                             <form:label path="user_name">이름</form:label>
@@ -167,7 +171,8 @@
                         <div class="form-group">
                             <div class="text-right">
 
-                                <form:button class='btn btn-primary'>회원가입</form:button>
+                                <form:button class='btn btn-primary' >회원가입</form:button>
+
                             </div>
                         </div>
                     </form:form>

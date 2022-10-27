@@ -37,6 +37,8 @@ public class UserController {
         return "user/join_success";
     }
 
+
+
     @GetMapping("/modify")
     public String modify() {
         return "user/modify";
