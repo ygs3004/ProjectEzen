@@ -1,6 +1,7 @@
 package MyStudy;
 
 import config.ServletAppContext;
+import domain.HomeWork;
 import domain.MentoRoom;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+
+import java.sql.Date;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;

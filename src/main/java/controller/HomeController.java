@@ -11,4 +11,10 @@ public class HomeController {
         return "index";
     }
 
+
+    @GetMapping("/r")
+    public String references(){
+        return "reference";
+    }
+
 }

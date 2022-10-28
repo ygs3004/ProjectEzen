@@ -27,6 +27,7 @@ public class UserService {
         userDao.addUserInfo(joinUserBean);
     }
 
+
     public boolean checkuserEmailExist(String user_email) {
 
         String user_name = userDao.checkUserEmailExist(user_email);
@@ -37,6 +38,7 @@ public class UserService {
             return false;
         }
     }
+
 
 }
 
