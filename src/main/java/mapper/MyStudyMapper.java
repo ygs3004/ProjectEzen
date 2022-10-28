@@ -11,8 +11,8 @@ public interface MyStudyMapper {
     public MentoRoom getMyStudyRoom(String user_id);
 
     @Insert("insert into hwboard" +
-            "(hwNo, hwName, wrtier, hwRegDate, hwDeadLine) " +
-            "values(hw_seq, #{hwName}, #{hwContent}, #{writer}, SYSDATE, #{hwDeadLine})")
+            "(hwNo, hwName, hwContent, writer, hwRegDate, hwDeadLine) " +
+            "values(hw_seq.nextval, #{hwName}, #{hwContent}, #{writer}, SYSDATE, #{hwDeadLine})")
     public void uploadHomeWork(HomeWork homeWork);
 
 }

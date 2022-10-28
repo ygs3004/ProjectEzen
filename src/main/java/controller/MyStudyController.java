@@ -46,17 +46,10 @@ public class MyStudyController {
 
         homeWork.setWriter(user_id);
         System.out.println(homeWork);
-        System.out.println(homeWork.getHwContent());
-        System.out.println(homeWork.getHwDeadLine());
-        System.out.println(homeWork.getHwName());
-        System.out.println(homeWork.getHwNo());
-        System.out.println(homeWork.getHwRegDate());
-        System.out.println(homeWork.getWriter());
-        System.out.println(user_id);
 
         mapper.uploadHomeWork(homeWork);
 
-        return "/MyStudy/UploadSuccess";
+        return "/MyStudy/HomeWorkNow";
     }
 
 

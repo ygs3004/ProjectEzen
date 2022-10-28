@@ -31,6 +31,7 @@ from MENTOROOM;
 
 create sequence hw_seq start with 1 increment by 1;
 
+drop table hwboard;
 CREATE TABLE HWBOARD
 (
     HWNO       NUMBER        NOT NULL,
