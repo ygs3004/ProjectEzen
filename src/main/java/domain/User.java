@@ -1,5 +1,6 @@
 package domain;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -27,7 +28,10 @@ public class User {
     @Pattern(regexp = "[a-zA-Z0-9]*")
     private String user_pw2;
 
+    @NotBlank
+    @Email
     private String user_email;
+
     private String user_phone;
     private String user_gender;
     private String user_school;

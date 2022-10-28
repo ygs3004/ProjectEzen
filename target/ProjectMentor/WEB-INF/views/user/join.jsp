@@ -37,7 +37,7 @@
             return
         }
 
-
+ // 레스트 컨트롤러 만들어야함
         /*'#user_id'*/
         $.ajax({
             url : '${root}user/checkUserIdExist/' + user_id,
@@ -55,6 +55,7 @@
         })
     }
 
+
     function resetUserIdExist(){
         $("#userIdExist").val('false')
     }
@@ -67,7 +68,7 @@
         }
 
         $.ajax({
-            url : '${'#user_email'}user/checkEmailExist/' + user_email,
+            url : '${root}user/checkEmailExist/' + user_email,
             type : 'get',
             dataType : 'text',
             success : function(result){
@@ -104,13 +105,13 @@
                           <br>
                       </div>
 
-
                         <!-- 이름 -->
                           <div class="form-group">
                             <form:label path="user_name">이름</form:label>
                             <form:input path="user_name" class='form-control'/>
                             <form:errors path="user_name" style='color:red'/>
                         </div>
+
                         <!-- 아이디 & 중복확인 -->
                         <div class="form-group">
                             <form:label path="user_id">아이디</form:label>

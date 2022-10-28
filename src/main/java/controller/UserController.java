@@ -1,25 +1,32 @@
 package controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import domain.User;
+import service.UserService;
 import validator.UserValidator;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    private UserService userService;
     @GetMapping("/login")
-    public String login() {
+    public String login(HttpServletRequest request) {
+//        HttpSession session= request.getSession();
+//        session.setAttribute("user_id",접속한 사람 아이디);
+//        session.setAttribute("user_role", 아이디에 부여된 롤 );
+
         return "user/login";
     }
 
@@ -46,6 +53,7 @@ public class UserController {
 
     @GetMapping("/logout")
     public String logout() {
+
         return "user/logout";
     }
 
