@@ -64,9 +64,9 @@
     </tr>
     <tr>
         <th scope="row">진행중인 과제</th>
-        <%--<c:if test="${과제 == null}">버튼 넣기</c:if>--%>
+        <%--<c:if test="${과제 == null}">버튼 넣기</c:if> 과제 있는지 없는지 체크할것 --%>
         <td>
-            없습무니다. &nbsp; <button type="button" class="btn btn-secondary pull-right" href="#">과제 생성</button>
+            없을경우. &nbsp; <a type="button" class="btn btn-secondary pull-right" href="/MyStudy/UploadHomeWork">과제 생성</a>
         </td>
     </tr>
     </tbody>

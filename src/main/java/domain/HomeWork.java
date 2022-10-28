@@ -4,6 +4,7 @@ public class HomeWork {
 
     private int hwNo;
     private String hwName;
+    private String hwContent;
     private String writer;
     private String hwRegDate;
     private String hwDeadLine;
@@ -46,5 +47,13 @@ public class HomeWork {
 
     public void setHwDeadLine(String hwDeadLine) {
         this.hwDeadLine = hwDeadLine;
+    }
+
+    public String getHwContent() {
+        return hwContent;
+    }
+
+    public void setHwContent(String hwContent) {
+        this.hwContent = hwContent;
     }
 }

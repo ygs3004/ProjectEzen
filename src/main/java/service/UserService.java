@@ -22,9 +22,11 @@ public class UserService {
             return false;
         }
     }
+
     public void addUserInfo(User joinUserBean) {
         userDao.addUserInfo(joinUserBean);
     }
+
 }
 
 

@@ -56,10 +56,6 @@ public class ServletAppContext implements WebMvcConfigurer {
     @Bean
     public BasicDataSource dataSource() {
         BasicDataSource source = new BasicDataSource();
-        System.out.println(db_classname);
-        System.out.println(db_url);
-        System.out.println(db_username);
-        System.out.println(db_password);
         source.setDriverClassName(db_classname);
         source.setUrl(db_url);
         source.setUsername(db_username);
