@@ -66,7 +66,9 @@
         </tr>
         <tr>
             <th scope="row">과제내용</th>
-            <textarea cols="15" rows="70"><c:out value="${homeWork.hwContent}"/> </textarea>
+            <td>
+                <c:out value="${homeWork.hwContent}"/>
+            </td>
         </tr>
         <tr>
             <th scope="row">제출인원 / <br> 스터디인원</th>
