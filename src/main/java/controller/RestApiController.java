@@ -21,12 +21,12 @@ public class RestApiController {
         return chk + "";
     }
 
-    @GetMapping("/user/checkEmailExist/{user_email}")
+    @GetMapping("/user/checkUserEmailExist/{user_email}")
     public String checkUserEmailExist(@PathVariable String user_email) {
 
-        boolean chk = userService.checkuserEmailExist(user_email);
+        boolean chk1 = userService.checkuserEmailExist(user_email);
 
-        return chk + "";
+        return chk1 + "";
     }
 
 }

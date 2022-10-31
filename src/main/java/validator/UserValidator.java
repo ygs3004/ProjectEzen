@@ -17,7 +17,9 @@ public class UserValidator implements Validator{
     public void validate(Object target, Errors errors) {
         // TODO Auto-generated method stub
         User userBean = (User)target;
-
+        if(userBean.isUserEmailExist() == false) {
+            errors.rejectValue("user_email", "DontCheckUserEmailExist");
+        }
         if(userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
             errors.rejectValue("user_pw", "NotEquals");
             errors.rejectValue("user_pw2", "NotEquals");
@@ -26,6 +28,8 @@ public class UserValidator implements Validator{
         if(userBean.isUserIdExist() == false) {
             errors.rejectValue("user_id", "DontCheckUserIdExist");
         }
+
+
     }
 
 }

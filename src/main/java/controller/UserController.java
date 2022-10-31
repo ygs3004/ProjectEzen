@@ -1,15 +1,19 @@
 package controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import domain.User;
 import service.UserService;
@@ -21,30 +25,52 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+//    @Resource(name = "loginUser")
+//    private User loginUser;
+
+
     @GetMapping("/login")
-    public String login(HttpServletRequest request) {
-//        HttpSession session= request.getSession();
-//        session.setAttribute("user_id",접속한 사람 아이디);
-//        session.setAttribute("user_role", 아이디에 부여된 롤 );
+    public String login(@ModelAttribute("tempLoginUserBean") User tempLoginUserBean,
+                        @RequestParam(value = "fail", defaultValue = "false") boolean fail,
+                        Model model) {
+
+        model.addAttribute("fail", fail);
 
         return "user/login";
     }
 
+    @PostMapping("/login_pro")
+    public String login_pro(@Valid @ModelAttribute("tempLoginUser") User tempLoginUser, BindingResult result) {
+
+        if(result.hasErrors()) {
+            return "user/login";
+        }
+
+//        userService.getLoginUserInfo(tempLoginUser);
+
+//        if(loginUser.isUserLogin() == true) {
+            return "user/login_success";
+//        } else {
+//            return "user/login_fail";
+//        }
+    }
+
     @GetMapping("/join")
-    public String join(@ModelAttribute("joinUserBean") User joinUserBean) {
+    public String join(@ModelAttribute("joinUser") User joinUserBean) {
         return "user/join";
     }
 
     @PostMapping("/join_pro")
-    public String join_pro(@Valid @ModelAttribute("joinUserBean") User joinUserBean, BindingResult result) {
+    public String join_pro(@Valid @ModelAttribute("joinUser") User joinUserBean, BindingResult result) {
         if(result.hasErrors()) {
             return "user/join";
         }
 
+        userService.addUserInfo(joinUserBean);
+
         return "user/join_success";
     }
-
-
 
     @GetMapping("/modify")
     public String modify() {
@@ -53,7 +79,6 @@ public class UserController {
 
     @GetMapping("/logout")
     public String logout() {
-
         return "user/logout";
     }
 
@@ -63,3 +88,11 @@ public class UserController {
         binder.addValidators(validator1);
     }
 }
+
+
+
+
+
+
+
+

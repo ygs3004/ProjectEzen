@@ -5,7 +5,9 @@
   Time: 오후 9:39
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <html>
 <head>
     <title>회원 가입</title>
@@ -37,8 +39,6 @@
             return
         }
 
- // 레스트 컨트롤러 만들어야함
-        /*'#user_id'*/
         $.ajax({
             url : '${root}user/checkUserIdExist/' + user_id,
             type : 'get',
@@ -60,20 +60,24 @@
         $("#userIdExist").val('false')
     }
 
+
+
     function checkUserEmailExist(){
+
         var user_email = $("#user_email").val()
+
         if(user_email.length == 0){
             alert('이메일을 입력해주세요')
             return
         }
 
         $.ajax({
-            url : '${root}user/checkEmailExist/' + user_email,
+            url : '${root}user/checkUserEmailExist/' + user_email,
             type : 'get',
             dataType : 'text',
             success : function(result){
                 if(result.trim() == 'true'){
-                    alert('사용할 수 있는 이메일 입니다')
+                    alert('사용할 수 있는 이메일입니다')
                     $("#userEmailExist").val('true')
                 } else {
                     alert('사용할 수 없는 이메일 입니다')
@@ -82,9 +86,13 @@
             }
         })
     }
+
+
     function resetUserEmailExist(){
-        $('#userEmailExist').val('false')
+        $("#userEmailExist").val('false')
     }
+
+
 </script>
 <body>
 
@@ -96,8 +104,9 @@
         <div class="col-sm-6">
             <div class="card shadow">
                 <div class="card-body">
-                    <form:form action="${root }user/join_pro" method='post' modelAttribute="joinUserBean">
+                    <form:form action="${root }user/join_pro" method='post' modelAttribute="joinUser">
                         <form:hidden path="userIdExist"/>
+                        <form:hidden path="userEmailExist"/>
                       <div class="form-group">
                           멘토로 가입하기 <form:radiobutton path="user_role" value="1"></form:radiobutton>
                           <br>
@@ -136,12 +145,11 @@
                             <form:password path="user_pw2" class='form-control'/>
                             <form:errors path='user_pw2' style='color:red'/>
                         </div>
-                        <!-- 이메일 입력 -->
+                        <!-- 이메일 입력 중복확인 -->
                         <div class="form-group">
                             <form:label path="user_email">이메일</form:label>
                             <div class="input-group">
                                 <form:input path="user_email" class='form-control' onkeypress="resetUserEmailExist()"/>
-                               <!-- 이메일 중복 확인 -->
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-primary" onclick='checkUserEmailExist()'>중복확인</button>
                                 </div>

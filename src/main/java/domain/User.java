@@ -8,7 +8,8 @@ import javax.validation.constraints.Size;
 public class User {
 
     private int user_idx;
-    private String user_role;
+    @NotBlank
+    private int user_role;
 
 
     @NotBlank
@@ -37,11 +38,16 @@ public class User {
     private String user_school;
 
     private boolean userIdExist;
-    public String getUser_role() {
+
+    private boolean userLogin;
+
+    private boolean userEmailExist;
+
+    public int getUser_role() {
         return user_role;
     }
 
-    public void setUser_role(String user_role) {
+    public void setUser_role(int user_role) {
         this.user_role = user_role;
     }
 
@@ -112,20 +118,41 @@ public class User {
 
     public User() {
         this.userIdExist = false;
+        this.userEmailExist = false;
+        this.userLogin = false;
     }
+
     public int getUser_idx() {
         return user_idx;
     }
+
     public void setUser_idx(int user_idx) {
         this.user_idx = user_idx;
     }
+
     public boolean isUserIdExist() {
         return userIdExist;
+    }
+
+    public boolean isUserEmailExist() {
+        return userEmailExist;
     }
 
     public void setUserIdExist(boolean userIdExist) {
         this.userIdExist = userIdExist;
     }
 
+
+    public void setUserEmailExist(boolean userEmailExist) {
+        this.userEmailExist = userEmailExist;
+    }
+
+    public boolean isUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(boolean userLogin) {
+        this.userLogin = userLogin;
+    }
 
 }
