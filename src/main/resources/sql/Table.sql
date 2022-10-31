@@ -29,7 +29,7 @@ CREATE TABLE USERS
     user_pw2    VARCHAR2(35) NOT NULL,
     user_email  VARCHAR2(15) NOT NULL,
     user_phone  VARCHAR2(30) NOT NULL,
-    user_genser VARCHAR2(30) NOT NULL,
+    user_gender VARCHAR2(30) NOT NULL,
     user_school VARCHAR2(30) NOT NULL
 );
 
