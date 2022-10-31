@@ -8,16 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class MentorRoomController {
 
-        @GetMapping("/MentoRoom")
+        @GetMapping("/MentorRoom")
         public String CreateMentoRoom(){
 
-            return "/MentoRoom/createMR";
+            return "/MentorRoom/createRoom";
         }
 
-    @GetMapping("/create")
-    public String Create(){
-
-        return "/MentoRoom/create";
-    }
 
 }
