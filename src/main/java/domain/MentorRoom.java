@@ -1,6 +1,6 @@
 package domain;
 
-public class MentoRoom {
+public class MentorRoom {
 
     private String user_id;
     private String title;
@@ -13,7 +13,7 @@ public class MentoRoom {
     private String StudyEnd;
     private String content;
 
-    public MentoRoom(String user_id, String title, String name, String career, String school, String capacity, String nowCapacity, String studyStart, String studyEnd, String content) {
+    public MentorRoom(String user_id, String title, String name, String career, String school, String capacity, String nowCapacity, String studyStart, String studyEnd, String content) {
         this.user_id = user_id;
         this.title = title;
         this.name = name;

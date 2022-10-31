@@ -1,9 +1,9 @@
-drop table MENTOROOM;
-drop sequence mento_room_seq;
+drop table MENTORROOM;
+drop sequence mentor_room_seq;
 
-create sequence mento_room_seq;
+create sequence mentor_room_seq;
 
-CREATE TABLE MENTOROOM
+CREATE TABLE MENTORROOM
 (
     USER_ID     VARCHAR2(20),
     NUM         NUMBER        NOT NULL primary key,
@@ -27,7 +27,7 @@ commit;
 
 
 select *
-from MENTOROOM;
+from MENTORROOM;
 
 create sequence hw_seq start with 1 increment by 1;
 

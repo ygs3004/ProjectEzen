@@ -36,31 +36,31 @@
     <tbody>
     <tr>
         <th scope="row" >스터디 이름</th>
-        <td><c:out value=" ${mentoRoom.title}" /></td>
+        <td><c:out value=" ${mentorRoom.title}" /></td>
     </tr>
     <tr>
         <th scope="row">멘토</th>
-        <td><c:out value=" ${mentoRoom.name}" /></td>
+        <td><c:out value=" ${mentorRoom.name}" /></td>
     </tr>
     <tr>
         <th scope="row">멘토님 학교</th>
-        <td><c:out value=" ${mentoRoom.school}" /></td>
+        <td><c:out value=" ${mentorRoom.school}" /></td>
     </tr>
     <tr>
         <th scope="row">멘토 경력</th>
-        <td><c:out value=" ${mentoRoom.career}" /></td>
+        <td><c:out value=" ${mentorRoom.career}" /></td>
     </tr>
     <tr>
         <th scope="row">시작일 / <br> 종료일</th>
-        <td><c:out value=" ${mentoRoom.studyStart} ~ ${mentoRoom.studyEnd}" /></td>
+        <td><c:out value=" ${mentorRoom.studyStart} ~ ${mentorRoom.studyEnd}" /></td>
     </tr>
     <tr>
         <th scope="row">스터디 내용</th>
-        <td><c:out value=" ${mentoRoom.content}" /></td>
+        <td><c:out value=" ${mentorRoom.content}" /></td>
     </tr>
     <tr>
         <th scope="row">현재인원 / <br> 모집인원</th>
-        <td><c:out value="${mentoRoom.nowCapacity}  /  ${mentoRoom.capacity} 명" /> </td>
+        <td><c:out value="${mentorRoom.nowCapacity}  /  ${mentorRoom.capacity} 명" /> </td>
     </tr>
     <tr>
         <th scope="row">진행중인 과제</th>

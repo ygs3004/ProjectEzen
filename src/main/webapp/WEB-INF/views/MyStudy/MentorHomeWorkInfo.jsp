@@ -70,7 +70,7 @@
         </tr>
         <tr>
             <th scope="row">제출인원 / <br> 스터디인원</th>
-            <td> <c:out value="${homeWork.completeMentee} / ${mentoRoom.nowCapacity} 명" /> </td>
+            <td> <c:out value="${homeWork.completeMentee} / ${mentorRoom.nowCapacity} 명" /> </td>
         </tr>
         <tr>
             <th scope="row">제출자 명단</th>

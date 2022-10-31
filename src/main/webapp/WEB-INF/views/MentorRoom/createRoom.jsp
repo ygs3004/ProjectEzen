@@ -55,12 +55,12 @@
     //     });
     // });
 
-    <%--    console.log(inputCareer);--%>
-    <%--let inputCareer = document.getElementById("career").value;--%>
-    <%--    function addCareer(){--%>
-    <%--            const  tmp= document.getElementById("careerList");--%>
-    <%--            tmp.innerText += `<p>${inputCareer}</p>`;--%>
-    <%--    };--%>
+        <%--console.log(inputCareer);--%>
+        <%--let inputCareer = document.getElementById("career").value;--%>
+        <%--function addCareer(){--%>
+        <%--        const  tmp= document.getElementById("careerList");--%>
+        <%--        tmp.innerText += `${inputCareer}`;--%>
+        <%--};--%>
 
     $(function() {
         $('input[name="datefilter"]').daterangepicker({
@@ -69,19 +69,16 @@
                 cancelLabel: 'Clear'
             }
         });
-
         // $(.addCareer).on("click",addCareer());
-
         $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
         });
-
         $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
         });
-
     });
 </script>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="../includes/header.jsp"%>
@@ -171,7 +168,10 @@
             <textarea class="form-control" id="content" rows="15" style="resize: none;"></textarea>
             <label for="content"><span class="content">스터디 상세설명</span></label>
         </div>
-        <div style="text-align: center; margin-bottom: 2%;"><button type="submit" class="btn btn-primary">스터디 개설</button></div>
+        <input type="hidden" name="user_id" value="${user_id}">
+        <div style="text-align: center; margin-bottom: 2%;">
+            <button type="submit" class="btn btn-primary">스터디 개설</button>
+<%--            <input type="button" class="btn btn-primary" value="뒤로가기" onclick="history.back();"></div>--%>
     </div>
 </form>
 

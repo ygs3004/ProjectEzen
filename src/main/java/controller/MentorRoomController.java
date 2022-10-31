@@ -1,22 +1,26 @@
 package controller;
 
-import domain.MentoRoom;
+import domain.MentorRoom;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/")
 public class MentorRoomController {
 
+
     @GetMapping("/MentorRoom")
     public String CreateMentorRoom(){
 
         return "/MentorRoom/createRoom";
+    }
+
+    @PostMapping("/createRoom")
+    public String createRoom(MentorRoom roomInfo){
+
+        return "/mentorRoominfo";
     }
 
 //    @GetMapping("/StudyInfo")

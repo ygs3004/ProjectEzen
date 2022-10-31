@@ -1,14 +1,14 @@
 package mapper;
 
 import domain.HomeWork;
-import domain.MentoRoom;
+import domain.MentorRoom;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 public interface MyStudyMapper {
 
     @Select("select * from mentoroom where name = #{user_id}")
-    public MentoRoom getMyStudyRoom(String user_id);
+    public MentorRoom getMyStudyRoom(String user_id);
 
     @Insert("insert into hwboard" +
             "(hwName, hwContent, writer, hwRegDate, hwDeadLine, CompleteMentee) " +

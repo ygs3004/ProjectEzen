@@ -1,7 +1,7 @@
 package controller;
 
 import domain.HomeWork;
-import domain.MentoRoom;
+import domain.MentorRoom;
 import domain.User;
 import mapper.MyStudyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +26,9 @@ public class MyStudyController {
 
         HttpSession session = request.getSession();
         session.setAttribute("user_id", user_id);
-        MentoRoom mentoRoom =  mapper.getMyStudyRoom(user_id);
+        MentorRoom mentorRoom =  mapper.getMyStudyRoom(user_id);
 
-        model.addAttribute("mentoRoom", mentoRoom);
+        model.addAttribute("mentoRoom", mentorRoom);
         return "/MyStudy/StudyInfo";
     }
 
@@ -58,10 +58,10 @@ public class MyStudyController {
         String user_id = (String) session.getAttribute("user_id");
 
         HomeWork homeWork = mapper.getHomeWork(user_id);
-        MentoRoom mentoRoom = mapper.getMyStudyRoom(user_id);
+        MentorRoom mentorRoom = mapper.getMyStudyRoom(user_id);
 
         model.addAttribute("homeWork", homeWork);
-        model.addAttribute("mentoRoom", mentoRoom);
+        model.addAttribute("mentoRoom", mentorRoom);
 
         return "/MyStudy/MentorHomeWorkInfo";
     }
