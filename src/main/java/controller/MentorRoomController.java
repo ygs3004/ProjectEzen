@@ -10,17 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class MentorRoomController {
 
-
     @GetMapping("/MentorRoom")
     public String CreateMentorRoom(){
-
         return "/MentorRoom/createRoom";
     }
 
     @PostMapping("/createRoom")
     public String createRoom(MentorRoom roomInfo){
 
-        return "/mentorRoominfo";
+        return "/roomInfo";
     }
 
 //    @GetMapping("/StudyInfo")
@@ -34,6 +32,4 @@ public class MentorRoomController {
 //        return "/MyStudy/StudyInfo";
 //    }
 //
-
-
 }

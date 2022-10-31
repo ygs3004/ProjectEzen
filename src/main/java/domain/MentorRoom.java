@@ -5,24 +5,31 @@ public class MentorRoom {
     private String user_id;
     private String title;
     private String name;
-    private String career;
-    private String school;
+    private String studyPeriod;
+    private String[] studyWeekly;
+    private String studyTimeStart;
+    private String studyTimeEnd;
     private String capacity;
     private String nowCapacity;
-    private String StudyStart;
-    private String StudyEnd;
+    private String[] career;
+    private String school;
     private String content;
 
-    public MentorRoom(String user_id, String title, String name, String career, String school, String capacity, String nowCapacity, String studyStart, String studyEnd, String content) {
+    public MentorRoom() {
+    }
+
+    public MentorRoom(String user_id, String title, String name, String studyPeriod, String[] studyWeekly, String studyTimeStart, String studyTimeEnd, String capacity, String nowCapacity, String[] career, String school, String content) {
         this.user_id = user_id;
         this.title = title;
         this.name = name;
-        this.career = career;
-        this.school = school;
+        this.studyPeriod = studyPeriod;
+        this.studyWeekly = studyWeekly;
+        this.studyTimeStart = studyTimeStart;
+        this.studyTimeEnd = studyTimeEnd;
         this.capacity = capacity;
         this.nowCapacity = nowCapacity;
-        StudyStart = studyStart;
-        StudyEnd = studyEnd;
+        this.career = career;
+        this.school = school;
         this.content = content;
     }
 
@@ -50,20 +57,36 @@ public class MentorRoom {
         this.name = name;
     }
 
-    public String getCareer() {
-        return career;
+    public String getStudyPeriod() {
+        return studyPeriod;
     }
 
-    public void setCareer(String career) {
-        this.career = career;
+    public void setStudyPeriod(String studyPeriod) {
+        this.studyPeriod = studyPeriod;
     }
 
-    public String getSchool() {
-        return school;
+    public String[] getStudyWeekly() {
+        return studyWeekly;
     }
 
-    public void setSchool(String school) {
-        this.school = school;
+    public void setStudyWeekly(String[] studyWeekly) {
+        this.studyWeekly = studyWeekly;
+    }
+
+    public String getStudyTimeStart() {
+        return studyTimeStart;
+    }
+
+    public void setStudyTimeStart(String studyTimeStart) {
+        this.studyTimeStart = studyTimeStart;
+    }
+
+    public String getStudyTimeEnd() {
+        return studyTimeEnd;
+    }
+
+    public void setStudyTimeEnd(String studyTimeEnd) {
+        this.studyTimeEnd = studyTimeEnd;
     }
 
     public String getCapacity() {
@@ -82,20 +105,20 @@ public class MentorRoom {
         this.nowCapacity = nowCapacity;
     }
 
-    public String getStudyStart() {
-        return StudyStart;
+    public String[] getCareer() {
+        return career;
     }
 
-    public void setStudyStart(String studyStart) {
-        StudyStart = studyStart;
+    public void setCareer(String[] career) {
+        this.career = career;
     }
 
-    public String getStudyEnd() {
-        return StudyEnd;
+    public String getSchool() {
+        return school;
     }
 
-    public void setStudyEnd(String studyEnd) {
-        StudyEnd = studyEnd;
+    public void setSchool(String school) {
+        this.school = school;
     }
 
     public String getContent() {

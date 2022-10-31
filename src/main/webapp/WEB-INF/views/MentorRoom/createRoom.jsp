@@ -5,17 +5,19 @@
   Time: 오전 10:30
   To change this template use File | Settings | File Templates.
 --%>
+
 <style>
     #formTitle{font-size: 5vw; font-weight: bold;}
     #formDes{font-size: 15px;}
-    /*input[type="text"][id="career"]{display:inline; outline:none; vertical-align:middle}*/
-    input[id="addCareer"]{outline:none; display:inline; width:50px; height: 38px; font-size:12px; text-align: center;}
+    #careerList{margin-left:5px; font-size: 15px;}
+    input[type="text"][id="career"]{display:inline; width:700px; outline:none; vertical-align:middle}
+    input[id="addCareer"]{display: inline; width:50px; height: 38px; font-size:12px; text-align: center;}
     .formHeader{width: 70%; margin: 4% auto 4% auto; display: block; text-align: center;} /*폼 헤더*/
-    .formBody{width: 70%; margin: 5% auto 5% auto; display: block; }
-    .user_name{font-size:3vh; font-weight: bold; margin: 3% auto 3% auto;}
-    .studyWeekly{width: 9vw;}
+    .formBody{width: 800px; margin: 5% auto 5% auto; display: block; }
+    .user_name{font-size:30px; font-weight: bold; margin: 3% auto 3% auto;}
+    .studyWeekly{width: 100px;}
     .useMove, .notMove { position:relative; height: 3.5em;}
-    .desc{margin: -0.5em auto 1.2em 0.5em; font-size: 1.5vh;}
+    .desc{margin: -0.5em auto 1.2em 0.5em; font-size: 12px;}
     .useMove label {position:relative;  left:0.5em; bottom:2em; width:100%; height:100%;  text-align:left; pointer-events:none; }
     .useMove label span {position:absolute;  left:0; transition:all .3s ease; } /**/
     .useMove input.form-control:focus + label span,
@@ -27,15 +29,16 @@
     .useMove textarea.form-control:focus + label::after,
     .useMove textarea.form-control:valid + label::after { width:100%; transform:translateX(0); }
     span.block { position:relative; left:0.7em; bottom:4em; font-size:12px; background-color: #ffffff }
-    input[type="time"]{width: 32vw;}
+    input[type="time"]{width: 370px;}
     .content{position:relative; left:0.7em; bottom:4em; top:-32em; font-size:12px; background-color: #ffffff }
 
-    @media screen and (max-width: 900px) {
-        #formTitle{font-size: 35px; font-weight: bold;}
-        #formDes{font-size: 14px;}
+    @media screen and (max-width: 700px) {
+        #formTitle{font-size: 40px; font-weight: bold;}
+        #formDes{font-size: 15px;}
         .formBody {width: 90%; margin: 3% auto 3% auto;}
         .studyWeekly{width:11vw;}
         input[type="time"]{width: 40vw;}
+        input[type="text"][id="career"]{width:25em;}
     }
 
 </style>
@@ -44,22 +47,20 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script type="text/javascript">
-    // $(function() {
-    //     $('input[name="datetimes"]').daterangepicker({
-    //         timePicker: true,
-    //         startDate: moment().startOf('hour'),
-    //         endDate: moment().startOf('hour').add(32, 'hour'),
-    //         locale: {
-    //             format: 'M/DD hh:mm A'
-    //         }
-    //     });
-    // });
 
-        <%--console.log(inputCareer);--%>
-        <%--let inputCareer = document.getElementById("career").value;--%>
-        <%--function addCareer(){--%>
-        <%--        const  tmp= document.getElementById("careerList");--%>
-        <%--        tmp.innerText += `${inputCareer}`;--%>
+    function addList() {
+        const add = document.getElementById('career').value;
+        const p = document.createElement('p');
+        p.setAttribute('id',add);
+        const temp = document.createTextNode(add);
+        p.appendChild(temp);
+        document.getElementById('careerList').appendChild(p);
+    };
+
+        <%--const temp= document.getElementById("careerList");--%>
+        <%--function addList(){--%>
+        <%--    let add = document.getElementById("career").value;--%>
+        <%--    temp.innerHTML += `<p>${add}</p>`;--%>
         <%--};--%>
 
     $(function() {
@@ -77,6 +78,16 @@
             $(this).val('');
         });
     });
+    // $(function() {
+    //     $('input[name="datetimes"]').daterangepicker({
+    //         timePicker: true,
+    //         startDate: moment().startOf('hour'),
+    //         endDate: moment().startOf('hour').add(32, 'hour'),
+    //         locale: {
+    //             format: 'M/DD hh:mm A'
+    //         }
+    //     });
+    // });
 </script>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -97,8 +108,8 @@
             <label for="title"><span>스터디 이름</span></label>
         </div>
         <div class="useMove">
-            <input type="text" class="form-control" id="studyPeriodStart" name="datefilter" required>
-            <label for="studyPeriodStart"><span>스터디 기간</span></label>
+            <input type="text" class="form-control" id="studyPeriod" name="datefilter" required>
+            <label for="studyPeriod"><span>스터디 기간</span></label>
         </div>
             <div class="notMove">
          <div style="display: flex;justify-content: space-between;">
@@ -151,14 +162,12 @@
         </div>
         <div style="display: flex;justify-content: space-between;">
             <div class="useMove">
-                <input type="text" class="form-control" id="career" required onchange="">
+                <input type="text" class="form-control" id="career" required>
                 <label for="career"><span>멘토 경력</span></label>
             </div>
-            <input type="button" class="form-control btn-outline-primary" id="addCareer" value="add" onclick="addCareer()">
+            <input type="button" class="form-control btn-outline-primary" id="addCareer" value="add" onclick="addList()">
         </div>
         <div id="careerList">
-            <p>경력1</p>
-            <p>경력2</p>
         </div>
         <div class="notMove">
             <input type="text" class="form-control" id="school" value="user_school" readonly>
@@ -171,6 +180,7 @@
         <input type="hidden" name="user_id" value="${user_id}">
         <div style="text-align: center; margin-bottom: 2%;">
             <button type="submit" class="btn btn-primary">스터디 개설</button>
+        </div>
 <%--            <input type="button" class="btn btn-primary" value="뒤로가기" onclick="history.back();"></div>--%>
     </div>
 </form>
