@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-<<<<<<< Updated upstream
-Built-By: Lee
-Build-Jdk: Oracle OpenJDK version 1.8.0_341
-=======
 Built-By: i7A-56
-Build-Jdk: Oracle OpenJDK version 1.8.0_333
->>>>>>> Stashed changes
+Build-Jdk: 1.8.0_333
 

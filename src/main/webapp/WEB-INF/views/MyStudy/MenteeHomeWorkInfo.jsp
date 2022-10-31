@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <html>
 <head>
     <title>과제 정보</title>
@@ -26,16 +27,11 @@
             <th scope="row">과제 기한</th>
             <td>hwDeadLine</td>
         </tr>
-        <tr>
-            <th scope="row">스터디 내용</th>
-            <td><c:out value=" ${mentoRoom.content}" /></td>
-        </tr>
-        <tr>
-            <th scope="row">현재인원 / <br> 모집인원</th>
-            <td><c:out value="${mentoRoom.nowCapacity}  /  ${mentoRoom.capacity} 명" /> </td>
-        </tr>
+
         </tbody>
     </table>
+    <button type="button" onclick="location.href='HomeWorkSubmitForm'">제출하기</button>
 </div>
 </body>
 </html>
+<%@ include file="/WEB-INF/views/includes/footer.jsp"%>

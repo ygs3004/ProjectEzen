@@ -4,6 +4,7 @@ import domain.HomeWork;
 import domain.MentoRoom;
 import domain.User;
 import mapper.MyStudyMapper;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,9 +69,12 @@ public class MyStudyController {
 
     @GetMapping("/MenteeHomeWorkInfo")
     public String MenteeHomeWorkInfo(){
-        return "";
+        return "/MyStudy/MenteeHomeWorkInfo";
     }
 
-
+    @PostMapping("/HomeWorkSubmit")
+    public String HomeWorkSubmit(){
+        return "/MyStudy/HomeWorkSubmit";
+    }
 
 }
