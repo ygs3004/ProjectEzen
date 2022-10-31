@@ -32,18 +32,10 @@ from MENTOROOM;
 create sequence hw_seq start with 1 increment by 1;
 
 drop table hwboard;
-CREATE TABLE HWBOARD
-(
-    HWNO       NUMBER        NOT NULL,
-    HWNAME     VARCHAR2(300) NOT NULL,
-    HWCONTENT  VARCHAR2(300) NOT NULL,
-    WRITER     VARCHAR2(50)  NOT NULL,
-    HWREGDATE  DATE,
-    HWDEADLINE DATE,
-    CONSTRAINT HWBOARD_PK PRIMARY KEY (HWNO) ENABLE
-);
 
 
 
 select *
 from HWBOARD;
+
+delete from hwboard;

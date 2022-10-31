@@ -29,10 +29,14 @@ CREATE TABLE USERS
     user_pw2    VARCHAR2(35) NOT NULL,
     user_email  VARCHAR2(15) NOT NULL,
     user_phone  VARCHAR2(30) NOT NULL,
-    user_genser VARCHAR2(30) NOT NULL,
+    user_gender VARCHAR2(30) NOT NULL,
     user_school VARCHAR2(30) NOT NULL
 );
 
+drop table users;
+INSERT INTO users values (1, '윤건수', 'userid', 'userpw', 'userpw', '1@1.com', '1', '1', '1');
+commit;
+select * from users;
 CREATE TABLE MENTOROOM
 (
     USER_ID     VARCHAR2(20),
@@ -50,14 +54,15 @@ CREATE TABLE MENTOROOM
 
 CREATE TABLE HWBOARD
 (
-    HWNO       NUMBER        NOT NULL,
     HWNAME     VARCHAR2(300) NOT NULL,
     HWCONTENT  VARCHAR2(300) NOT NULL,
-    WRITER     VARCHAR2(50)  NOT NULL,
+    WRITER     VARCHAR2(50)  NOT NULL primary key ,
     HWREGDATE  DATE,
     HWDEADLINE DATE,
-    CONSTRAINT HWBOARD_PK PRIMARY KEY (HWNO) ENABLE
+    CompleteMentee NUMBER DEFAULT 0
 );
+
+drop table hwboard;
 
 select *
 from board;

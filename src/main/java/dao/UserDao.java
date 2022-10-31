@@ -17,6 +17,7 @@ public class UserDao {
     }
 
     public String checkUserEmailExist(String user_email) {
+
         return userMapper.checkUserEmailExist(user_email);
     }
 

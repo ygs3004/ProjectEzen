@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ko">
 <head>
     <meta charset="utf-8" />
@@ -32,18 +33,29 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">로그인</a></li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/join">회원가입</a></li>
-                <%--테스트 데이터로 접속하는 페이지--%>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo?user_id=멘토철수">My Study 철수</a></li>
-                <%--user id를 받아올경우--%>
-                <%--<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo?user_id=${user_id}">My Study</a></li>--%>
+                <%-- 멘토 : user_role==1 멘티 : user_role==2 --%>
+                <c:choose>
+                    <c:when test="${empty user}"> <!-- 로그인하지 않았을 격우 -->
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">My Study</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <%--<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo?user_id=${user_id}">My Study</a></li>--%>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo?user_id=멘토철수">My Study 철수</a></li>
+                    </c:otherwise>
+                </c:choose>
+
+
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
             </ul>
         </div>
+
     </div>
 </nav>
 <!-- Masthead-->
+
 <header class="masthead bg-primary text-white text-center">
+    <%--
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
         <img class="masthead-avatar mb-5" src="/assets/img/avataaars.svg" alt="..." />
@@ -60,4 +72,6 @@
         <!-- Masthead Subheading-->
         <p class="masthead-subheading font-weight-light mb-0">사이트 대표 </p>
     </div>
+    --%>
 </header>
+
