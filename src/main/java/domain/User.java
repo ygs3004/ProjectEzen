@@ -1,14 +1,10 @@
 package domain;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class User {
 
     private int user_idx;
-    @NotBlank
     private int user_role;
 
 
@@ -30,7 +26,7 @@ public class User {
     private String user_pw2;
 
     @NotBlank
-    @Email
+    @Email(message = "올바른 이메일 주소를 입력해주세요.")
     private String user_email;
 
     private String user_phone;

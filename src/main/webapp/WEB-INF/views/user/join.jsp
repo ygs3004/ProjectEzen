@@ -30,6 +30,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 <script>
+
+
+
     function checkUserIdExist(){
 
         var user_id = $("#user_id").val()
@@ -61,7 +64,6 @@
     }
 
 
-
     function checkUserEmailExist(){
 
         var user_email = $("#user_email").val()
@@ -70,12 +72,16 @@
             alert('이메일을 입력해주세요')
             return
         }
+        console.log(user_email);
 
         $.ajax({
-            url : '${root}user/checkUserEmailExist/' + user_email,
+            url : '${root}user/checkUserEmailExist/' + user_email+'.',
             type : 'get',
+            // data : {'email' : user_email},
             dataType : 'text',
-            success : function(result){
+
+
+        success : function(result){
                 if(result.trim() == 'true'){
                     alert('사용할 수 있는 이메일입니다')
                     $("#userEmailExist").val('true')
@@ -107,10 +113,10 @@
                     <form:form action="${root }user/join_pro" method='post' modelAttribute="joinUser">
                         <form:hidden path="userIdExist"/>
                         <form:hidden path="userEmailExist"/>
-                      <div class="form-group">
-                          멘토로 가입하기 <form:radiobutton path="user_role" value="1"></form:radiobutton>
+                      <div class="form-group" >
+                          <form:radiobutton path="user_role" value="1" label="멘토로 가입하기 " ></form:radiobutton>
                           <br>
-                          멘티로 가입하기 <form:radiobutton path="user_role" value="2"></form:radiobutton>
+                          <form:radiobutton path="user_role" value="2" label="멘티로 가입하기 " ></form:radiobutton>
                           <br>
                       </div>
 
@@ -135,7 +141,7 @@
 
                         <!-- 비밀번호 입력 -->
                         <div class="form-group">
-                            <form:label path="user_pw">비밀번호</form:label>
+                            <form:label path="user_pw">비밀번호 (영 대,소문자,숫자만 입력가능)</form:label>
                             <form:password path="user_pw" class='form-control'/>
                             <form:errors path='user_pw' style='color:red'/>
                         </div>
@@ -157,15 +163,18 @@
                             <form:errors path="user_email" style='color:red'/>
                             <!-- 전화 번호 -->
                             <div class="form-group">
-                                <form:label path="user_phone">전화번호</form:label>
+                                <form:label path="user_phone">전화번호(-포함 13자리입력)</form:label>
                                 <form:input path="user_phone" class='form-control'/>
                                 <form:errors path="user_phone" style='color:red'/>
                             </div>
 
                             <!--  성별 확인 (변경해야할듯 .. )-->
                             <div class="form-group">
-                                <form:label path="user_gender">성별</form:label>
-                                <form:input path="user_gender" class='form-control'/>
+                                <form:label path="user_gender">성별</form:label><br>
+                                <form:radiobutton path="user_gender" value="1" label="남자"></form:radiobutton>
+                                <form:radiobutton path="user_gender" value="2" label="여자"></form:radiobutton>
+<%--                                <form:input path="user_gender" class='form-control'/>--%>
+
                                 <form:errors path="user_gender" style='color:red'/>
                             </div>
 

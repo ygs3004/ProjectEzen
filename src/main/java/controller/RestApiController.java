@@ -25,7 +25,7 @@ public class RestApiController {
     public String checkUserEmailExist(@PathVariable String user_email) {
 
         boolean chk1 = userService.checkuserEmailExist(user_email);
-
+        System.out.println(chk1);
         return chk1 + "";
     }
 
