@@ -11,8 +11,11 @@ public interface MyStudyMapper {
     public MentoRoom getMyStudyRoom(String user_id);
 
     @Insert("insert into hwboard" +
-            "(hwNo, hwName, hwContent, writer, hwRegDate, hwDeadLine) " +
-            "values(hw_seq.nextval, #{hwName}, #{hwContent}, #{writer}, SYSDATE, #{hwDeadLine})")
-    public void uploadHomeWork(HomeWork homeWork);
+            "(hwName, hwContent, writer, hwRegDate, hwDeadLine, CompleteMentee) " +
+            "values(#{hwName}, #{hwContent}, #{writer}, SYSDATE, #{hwDeadLine}, 0)")
+    public int uploadHomeWork(HomeWork homeWork);
+
+    @Select("select * from hwboard where writer = #{user_id}")
+    public HomeWork getHomeWork(String user_id);
 
 }

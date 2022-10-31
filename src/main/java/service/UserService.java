@@ -32,7 +32,7 @@ public class UserService {
     public boolean checkuserEmailExist(String user_email) {
 
         String user_emailCheck = userDao.checkUserEmailExist(user_email);
-
+        
         if(user_emailCheck == null) {
             return true;
         } else {

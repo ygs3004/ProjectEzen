@@ -25,6 +25,10 @@
         margin-bottom: 40px;
     }
 
+    label{
+        margin-top : 20px;
+    }
+
 </style>
 
 <body>
@@ -33,7 +37,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="hwName">과제명</label>
-            <input type="type" class="form-control" id="hwName" placeholder="과제1" name="hwName" >
+            <input type="text" class="form-control" id="hwName" placeholder="과제1" name="hwName" >
         </div>
     </div>
     <div class="form-group col-md-6">
@@ -42,9 +46,10 @@
     </div>
     <div class="form-group">
         <label for="hwContent">과제내용</label>
-        <textarea type="text" class="form-control" id="hwContent" name="hwContent" rows="30" cols="100"> </textarea>
+        <textarea type="text" class="form-control" id="hwContent" name="hwContent" rows="15" cols="70"> </textarea>
     </div>
     <br>
+    <input type="hidden" name="completeMentee" value="0">
     <input type="submit" class="btn btn-primary" value="과제 업로드">
 </form>
 </div>

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -39,18 +38,32 @@ public class MyStudyController {
     }
 
     @PostMapping("/UploadSuccess")
-    public String uploadSuccess(HomeWork homeWork, HttpServletRequest request){
+    public String uploadSuccess(HomeWork homeWork, HttpServletRequest request, Model model){
 
         HttpSession session = request.getSession();
         String user_id = (String) session.getAttribute("user_id");
 
         homeWork.setWriter(user_id);
-        System.out.println(homeWork);
 
-        mapper.uploadHomeWork(homeWork);
+        int success = mapper.uploadHomeWork(homeWork);
+        model.addAttribute("homeWork", homeWork);
 
-        return "/MyStudy/HomeWorkNow";
+        return "redirect:/MyStudy/MentorHomeWorkInfo";
     }
 
+    @GetMapping("/MentorHomeWorkInfo")
+    public String MentorHomeWorkInfo (HttpServletRequest request, Model model) {
+
+        HttpSession session = request.getSession();
+        String user_id = (String) session.getAttribute("user_id");
+
+        HomeWork homeWork = mapper.getHomeWork(user_id);
+        MentoRoom mentoRoom = mapper.getMyStudyRoom(user_id);
+
+        model.addAttribute("homeWork", homeWork);
+        model.addAttribute("mentoRoom", mentoRoom);
+
+        return "/MyStudy/MentorHomeWorkInfo";
+    }
 
 }
