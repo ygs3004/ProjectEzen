@@ -66,4 +66,11 @@ public class MyStudyController {
         return "/MyStudy/MentorHomeWorkInfo";
     }
 
+    @GetMapping("/MenteeHomeWorkInfo")
+    public String MenteeHomeWorkInfo(){
+        return "";
+    }
+
+
+
 }
