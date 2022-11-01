@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MyStudyService {
 
-    MyStudyDao studyDao;
+    final MyStudyDao studyDao;
 
     public MentorRoom getMyStudyRoom(String user_id) {
-        return studyDao.myStudyMenor(user_id);
+        return studyDao.getMyStudyRoom(user_id);
     }
 
     public int uploadHomeWork(HomeWork homeWork) {

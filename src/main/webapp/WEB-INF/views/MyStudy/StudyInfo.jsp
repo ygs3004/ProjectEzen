@@ -51,8 +51,8 @@
         <td><c:out value=" ${mentorRoom.career}" /></td>
     </tr>
     <tr>
-        <th scope="row">시작일 / <br> 종료일</th>
-        <td><c:out value=" ${mentorRoom.studyStart} ~ ${mentorRoom.studyEnd}" /></td>
+        <th scope="row"> 기간 </th>
+        <td><c:out value=" ${mentorRoom.studyPeriod}" /></td>
     </tr>
     <tr>
         <th scope="row">스터디 내용</th>
