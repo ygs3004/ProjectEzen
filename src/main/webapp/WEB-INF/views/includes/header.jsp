@@ -23,17 +23,19 @@
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
 
-        <a class="navbar-brand" href="/">멘토의 우리</a>
+        <a class="navbar-brand" href="/">우리의 멘토</a>
 
         <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">로그인</a></li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/join">회원가입</a></li>
                 <%-- 멘토 : user_role==1 멘티 : user_role==2 --%>
+
                 <c:choose>
                     <c:when test="${empty user}"> <!-- 로그인하지 않았을 격우 -->
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">My Study</a></li>
@@ -55,6 +57,7 @@
 <!-- Masthead-->
 
 <header class="masthead bg-primary text-white text-center">
+
     <%--
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
