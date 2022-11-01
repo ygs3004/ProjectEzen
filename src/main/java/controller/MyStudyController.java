@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class MyStudyController {
 
-    MyStudyService myStudyService;
+    final MyStudyService myStudyService;
 
     @GetMapping("/StudyInfo")
     public String myStudyMentor(String user_id, Model model, HttpServletRequest request){

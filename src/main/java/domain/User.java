@@ -49,7 +49,7 @@ public class User {
     public static String getSessionUserId(HttpServletRequest request){
         HttpSession session =  request.getSession();
         String sessionUserId = (String) session.getAttribute("user_id");
-
+        System.out.println("현재 세션의 아이디 : " + sessionUserId);
         return sessionUserId;
     }
 

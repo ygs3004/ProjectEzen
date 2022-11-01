@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class MyStudyDao {
 
-    @Autowired
-    MyStudyMapper mapper;
+    final MyStudyMapper mapper;
 
     public MentorRoom getMyStudyRoom(String user_id){
         return mapper.getMyStudyRoom(user_id);
