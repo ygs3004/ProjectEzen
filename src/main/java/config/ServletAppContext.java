@@ -23,7 +23,6 @@ import org.springframework.web.servlet.config.annotation.*;
 @ComponentScan(basePackages = "service")
 @ComponentScan(basePackages = "controller")
 @MapperScan(basePackages = "mapper")
-
 @PropertySource("/WEB-INF/properties/db.properties")
 public class ServletAppContext implements WebMvcConfigurer {
 

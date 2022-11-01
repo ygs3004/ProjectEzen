@@ -19,7 +19,6 @@ CREATE TABLE MENTORROOM
     CONTENT         VARCHAR2(1000)
 );
 
-
 CREATE TABLE hwInfo
 (
     HWNAME     VARCHAR2(300) NOT NULL,
@@ -29,6 +28,7 @@ CREATE TABLE hwInfo
     HWDEADLINE DATE,
     CompleteMentee NUMBER DEFAULT 0
 );
+
 select * from hwInfo;
 INSERT INTO hwInfo values('숙제명', '숙제내용', '멘토이륾', SYSDATE, SYSDATE + (INTERVAL '1' YEAR), 0);
 
