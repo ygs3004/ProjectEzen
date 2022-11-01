@@ -31,11 +31,11 @@ from MENTORROOM;
 
 create sequence hw_seq start with 1 increment by 1;
 
-drop table hwboard;
+drop table hwInfo;
 
 
 
 select *
-from HWBOARD;
+from hwInfo;
 
-delete from hwboard;
+delete from hwInfo;

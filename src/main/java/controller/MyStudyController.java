@@ -3,6 +3,7 @@ package controller;
 import domain.HomeWork;
 import domain.MentorRoom;
 import domain.User;
+import lombok.RequiredArgsConstructor;
 import mapper.MyStudyMapper;
 import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,23 +12,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import service.MyStudyService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/MyStudy")
+@RequiredArgsConstructor
 public class MyStudyController {
 
-    @Autowired
-    MyStudyMapper mapper;
+    MyStudyService myStudyService;
 
     @GetMapping("/StudyInfo")
     public String myStudyMentor(String user_id, Model model, HttpServletRequest request){
 
-        HttpSession session = request.getSession();
+        HttpSession session =  request.getSession();
         session.setAttribute("user_id", user_id);
-        MentorRoom mentorRoom =  mapper.getMyStudyRoom(user_id);
+        MentorRoom mentorRoom =  myStudyService.getMyStudyRoom(user_id);
 
         model.addAttribute("mentoRoom", mentorRoom);
         return "/MyStudy/StudyInfo";
@@ -41,12 +43,11 @@ public class MyStudyController {
     @PostMapping("/UploadSuccess")
     public String uploadSuccess(HomeWork homeWork, HttpServletRequest request, Model model){
 
-        HttpSession session = request.getSession();
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = User.getSessionUserId(request);
 
         homeWork.setWriter(user_id);
 
-        int success = mapper.uploadHomeWork(homeWork);
+        int success = myStudyService.uploadHomeWork(homeWork);
         model.addAttribute("homeWork", homeWork);
 
         return "redirect:/MyStudy/MentorHomeWorkInfo";
@@ -55,11 +56,10 @@ public class MyStudyController {
     @GetMapping("/MentorHomeWorkInfo")
     public String MentorHomeWorkInfo (HttpServletRequest request, Model model) {
 
-        HttpSession session = request.getSession();
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = User.getSessionUserId(request);
 
-        HomeWork homeWork = mapper.getHomeWork(user_id);
-        MentorRoom mentorRoom = mapper.getMyStudyRoom(user_id);
+        HomeWork homeWork = myStudyService.getHomeWork(user_id);
+        MentorRoom mentorRoom = myStudyService.getMyStudyRoom(user_id);
 
         model.addAttribute("homeWork", homeWork);
         model.addAttribute("mentoRoom", mentorRoom);
@@ -68,7 +68,10 @@ public class MyStudyController {
     }
 
     @GetMapping("/MenteeHomeWorkInfo")
-    public String MenteeHomeWorkInfo(){
+    public String MenteeHomeWorkInfo(String user_id){
+
+        HomeWork homeWork = myStudyService.getHomeWork(user_id);
+
         return "/MyStudy/MenteeHomeWorkInfo";
     }
 

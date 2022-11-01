@@ -2,13 +2,13 @@ package domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.sql.Date;
 
 
 @Data
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class HomeWork {
 
     private String hwName;

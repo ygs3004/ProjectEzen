@@ -38,7 +38,7 @@ INSERT INTO users values (1, '윤건수', 'userid', 'userpw', 'userpw', '1@1.com
 commit;
 select * from users;
 
-CREATE TABLE HWBOARD
+CREATE TABLE hwInfo
 (
     HWNAME     VARCHAR2(300) NOT NULL,
     HWCONTENT  VARCHAR2(300) NOT NULL,
@@ -49,8 +49,7 @@ CREATE TABLE HWBOARD
 );
 
 
-
-drop table hwboard;
+drop table hwInfo;
 
 select *
 from board;
@@ -60,7 +59,7 @@ select *
 from users;
 select *
 from MENTOROOM;
-select*from HWBOARD;
+
 
 drop table MENTOROOM;
 drop sequence mento_room_seq;
@@ -95,11 +94,11 @@ from MENTOROOM;
 
 create sequence hw_seq start with 1 increment by 1;
 
-drop table hwboard;
+drop table hwInfo;
 
 
 
 select *
-from HWBOARD;
+from hwInfo;
 
-delete from hwboard;
+delete from hwInfo;
