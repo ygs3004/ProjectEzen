@@ -9,9 +9,9 @@
       <div class="col-lg-4 mb-5 mb-lg-0">
         <h4 class="text-uppercase mb-4">1조</h4>
         <p class="lead mb-0">
-          윤건수 외 어중이떠중이
+          윤건수,이우석,조선미,박기훈,강태구
           <br />
-          할수있다~
+          할수있다!
         </p>
       </div>
       <!-- Footer Social Icons-->
@@ -24,9 +24,9 @@
       </div>
       <!-- Footer About Text-->
       <div class="col-lg-4">
-        <h4 class="text-uppercase mb-4">About Freelancer</h4>
+        <h4 class="text-uppercase mb-4">광고문의</h4>
         <p class="lead mb-0">
-          Freelance is a free to use, MIT licensed Bootstrap theme created by
+          한국은행 010-1001000-10000
           <a href="http://startbootstrap.com">Start Bootstrap</a>
           .
         </p>
