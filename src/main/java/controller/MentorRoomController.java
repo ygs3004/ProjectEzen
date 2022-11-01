@@ -22,7 +22,6 @@ public class MentorRoomController {
 
     @PostMapping("/createRoom")
     public String createRoom(MentorRoom roomInfo){
-
         mentorRoomService.createRoom(roomInfo);
 
         System.out.println(roomInfo.getStudyPeriod());
