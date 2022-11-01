@@ -34,8 +34,7 @@ INSERT INTO hwInfo values('숙제명', '숙제내용', '멘토이륾', SYSDATE, 
 
 
 /* 테스트 데이터 */
-INSERT INTO MENTORROOM values ('멘토철수', mento_room_seq.nextval, 'StudyName', '경력', '서울대학교', 30, 1, sysdate,
-        SYSDATE + (INTERVAL '1' YEAR), '열공을 하는 모임입니다.');
+
 INSERT INTO MENTORROOM ( num, user_id, title, studyPeriod, studyWeekly, studytimestart, studyTimeEnd, capacity, nowcapacity, career, school, content)
 values ( mentor_room_seq.nextval, 'user01','StudyName','2022/11/01 - 2022/11/02', '1,5', '09:00', '18:00',  30, 0, 1, '서울대학교', '열공을 하는 모임입니다.');
 commit;

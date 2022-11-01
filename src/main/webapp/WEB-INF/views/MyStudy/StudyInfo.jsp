@@ -40,7 +40,7 @@
     </tr>
     <tr>
         <th scope="row">멘토</th>
-        <td><c:out value=" ${mentorRoom.name}" /></td>
+        <td><c:out value=" ${mentorRoom.user_id}" /></td>
     </tr>
     <tr>
         <th scope="row">멘토님 학교</th>
