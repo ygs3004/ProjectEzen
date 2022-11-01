@@ -1,5 +1,9 @@
 package domain;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+@Data
 public class MentorRoom {
 
     private String user_id;
