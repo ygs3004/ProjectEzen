@@ -21,8 +21,8 @@ import org.springframework.web.servlet.config.annotation.*;
 //스캔할 패키지를 지정한다.
 @ComponentScan(basePackages = "dao")
 @ComponentScan(basePackages = "service")
-@ComponentScan(basePackages = "mapper")
 @ComponentScan(basePackages = "controller")
+@MapperScan(basePackages = "mapper")
 @PropertySource("/WEB-INF/properties/db.properties")
 public class ServletAppContext implements WebMvcConfigurer {
 
@@ -73,16 +73,8 @@ public class ServletAppContext implements WebMvcConfigurer {
         return factory;
     }
 
-    // 쿼리문 실행을 위한 객체
     @Bean
-    public MapperFactoryBean<MyStudyMapper> getMyStudyMapper(SqlSessionFactory factory) throws Exception{
-        MapperFactoryBean<MyStudyMapper> factoryBean = new MapperFactoryBean<>(MyStudyMapper.class);
-        factoryBean.setSqlSessionFactory(factory);
-        return factoryBean;
-    }
-
-    @Bean
-    public MapperFactoryBean<UserMapper> getTopMenuMapper(SqlSessionFactory factory) throws Exception{
+    public MapperFactoryBean<UserMapper> UserMapper(SqlSessionFactory factory) throws Exception{
         MapperFactoryBean<UserMapper> factoryBean = new MapperFactoryBean<>(UserMapper.class);
         factoryBean.setSqlSessionFactory(factory);
         return factoryBean;

@@ -4,15 +4,16 @@ import domain.HomeWork;
 import domain.MentorRoom;
 import lombok.RequiredArgsConstructor;
 import mapper.MyStudyMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RequiredArgsConstructor
 public class MyStudyDao {
 
+    @Autowired
     MyStudyMapper mapper;
 
-    public MentorRoom myStudyMenor(String user_id){
+    public MentorRoom getMyStudyRoom(String user_id){
         return mapper.getMyStudyRoom(user_id);
     }
 

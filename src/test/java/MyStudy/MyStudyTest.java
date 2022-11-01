@@ -1,6 +1,7 @@
 package MyStudy;
 
 import config.ServletAppContext;
+import dao.MyStudyDao;
 import domain.MentorRoom;
 import lombok.extern.log4j.Log4j;
 import mapper.MyStudyMapper;
@@ -22,18 +23,28 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class MyStudyTest {
 
     @Autowired
+    MyStudyDao dao;
+
+    @Autowired
     MyStudyMapper mapper;
 
     @Test
-    public void mapperTest(){
-        assertThat(mapper, is(notNullValue()));
+    public void daoAutowired(){
+        assertThat(dao, is(notNullValue()));
+    }
+
+    @Test
+    public void test(){
+        log.info(mapper);
+        log.info(mapper.getTime());
     }
 
     @Test
     public void select_test(){
         String user_id = "멘토철수";
+        log.info(mapper);
         MentorRoom mentorRoom = mapper.getMyStudyRoom(user_id);
-        assertThat(user_id, is(mentorRoom.getName()));
+        assertThat(user_id, is(mentorRoom.getUser_id()));
     }
 
 }

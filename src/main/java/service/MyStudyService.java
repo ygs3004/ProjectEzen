@@ -13,7 +13,7 @@ public class MyStudyService {
     MyStudyDao studyDao;
 
     public MentorRoom getMyStudyRoom(String user_id) {
-        return studyDao.myStudyMenor(user_id);
+        return studyDao.getMyStudyRoom(user_id);
     }
 
     public int uploadHomeWork(HomeWork homeWork) {

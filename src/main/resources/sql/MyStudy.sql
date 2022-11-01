@@ -8,7 +8,6 @@ CREATE TABLE MENTORROOM
     USER_ID     VARCHAR2(20),
     NUM         NUMBER        NOT NULL primary key,
     TITLE       VARCHAR2(200) NOT NULL,
-    NAME        VARCHAR2(15)  NOT NULL,
     CAREER      VARCHAR2(1000),
     SCHOOL      VARCHAR2(30)  NOT NULL,
     CAPACITY    NUMBER        NOT NULL,
@@ -18,9 +17,10 @@ CREATE TABLE MENTORROOM
     CONTENT     VARCHAR2(1000)
 );
 
+
 /* 테스트 데이터 */
-INSERT INTO MENTOROOM (user_id, num, title, name, career, school, capacity, nowcapacity, studystart, studyend, content)
-values ('user01', mento_room_seq.nextval, 'StudyName', '멘토철수', '경력', '서울대학교', 30, 1, sysdate,
+INSERT INTO MENTORROOM (user_id, num, title, career, school, capacity, nowcapacity, studystart, studyend, content)
+values ('멘토철수', mento_room_seq.nextval, 'StudyName', '경력', '서울대학교', 30, 1, sysdate,
         SYSDATE + (INTERVAL '1' YEAR), '열공을 하는 모임입니다.');
 
 commit;

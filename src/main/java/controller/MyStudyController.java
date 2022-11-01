@@ -31,7 +31,7 @@ public class MyStudyController {
         session.setAttribute("user_id", user_id);
         MentorRoom mentorRoom =  myStudyService.getMyStudyRoom(user_id);
 
-        model.addAttribute("mentoRoom", mentorRoom);
+        model.addAttribute("mentorRoom", mentorRoom);
         return "/MyStudy/StudyInfo";
     }
 
@@ -62,7 +62,7 @@ public class MyStudyController {
         MentorRoom mentorRoom = myStudyService.getMyStudyRoom(user_id);
 
         model.addAttribute("homeWork", homeWork);
-        model.addAttribute("mentoRoom", mentorRoom);
+        model.addAttribute("mentorRoom", mentorRoom);
 
         return "/MyStudy/MentorHomeWorkInfo";
     }

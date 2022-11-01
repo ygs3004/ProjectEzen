@@ -26,9 +26,9 @@ public class MentorRoomController {
 //
 //        HttpSession session = request.getSession();
 //        session.setAttribute("user_id", user_id);
-//        MentoRoom mentoRoom =  mapper.getMyStudyRoom(user_id);
+//        mentorRoom mentorRoom =  mapper.getMyStudyRoom(user_id);
 //
-//        model.addAttribute("mentoRoom", mentoRoom);
+//        model.addAttribute("mentorRoom", mentorRoom);
 //        return "/MyStudy/StudyInfo";
 //    }
 //
