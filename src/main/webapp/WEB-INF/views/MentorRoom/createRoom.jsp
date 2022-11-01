@@ -5,13 +5,12 @@
   Time: 오전 10:30
   To change this template use File | Settings | File Templates.
 --%>
-
 <style>
     #formTitle{font-size: 5vw; font-weight: bold;}
     #formDes{font-size: 15px;}
     #careerList{margin-left:5px; font-size: 15px;}
-    input[type="text"][id="career"]{display:inline; width:700px; outline:none; vertical-align:middle}
-    input[id="addCareer"]{display: inline; width:50px; height: 38px; font-size:12px; text-align: center;}
+    input[type="text"][id="addCareer"]{display:inline; width:700px; outline:none; vertical-align:middle}
+    input[id="addList"]{display: inline; width:50px; height: 38px; font-size:12px; text-align: center;}
     .formHeader{width: 70%; margin: 4% auto 4% auto; display: block; text-align: center;} /*폼 헤더*/
     .formBody{width: 800px; margin: 5% auto 5% auto; display: block; }
     .user_name{font-size:30px; font-weight: bold; margin: 3% auto 3% auto;}
@@ -38,9 +37,8 @@
         .formBody {width: 90%; margin: 3% auto 3% auto;}
         .studyWeekly{width:11vw;}
         input[type="time"]{width: 40vw;}
-        input[type="text"][id="career"]{width:25em;}
+        input[type="text"][id="addCareer"]{width:25em;}
     }
-
 </style>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -48,13 +46,18 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script type="text/javascript">
 
-    function addList() {
-        const add = document.getElementById('career').value;
-        const p = document.createElement('p');
-        p.setAttribute('id',add);
-        const temp = document.createTextNode(add);
+    function addCreerList() {
+        const add = document.getElementById('addCareer').value; //input value값
+        const p = document.createElement('p'); //p태그 생성
+        const input = document.createElement('input'); //hidden 태그 생성
+        input.setAttribute('type',"hidden");
+        input.setAttribute('name','career'); //p태그에 name 주기
+        input.setAttribute('value',add);
+        const temp = document.createTextNode(add);// add값 택스트 생성
         p.appendChild(temp);
-        document.getElementById('careerList').appendChild(p);
+
+        document.getElementById('careerList').appendChild(p); //careerlist에 자식으로 p추가
+        document.getElementById('careerList').appendChild(input);
     };
 
         <%--const temp= document.getElementById("careerList");--%>
@@ -64,17 +67,17 @@
         <%--};--%>
 
     $(function() {
-        $('input[name="datefilter"]').daterangepicker({
+        $('input[name="studyPeriod"]').daterangepicker({
             autoUpdateInput: false,
             locale: {
                 cancelLabel: 'Clear'
             }
         });
         // $(.addCareer).on("click",addCareer());
-        $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+        $('input[name="studyPeriod"]').on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
         });
-        $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+        $('input[name="studyPeriod"]').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
         });
     });
@@ -104,11 +107,11 @@
             <span>멘토 user_name 님</span>
         </div>
         <div class="useMove">
-            <input type="text" class="form-control" id="title" autocomplete="on" required>
+            <input type="text" class="form-control" id="title" name="title" autocomplete="on" required>
             <label for="title"><span>스터디 이름</span></label>
         </div>
         <div class="useMove">
-            <input type="text" class="form-control" id="studyPeriod" name="datefilter" required>
+            <input type="text" class="form-control" id="studyPeriod" name="studyPeriod" required>
             <label for="studyPeriod"><span>스터디 기간</span></label>
         </div>
             <div class="notMove">
@@ -145,16 +148,16 @@
             </div>
             <div style="display: flex; justify-content: space-between;">
             <div class="useMove">
-                <div><input type="time" class="form-control" id="studyTimeStart" value="09:00" required>
+                <div><input type="time" class="form-control" id="studyTimeStart" name="studyTimeStart" value="09:00" required>
                     <label for="studyTimeStart"><span>스터디 시간</span></label></div>
             </div>
             <div class="useMove">
-                <input type="time" class="form-control" id="studyTimeEnd" value="18:00" required>
+                <input type="time" class="form-control" id="studyTimeEnd" name="studyTimeEnd" value="18:00" required>
                 <label for="studyTimeEnd"><span>스터디 종료 시간</span></label>
             </div>
             </div>
         <div class="useMove">
-            <input type="number" class="form-control" id="capacity" min="1" max="30" required>
+            <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="30" required>
             <label for="capacity"><span>모집인원</span></label>
         </div>
         <div class="desc">
@@ -162,22 +165,22 @@
         </div>
         <div style="display: flex;justify-content: space-between;">
             <div class="useMove">
-                <input type="text" class="form-control" id="career" required>
-                <label for="career"><span>멘토 경력</span></label>
+                <input type="text" class="form-control" id="addCareer" required>
+                <label for="addCareer"><span>멘토 경력</span></label>
             </div>
-            <input type="button" class="form-control btn-outline-primary" id="addCareer" value="add" onclick="addList()">
+            <input type="button" class="form-control btn-outline-primary" id="addList" value="add" onclick="addCreerList()">
         </div>
         <div id="careerList">
         </div>
         <div class="notMove">
-            <input type="text" class="form-control" id="school" value="user_school" readonly>
+            <input type="text" class="form-control" id="school" name="school" value="user_school" readonly>
             <label for="school"><span class="block">멘토 학력</span></label>
         </div>
         <div>
-            <textarea class="form-control" id="content" rows="15" style="resize: none;"></textarea>
+            <textarea class="form-control" id="content" name="content" rows="15" style="resize: none;"></textarea>
             <label for="content"><span class="content">스터디 상세설명</span></label>
         </div>
-        <input type="hidden" name="user_id" value="${user_id}">
+        <input type="hidden" name="user_id" value="user_id">
         <div style="text-align: center; margin-bottom: 2%;">
             <button type="submit" class="btn btn-primary">스터디 개설</button>
         </div>

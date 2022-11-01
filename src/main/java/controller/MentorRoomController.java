@@ -17,6 +17,14 @@ public class MentorRoomController {
 
     @PostMapping("/createRoom")
     public String createRoom(MentorRoom roomInfo){
+        //MentorRoom mentorRoom = mapper.createRoom(roomInfo);
+        System.out.println(roomInfo.getStudyPeriod());
+        System.out.println(roomInfo.getStudyWeekly());
+        System.out.println(roomInfo.getStudyTimeStart());
+        System.out.println(roomInfo.getStudyTimeEnd());
+        System.out.println(roomInfo.getCareer());
+        System.out.println(roomInfo.getUser_id());
+
 
         return "/roomInfo";
     }
@@ -31,5 +39,4 @@ public class MentorRoomController {
 //        model.addAttribute("mentorRoom", mentorRoom);
 //        return "/MyStudy/StudyInfo";
 //    }
-//
 }
