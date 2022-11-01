@@ -17,7 +17,7 @@ public class MentorRoomController {
 
     @PostMapping("/createRoom")
     public String createRoom(MentorRoom roomInfo){
-        MentorRoom mentorRoom = mapper.createRoom(roomInfo);
+        //MentorRoom mentorRoom = mapper.createRoom(roomInfo);
         System.out.println(roomInfo.getStudyPeriod());
         System.out.println(roomInfo.getStudyWeekly());
         System.out.println(roomInfo.getStudyTimeStart());

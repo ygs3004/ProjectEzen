@@ -7,11 +7,11 @@
     <div class="row">
       <!-- Footer Location-->
       <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 class="text-uppercase mb-4">Location</h4>
+        <h4 class="text-uppercase mb-4">1조</h4>
         <p class="lead mb-0">
-          2215 John Daniel Drive
+          윤건수 외 어중이떠중이
           <br />
-          Clark, MO 65243
+          할수있다~
         </p>
       </div>
       <!-- Footer Social Icons-->
