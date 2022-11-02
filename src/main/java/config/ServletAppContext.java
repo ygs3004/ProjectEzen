@@ -84,6 +84,13 @@ public class ServletAppContext implements WebMvcConfigurer {
         return factoryBean;
     }
 
+    @Bean
+    public ReloadableResourceBundleMessageSource messageSource() {
+        ReloadableResourceBundleMessageSource res = new ReloadableResourceBundleMessageSource();
+        res.setBasenames("/WEB-INF/properties/error_message");
+        return res;
+    }
+
     //@PropertySource 를 붙여 프로퍼티 파일을 로드하려면 정의해야 하는 @Bean
     //특이점은 스프링 버전 5.0.5.RELEASE에서 이 Bean을 설정하지 않아도 정상적으로 동작
     //ReloadableResourceBundleMessageSource을 등록했을시 @Value가 properties 값을 제대로 불러오지 못했고, 이 빈을 등록한 후 정상 동작
@@ -119,14 +126,5 @@ public class ServletAppContext implements WebMvcConfigurer {
 
     }
 */
-
-
-    @Bean
-    public ReloadableResourceBundleMessageSource messageSource() {
-        ReloadableResourceBundleMessageSource res = new ReloadableResourceBundleMessageSource();
-        res.setBasenames("/WEB-INF/properties/error_message");
-        return res;
-    }
-
 
 }
