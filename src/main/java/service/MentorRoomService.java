@@ -13,5 +13,6 @@ public class MentorRoomService {
 
     public void createRoom(MentorRoom roomInfo) {
         mentorRoomDAO.createRoom(roomInfo);
+        System.out.println("createRoom Servire실행");
     }
 }

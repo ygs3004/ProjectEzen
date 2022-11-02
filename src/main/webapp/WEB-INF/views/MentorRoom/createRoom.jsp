@@ -16,8 +16,9 @@
 <%@ include file="../includes/header.jsp"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" type="text/css" href="/css/mentorRoomStyles.css">
-<%--<form:form modelAttribute="createRoom">--%>
-<form action="createRoom"  method="post">
+<%--<form:form id="createForm" modelAttribute="createRoom">--%>
+
+<form action="/MentorRoom/roomInfo" method="post" id="createForm" onsubmit="doCheck();">
     <section class="formHeader">
             <span id="formTitle"><b>스터디 개설</b></span>
             <p id="formDes">스터디를 개설해 멘티들을 모아볼까요?</p>
@@ -103,7 +104,7 @@
         </div>
         <input type="hidden" name="user_id" value="user_id">
         <div style="text-align: center; margin-bottom: 2%;">
-            <button id="formCheck" type="submit" class="btn btn-primary">스터디 개설</button>
+            <button id="formCheck" onclick="doCheck();" class="btn btn-primary">스터디 개설</button>
         </div>
 <%--            <input type="button" class="btn btn-primary" value="뒤로가기" onclick="history.back();"></div>--%>
     </div>

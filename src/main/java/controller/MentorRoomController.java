@@ -9,32 +9,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import service.MentorRoomService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/MentorRoom")
 @RequiredArgsConstructor
 public class MentorRoomController {
 
     final MentorRoomService mentorRoomService;
 
-    @GetMapping("/MentorRoom")
+    @GetMapping("/createRoom")
     public String CreateMentorRoom(){
+        //user_id 받아야함.
         return "/MentorRoom/createRoom";
     }
 
-    @PostMapping("/createRoom")
+    @PostMapping("/roomInfo")
     public String createRoom(MentorRoom roomInfo){
         mentorRoomService.createRoom(roomInfo);
-        return "/roomInfo";
+        return "/MentorRoom/roomInfo";
     }
 
-//    @GetMapping("/StudyInfo")
-//    public String myStudyMentor(String user_id, Model model, HttpServletRequest request){
-//
-//        HttpSession session = request.getSession();
-//        session.setAttribute("user_id", user_id);
-//        mentorRoom mentorRoom =  mapper.getMyStudyRoom(user_id);
-//
-//        model.addAttribute("mentorRoom", mentorRoom);
-//        return "/MyStudy/StudyInfo";
-//    }
 
 }

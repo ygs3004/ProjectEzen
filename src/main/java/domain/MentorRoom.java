@@ -12,6 +12,7 @@ public class MentorRoom {
     private String user_id;
     private String title;
     private String studyPeriod;
+    private Integer num;
     private String studyWeekly;
     private String studyTimeStart;
     private String studyTimeEnd;

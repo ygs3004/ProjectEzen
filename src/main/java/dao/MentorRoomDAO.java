@@ -13,10 +13,7 @@ public class MentorRoomDAO {
 
     public void createRoom(MentorRoom roomInfo) {
         mapper.createRoom(roomInfo);
+        System.out.println("createRoom DAO실행");
     }
-
-//    public MentorRoom mentorRoom(String user_id){
-//        return mapper.getMyStudyRoom(user_id);
-//    }
 
 }

@@ -41,7 +41,6 @@ $(function() {
     });
 });
 
-
 // $(function() {
 //     $('input[name="datetimes"]').daterangepicker({
 //         timePicker: true,
@@ -52,9 +51,26 @@ $(function() {
 //         }
 //     });
 // // });
+
+
+
+//입력값이 잘못된 경우 false를 리턴.
+function doCheck(){
+    let enterdPeriod = document.getElementById("studyPeriod");
+    let periodRule = /\d{4}\/\d{2}\/\d{2} - \d{4}\/\d{2}\/\d{2}/;
+    if(enterdPeriod)
+
+    //check 후 이동
+    let form = document.getElementById("createForm").value;
+    console.log(form);
+    form.action = "/MentorRoom/roomInfo";
+    form.mothod = "POST";
+    form.submit();
+}
+
 // let formCheck = document.getElementById("formCheck");
 // formCheck.addEventListener("click", function () {
-//     let form = document.getElementById("form"); // 스터디기간 폼 체크
+//      // 스터디기간 폼 체크
 //     let period = document.getElementById("studyPeriod");
 //     let weekly = document.getElementsByName("studyWeekly"); // 요일 체크되었는지 확인
 //     // var pw = document.getElementById("pw");
