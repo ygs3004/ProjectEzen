@@ -58,12 +58,16 @@
 
 <header class="masthead bg-primary text-white text-center">
 
-    <%--
+
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img class="masthead-avatar mb-5" src="/assets/img/avataaars.svg" alt="..." />
+        <img src="..\img\mento.png" width="400" height="200"/>
         <!-- Masthead Heading-->
+        <br>
+        <br>
         <h1 class="masthead-heading text-uppercase mb-0">멘토 멘티 사이트</h1>
+        <br>
+        <br>
 
         <h1 class="masthead-heading text-uppercase mb-0"> 멘토 멘티</h1>
         <!-- Icon Divider-->
@@ -73,8 +77,8 @@
             <div class="divider-custom-line"></div>
         </div>
         <!-- Masthead Subheading-->
-        <p class="masthead-subheading font-weight-light mb-0">사이트 대표 </p>
+        <p class="masthead-subheading font-weight-light mb-0">우리의 멘토 </p>
     </div>
-    --%>
+
 </header>
 
