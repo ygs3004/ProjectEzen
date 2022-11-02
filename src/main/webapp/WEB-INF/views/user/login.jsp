@@ -25,7 +25,7 @@
 
 <c:import url="/WEB-INF/views/includes/header.jsp"/>
 
-<div class="container" style="margin-top:100px">
+<div class="container" style="margin-top:50px">
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
@@ -55,7 +55,8 @@
     <div class="col-sm-3"></div>
   </div>
 </div>
-
+<br>
+<br>
 <c:import url="/WEB-INF/views/includes/footer.jsp"/>
 
 </body>
