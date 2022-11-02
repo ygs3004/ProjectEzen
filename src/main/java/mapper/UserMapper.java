@@ -3,6 +3,7 @@ package mapper;
 import domain.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 public interface UserMapper {
 
@@ -16,13 +17,26 @@ public interface UserMapper {
             "where user_email = #{user_email}")
     String checkUserEmailExist(String user_email);
 
-//    @Select("select user_role, user_name " +
+    @Select("select user_idx, user_name " +
+            "from users " +
+            "where user_id=#{user_id} and user_pw=#{user_pw}")
+    User getLoginUserInfo(User tempLoginUserBean);
+
+//    @Select("select user_name " +
 //            "from users " +
 //            "where user_id=#{user_id} and user_pw=#{user_pw}")
-//    User getLoginUserInfo(User tempLoginUser);
+//    User getLoginUserInfo(User tempLoginUserBean);
+    @Select("select user_id, user_name " +
+        "from user_table " +
+        "where user_idx = #{user_idx}")
+    User getModifyUserInfo(int user_idx);
 
+    @Update("update user_table " +
+            "set user_pw = #{user_pw} " +
+            "where user_idx = #{user_idx}")
+    void modifyUserInfo(User modifyUserBean);
 
-    @Insert("insert into users (user_role, user_name, user_id, user_pw, user_pw2, user_email, user_phone, user_gender, user_school) " +"values (#{user_role}, #{user_name}, #{user_id}, #{user_pw}, #{user_pw2}, #{user_email}, #{user_phone}, #{user_gender}, #{user_school})")
+    @Insert("insert into users (user_idx, user_role, user_name, user_id, user_pw, user_pw2, user_email, user_phone, user_gender, user_school) " +"values (user_seq.nextval, #{user_role}, #{user_name}, #{user_id}, #{user_pw}, #{user_pw2}, #{user_email}, #{user_phone}, #{user_gender}, #{user_school})")
     void addUserInfo(User joinUserBean);
 
 }

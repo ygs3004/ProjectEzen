@@ -15,8 +15,8 @@ public class UserService {
     private UserDao userDao;
 
 
-//    @Resource(name = "loginUser")
-//    private User loginUser;
+    @Resource(name = "loginUserBean")
+    private User loginUserBean;
 
     public boolean checkuserIdExist(String user_id) {
 
@@ -44,16 +44,16 @@ public class UserService {
         userDao.addUserInfo(joinUserBean);
     }
 
-//    public void getLoginUserInfo(User tempLoginUserBean) {
-//
-//        User tempLoginUserBean2 = userDao.getLoginUserInfo(tempLoginUserBean);
-//
-//        if(tempLoginUserBean2 != null) {
-//            loginUser.setUser_role(tempLoginUserBean2.getUser_role());
-//            loginUser.setUser_name(tempLoginUserBean2.getUser_name());
-//            loginUser.setUserLogin(true);
-//        }
-//    }
+    public void getLoginUserInfo(User tempLoginUserBean) {
+
+        User tempLoginUserBean2 = userDao.getLoginUserInfo(tempLoginUserBean);
+
+        if(tempLoginUserBean2 != null) {
+            loginUserBean.setUser_idx(tempLoginUserBean2.getUser_idx());
+            loginUserBean.setUser_name(tempLoginUserBean2.getUser_name());
+            loginUserBean.setUserLogin(true);
+        }
+    }
 }
 
 
