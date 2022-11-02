@@ -65,8 +65,9 @@ public class MyStudyController {
     }
 
     @GetMapping("/MenteeHomeWorkInfo")
-    public String MenteeHomeWorkInfo(String user_id, Model model){
+    public String MenteeHomeWorkInfo(HttpServletRequest request, Model model){
 
+        String user_id = User.getSessionUserId(request);
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
 
         model.addAttribute("homeWork", homeWorkInfo);
@@ -74,9 +75,9 @@ public class MyStudyController {
         return "/MyStudy/MenteeHomeWorkInfo";
     }
 
-    @PostMapping("/HomeWorkSubmit")
+    @GetMapping("/HomeWorkSubmitForm")
     public String HomeWorkSubmit(){
-        return "/MyStudy/HomeWorkSubmit";
+        return "/MyStudy/HomeWorkSubmitForm";
     }
 
 }

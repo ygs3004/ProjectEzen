@@ -80,7 +80,6 @@ public class UserService {
         // 접속해 있는 유저가 멘티라면
         if(user.getUser_role() == 2){
             int mentorRoomNo = user.getMentorRoomNo();
-            System.out.println(mentorRoomNo);
             mentor_id = mentorRoomDAO.getMentorRoomInfo(mentorRoomNo).getUser_id();
         }else{ // 멘티가 아니라면(멘토라면
             mentor_id = user_id;
