@@ -46,6 +46,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration;
 
 public class SpringConfigClass extends AbstractAnnotationConfigDispatcherServletInitializer{
@@ -76,6 +77,11 @@ public class SpringConfigClass extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration){
         registration.setInitParameter("throwExceptionIfNoHandlerFound","true");
+
+        MultipartConfigElement multipartConfig = new MultipartConfigElement("c:\\upload\\temp", 20971520, 41943040, 20971520);
+        // 경로, 업로드 되는 파일의 최대크기, 한번에 올릴 수 있는 최대 크기(여러개 올릴때), 사용되는 메모리
+
+        registration.setMultipartConfig(multipartConfig);
     }
 
 }

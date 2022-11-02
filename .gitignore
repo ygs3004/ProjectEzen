@@ -6,6 +6,7 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
+.idea/**
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
@@ -204,3 +205,6 @@ target/ProjectMentor/WEB-INF/views/user/join_success.jsp
 target/ProjectMentor/WEB-INF/views/user/login_fail.jsp
 target/ProjectMentor/WEB-INF/views/user/logout.jsp
 target/ProjectMentor/WEB-INF/views/user/modify.jsp
+target/classes/config/SpringConfigClass.class
+target/classes/config/ServletAppContext.class
+target/classes/config/SpringConfigClass.class
