@@ -12,6 +12,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
 // Spring MVC 프로젝트에 관련된 설정을 하는 클래스
@@ -88,6 +90,11 @@ public class ServletAppContext implements WebMvcConfigurer {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
+    @Bean
+    public MultipartResolver multipartResolver() {
+        StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
+        return resolver;
+    }
 /*
     // 쿼리문 실행을 위한 객체
     @Bean
