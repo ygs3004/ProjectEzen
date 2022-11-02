@@ -1,10 +1,8 @@
 package dao;
 
-import domain.HomeWork;
 import domain.MentorRoom;
 import lombok.RequiredArgsConstructor;
 import mapper.MentorRoomMapper;
-import mapper.MyStudyMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository

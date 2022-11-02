@@ -1,19 +1,20 @@
 package mapper;
 
-import domain.HomeWork;
+import domain.HomeWorkInfo;
 import domain.MentorRoom;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 public interface MyStudyMapper {
 
     public MentorRoom getMyStudyRoom(String user_id);
 
-    public int uploadHomeWork(HomeWork homeWork);
+    public int uploadHomeWork(HomeWorkInfo homeWorkInfo);
 
-    public HomeWork getHomeWork(String user_id);
+    public HomeWorkInfo getHomeWork(String user_id);
 
+    
+
+    // 매퍼 테스트용
     @Select("select sysdate from dual")
     public String getTime();
 }

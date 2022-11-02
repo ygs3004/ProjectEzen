@@ -1,10 +1,8 @@
 package mapper;
 
-import domain.HomeWork;
 import domain.MentorRoom;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface MentorRoomMapper {

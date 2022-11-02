@@ -1,8 +1,9 @@
+-- 멘토룸 테이블 삭제(초기화)
 drop table MENTORROOM;
 drop sequence mentor_room_seq;
 
+-- 시퀀스, 테이블 생성
 create sequence mentor_room_seq;
-
 CREATE TABLE MENTORROOM
 (
     USER_ID         VARCHAR2(20),
@@ -19,36 +20,7 @@ CREATE TABLE MENTORROOM
     CONTENT         VARCHAR2(1000)
 );
 
-CREATE TABLE hwInfo
-(
-    HWNAME     VARCHAR2(300) NOT NULL,
-    HWCONTENT  VARCHAR2(300) NOT NULL,
-    WRITER     VARCHAR2(50)  NOT NULL primary key ,
-    HWREGDATE  DATE,
-    HWDEADLINE DATE,
-    CompleteMentee NUMBER DEFAULT 0
-);
-
-select * from hwInfo;
-INSERT INTO hwInfo values('숙제명', '숙제내용', '멘토이륾', SYSDATE, SYSDATE + (INTERVAL '1' YEAR), 0);
-
-
-/* 테스트 데이터 */
-
+-- 테스트용 더미
 INSERT INTO MENTORROOM ( num, user_id, title, studyPeriod, studyWeekly, studytimestart, studyTimeEnd, capacity, nowcapacity, career, school, content)
 values ( mentor_room_seq.nextval, 'user01','StudyName','2022/11/01 - 2022/11/02', '1,5', '09:00', '18:00',  30, 0, 1, '서울대학교', '열공을 하는 모임입니다.');
 commit;
-
-select *
-from MENTORROOM;
-
-create sequence hw_seq start with 1 increment by 1;
-
-drop table hwInfo;
-
-
-
-select *
-from hwInfo;
-
-delete from hwInfo;

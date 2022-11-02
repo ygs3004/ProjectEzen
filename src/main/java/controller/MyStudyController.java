@@ -1,12 +1,9 @@
 package controller;
 
-import domain.HomeWork;
+import domain.HomeWorkInfo;
 import domain.MentorRoom;
 import domain.User;
 import lombok.RequiredArgsConstructor;
-import mapper.MyStudyMapper;
-import oracle.jdbc.proxy.annotation.Post;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,14 +38,14 @@ public class MyStudyController {
     }
 
     @PostMapping("/UploadSuccess")
-    public String uploadSuccess(HomeWork homeWork, HttpServletRequest request, Model model){
+    public String uploadSuccess(HomeWorkInfo homeWorkInfo, HttpServletRequest request, Model model){
 
         String user_id = User.getSessionUserId(request);
 
-        homeWork.setWriter(user_id);
+        homeWorkInfo.setWriter(user_id);
 
-        int success = myStudyService.uploadHomeWork(homeWork);
-        model.addAttribute("homeWork", homeWork);
+        int success = myStudyService.uploadHomeWork(homeWorkInfo);
+        model.addAttribute("homeWork", homeWorkInfo);
 
         return "redirect:/MyStudy/MentorHomeWorkInfo";
     }
@@ -58,10 +55,10 @@ public class MyStudyController {
 
         String user_id = User.getSessionUserId(request);
 
-        HomeWork homeWork = myStudyService.getHomeWork(user_id);
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
         MentorRoom mentorRoom = myStudyService.getMyStudyRoom(user_id);
 
-        model.addAttribute("homeWork", homeWork);
+        model.addAttribute("homeWork", homeWorkInfo);
         model.addAttribute("mentorRoom", mentorRoom);
 
         return "/MyStudy/MentorHomeWorkInfo";
@@ -70,7 +67,7 @@ public class MyStudyController {
     @GetMapping("/MenteeHomeWorkInfo")
     public String MenteeHomeWorkInfo(String user_id){
 
-        HomeWork homeWork = myStudyService.getHomeWork(user_id);
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
 
         return "/MyStudy/MenteeHomeWorkInfo";
     }

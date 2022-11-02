@@ -13,7 +13,7 @@
         values(#{hwName}, #{hwContent}, #{writer}, SYSDATE, #{hwDeadLine}, 0)
     </insert>
 
-    <select id="getHomeWork"  resultType="domain.HomeWork">
+    <select id="getHomeWork"  resultType="domain.HomeWorkInfo">
         select * from hwInfo where writer = #{user_id}
     </select>
 

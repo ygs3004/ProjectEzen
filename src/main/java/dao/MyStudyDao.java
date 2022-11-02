@@ -1,10 +1,9 @@
 package dao;
 
-import domain.HomeWork;
+import domain.HomeWorkInfo;
 import domain.MentorRoom;
 import lombok.RequiredArgsConstructor;
 import mapper.MyStudyMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -17,11 +16,11 @@ public class MyStudyDao {
         return mapper.getMyStudyRoom(user_id);
     }
 
-    public int uploadHomeWork(HomeWork homeWork) {
-        return mapper.uploadHomeWork(homeWork);
+    public int uploadHomeWork(HomeWorkInfo homeWorkInfo) {
+        return mapper.uploadHomeWork(homeWorkInfo);
     }
 
-    public HomeWork getHomeWork(String user_id) {
+    public HomeWorkInfo getHomeWork(String user_id) {
         return mapper.getHomeWork(user_id);
     }
 
