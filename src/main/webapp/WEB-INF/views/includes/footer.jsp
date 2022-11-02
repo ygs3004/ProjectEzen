@@ -2,8 +2,6 @@
          pageEncoding="UTF-8" %>
 
 <!-- Footer-->
-<br>
-<br>
 <footer class="footer text-center">
   <div class="container">
     <div class="row">
@@ -15,7 +13,7 @@
           <a href="https://github.com/Sun-mie">조선미,</a>
           <a href="https://github.com/leewsuk">이우석,</a>
           <a href="https://github.com/Rlafpem">박기훈,</a>
-          <a href="https://github.com/ygs3004">강태구</a>
+          <a href="https://github.com/qmdldkem">강태구</a>
           <br />
           할수있다!
         </p>
