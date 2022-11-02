@@ -1,7 +1,7 @@
 package service;
 
 import dao.MyStudyDao;
-import domain.HomeWork;
+import domain.HomeWorkInfo;
 import domain.MentorRoom;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,11 +16,12 @@ public class MyStudyService {
         return studyDao.getMyStudyRoom(user_id);
     }
 
-    public int uploadHomeWork(HomeWork homeWork) {
-        return studyDao.uploadHomeWork(homeWork);
+    public int uploadHomeWork(HomeWorkInfo homeWorkInfo) {
+        return studyDao.uploadHomeWork(homeWorkInfo);
     }
 
-    public HomeWork getHomeWork(String user_id) {
+    public HomeWorkInfo getHomeWork(String user_id) {
+
         return studyDao.getHomeWork(user_id);
     }
 }

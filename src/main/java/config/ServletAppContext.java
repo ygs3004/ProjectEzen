@@ -12,8 +12,17 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+<<<<<<< Updated upstream
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+=======
+
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+
+>>>>>>> Stashed changes
 import org.springframework.web.servlet.config.annotation.*;
 
 // Spring MVC 프로젝트에 관련된 설정을 하는 클래스
@@ -26,6 +35,7 @@ import org.springframework.web.servlet.config.annotation.*;
 @ComponentScan(basePackages = "controller")
 @MapperScan(basePackages = "mapper")
 @PropertySource("/WEB-INF/properties/db.properties")
+
 public class ServletAppContext implements WebMvcConfigurer {
 
     @Value("${db.classname}")
@@ -117,7 +127,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 
     }
 */
-/*
+
 
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
@@ -125,6 +135,6 @@ public class ServletAppContext implements WebMvcConfigurer {
         res.setBasenames("/WEB-INF/properties/error_message");
         return res;
     }
-*/
+
 
 }

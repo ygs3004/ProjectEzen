@@ -1,21 +1,9 @@
 package domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
-
-import java.sql.Date;
-
-
-@Data
-@RequiredArgsConstructor
 public class HomeWork {
 
-    private String hwName;
-    private String hwContent;
-    private String writer;
-    private Date hwRegDate;
-    private Date hwDeadLine;
-    private int completeMentee;
+    private String writer; //  HomeWork를 내준 멘토 이름
+    private String uploader; // HomeWork 제출자
+    private String filename; // 제출 파일 이름
 
 }

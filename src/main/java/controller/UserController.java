@@ -26,8 +26,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @Resource(name = "loginUser")
-//    private User loginUser;
+    @Resource(name = "loginUserBean")
+    private User loginUserBean;
 
 
     @GetMapping("/login")
@@ -40,20 +40,21 @@ public class UserController {
         return "user/login";
     }
 
+    //로그인할때
     @PostMapping("/login_pro")
-    public String login_pro(@Valid @ModelAttribute("tempLoginUser") User tempLoginUser, BindingResult result) {
+    public String login_pro(@Valid @ModelAttribute("tempLoginUserBean") User tempLoginUser, BindingResult result) {
 
         if(result.hasErrors()) {
             return "user/login";
         }
 
-//        userService.getLoginUserInfo(tempLoginUser);
+        userService.getLoginUserInfo(tempLoginUser);
 
-//        if(loginUser.isUserLogin() == true) {
+        if(loginUserBean.isUserLogin() == true) {
             return "user/login_success";
-//        } else {
-//            return "user/login_fail";
-//        }
+        } else {
+            return "user/login_fail";
+        }
     }
 
     @GetMapping("/join")
@@ -61,9 +62,11 @@ public class UserController {
         return "user/join";
     }
 
+    // 가입하기눌렀을때
     @PostMapping("/join_pro")
     public String join_pro(@Valid @ModelAttribute("joinUser") User joinUserBean, BindingResult result) {
         if(result.hasErrors()) {
+
             return "user/join";
         }
 

@@ -12,8 +12,8 @@ import javax.validation.constraints.*;
 public class User {
 
     private int user_idx;
+    private int mentorRoomNo;
     private int user_role;
-
 
     @NotBlank
     @Size(min=2, max=4)
