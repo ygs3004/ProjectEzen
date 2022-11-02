@@ -220,3 +220,8 @@ target/ProjectMentor/WEB-INF/classes/dao/UserDao.class
 target/ProjectMentor/WEB-INF/classes/domain/User.class
 target/ProjectMentor/WEB-INF/classes/mapper/UserMapper.class
 target/ProjectMentor/WEB-INF/classes/service/UserService.class
+target/ProjectMentor/WEB-INF/classes/service/UserService.class
+target/ProjectMentor/WEB-INF/classes/mapper/UserMapper.class
+target/ProjectMentor/WEB-INF/classes/dao/UserDao.class
+target/ProjectMentor/WEB-INF/classes/config/ServletAppContext.class
+target/ProjectMentor/META-INF/MANIFEST.MF

@@ -12,8 +12,8 @@ public class MyStudyDao {
 
     final MyStudyMapper mapper;
 
-    public MentorRoom getMyStudyRoom(String user_id){
-        return mapper.getMyStudyRoom(user_id);
+    public MentorRoom getMyStudyRoom(String mentor_id){
+        return mapper.getMyStudyRoom(mentor_id);
     }
 
     public int uploadHomeWork(HomeWorkInfo homeWorkInfo) {

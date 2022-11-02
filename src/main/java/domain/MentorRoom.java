@@ -9,10 +9,10 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 public class MentorRoom {
 
+    private int num;
     private String user_id;
     private String title;
     private String studyPeriod;
-    private Integer num;
     private String studyWeekly;
     private String studyTimeStart;
     private String studyTimeEnd;

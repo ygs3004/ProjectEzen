@@ -18,7 +18,7 @@ public interface MentorRoomMapper {
     public int createRoom(MentorRoom roomInfo);
 
     // MentorRoom 방번호 넣으면 MentorRoom 나옴
-    @Select("select * from MentorRoom where num = # {num}")
+    @Select("select * from MentorRoom where num = ${num}")
     MentorRoom getUserMentorRoom(int num);
 
 }

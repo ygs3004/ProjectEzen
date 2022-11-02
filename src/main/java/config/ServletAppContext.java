@@ -106,6 +106,12 @@ public class ServletAppContext implements WebMvcConfigurer {
         StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
         return resolver;
     }
+
+    @Bean("loginUserBean")
+    @SessionScope
+    public User loginUserBean() {
+        return new User();
+    }
 /*
     // 쿼리문 실행을 위한 객체
     @Bean
@@ -128,9 +134,5 @@ public class ServletAppContext implements WebMvcConfigurer {
 
     }
 */
-@Bean("loginUserBean")
-@SessionScope
-public User loginUserBean(){
-    return new User();
-}
+
 }

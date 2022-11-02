@@ -6,11 +6,11 @@ import org.apache.ibatis.annotations.Select;
 
 public interface MyStudyMapper {
 
-    public MentorRoom getMyStudyRoom(String user_id);
+    public MentorRoom getMyStudyRoom(String mentor_id);
 
     public int uploadHomeWork(HomeWorkInfo homeWorkInfo);
 
-    public HomeWorkInfo getHomeWork(String user_id);
+    public HomeWorkInfo getHomeWork(String mentor_id);
 
     
 

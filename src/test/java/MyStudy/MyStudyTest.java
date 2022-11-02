@@ -6,6 +6,7 @@ import dao.UserDao;
 import domain.MentorRoom;
 import lombok.extern.log4j.Log4j;
 import mapper.MyStudyMapper;
+import mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class MyStudyTest {
 
     @Autowired
     MyStudyMapper mapper;
+    @Autowired
+    UserMapper userMapper;
 
     @Test
     public void daoAutowired(){
@@ -42,11 +45,13 @@ public class MyStudyTest {
     public void test(){
         log.info(mapper);
         log.info(mapper.getTime());
+        log.info(userMapper.getTime());
+        log.info(userMapper.getUserInfo("JEJA"));
     }
 
     @Test
     public void select_test(){
-        String user_id = "멘토철수";
+        String user_id = "김멘토";
         log.info(mapper);
         MentorRoom mentorRoom = mapper.getMyStudyRoom(user_id);
         assertThat(user_id, is(mentorRoom.getUser_id()));

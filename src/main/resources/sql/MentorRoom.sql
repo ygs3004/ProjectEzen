@@ -6,8 +6,8 @@ drop sequence mentor_room_seq;
 create sequence mentor_room_seq;
 CREATE TABLE MENTORROOM
 (
-    USER_ID         VARCHAR2(20),
     NUM             NUMBER        NOT NULL primary key,
+    USER_ID         VARCHAR2(20),
     TITLE           VARCHAR2(200) NOT NULL,
     STUDYPERIOD     VARCHAR2(150) NOT NULL,
     STUDYWEEKLY     VARCHAR(20),
@@ -19,6 +19,9 @@ CREATE TABLE MENTORROOM
     SCHOOL          VARCHAR2(30)  NOT NULL,
     CONTENT         VARCHAR2(1000)
 );
+
+-- 테이블 체크
+select * from MENTORROOM;
 
 -- 테스트용 더미
 INSERT INTO MENTORROOM ( num, user_id, title, studyPeriod, studyWeekly, studytimestart, studyTimeEnd, capacity, nowcapacity, career, school, content)

@@ -39,6 +39,7 @@ public class UserDao {
 //    }
 
     public User getUserInfo(String user_id){
+
         return userMapper.getUserInfo(user_id);
     }
 
