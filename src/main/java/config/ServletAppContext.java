@@ -1,4 +1,5 @@
 package config;
+import domain.User;
 import mapper.MyStudyMapper;
 import mapper.UserMapper;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
@@ -126,5 +128,9 @@ public class ServletAppContext implements WebMvcConfigurer {
 
     }
 */
-
+@Bean("loginUserBean")
+@SessionScope
+public User loginUserBean(){
+    return new User();
+}
 }

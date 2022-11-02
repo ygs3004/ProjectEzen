@@ -2,6 +2,7 @@ package MyStudy;
 
 import config.ServletAppContext;
 import dao.MyStudyDao;
+import dao.UserDao;
 import domain.MentorRoom;
 import lombok.extern.log4j.Log4j;
 import mapper.MyStudyMapper;
@@ -26,11 +27,15 @@ public class MyStudyTest {
     MyStudyDao dao;
 
     @Autowired
+    UserDao userDao;
+
+    @Autowired
     MyStudyMapper mapper;
 
     @Test
     public void daoAutowired(){
         assertThat(dao, is(notNullValue()));
+        assertThat(userDao, is(notNullValue()));
     }
 
     @Test

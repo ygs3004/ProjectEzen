@@ -3,6 +3,7 @@ package service;
 import javax.annotation.Resource;
 
 import dao.MentorRoomDAO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +11,12 @@ import domain.User;
 import dao.UserDao;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
+
     private UserDao userDao;
 
-    @Autowired
     private MentorRoomDAO mentorRoomDAO;
 
 
