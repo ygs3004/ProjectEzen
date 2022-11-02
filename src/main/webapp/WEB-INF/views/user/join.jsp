@@ -103,8 +103,9 @@
 <body>
 
 <c:import url="/WEB-INF/views/includes/header.jsp"/>
+<br>
 <h1 align="center">회원 가입</h1>
-<div class="container" style="margin-top:100px">
+<div class="container" style="margin-top:40px">
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
@@ -161,10 +162,11 @@
                                 </div>
                             </div>
                             <form:errors path="user_email" style='color:red'/>
+                            <br>
                             <!-- 전화 번호 -->
                             <div class="form-group">
-                                <form:label path="user_phone">전화번호(-포함 13자리입력)</form:label>
-                                <form:input path="user_phone" class='form-control'/>
+                                <form:label path="user_phone">전화번호 ( - 포함 13자리 입력)</form:label>
+                                <form:input path="user_phone" class='form-control' width="80px"/>
                                 <form:errors path="user_phone" style='color:red'/>
                             </div>
 
@@ -173,6 +175,7 @@
                                 <form:label path="user_gender">성별</form:label><br>
                                 <form:radiobutton path="user_gender" value="1" label="남자"></form:radiobutton>
                                 <form:radiobutton path="user_gender" value="2" label="여자"></form:radiobutton>
+
 <%--                                <form:input path="user_gender" class='form-control'/>--%>
 
                                 <form:errors path="user_gender" style='color:red'/>

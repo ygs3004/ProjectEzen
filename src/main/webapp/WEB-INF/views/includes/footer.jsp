@@ -2,6 +2,8 @@
          pageEncoding="UTF-8" %>
 
 <!-- Footer-->
+<br>
+<br>
 <footer class="footer text-center">
   <div class="container">
     <div class="row">
@@ -9,7 +11,11 @@
       <div class="col-lg-4 mb-5 mb-lg-0">
         <h4 class="text-uppercase mb-4">1조</h4>
         <p class="lead mb-0">
-          윤건수,이우석,조선미,박기훈,강태구
+          <a href="https://github.com/ygs3004">윤건수,</a>
+          <a href="https://github.com/Sun-mie">조선미,</a>
+          <a href="https://github.com/leewsuk">이우석,</a>
+          <a href="https://github.com/Rlafpem">박기훈,</a>
+          <a href="https://github.com/ygs3004">강태구</a>
           <br />
           할수있다!
         </p>
