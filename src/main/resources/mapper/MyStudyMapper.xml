@@ -14,7 +14,7 @@
     </insert>
 
     <select id="getHomeWork"  resultType="domain.HomeWorkInfo">
-        select * from hwInfo where writer = #{user_id}
+        select * from HWINFO;
     </select>
 
 </mapper>
