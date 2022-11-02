@@ -3,6 +3,7 @@ package dao;
 import domain.MentorRoom;
 import lombok.RequiredArgsConstructor;
 import mapper.MentorRoomMapper;
+import mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,8 +16,9 @@ public class MentorRoomDAO {
         mapper.createRoom(roomInfo);
     }
 
-//    public MentorRoom mentorRoom(String user_id){
-//        return mapper.getMyStudyRoom(user_id);
-//    }
+    // num == 멘토룸 num
+    public MentorRoom getMentorRoomInfo(int num){
+        return mapper.getUserMentorRoom(num);
+    }
 
 }

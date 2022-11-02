@@ -65,9 +65,11 @@ public class MyStudyController {
     }
 
     @GetMapping("/MenteeHomeWorkInfo")
-    public String MenteeHomeWorkInfo(String user_id){
+    public String MenteeHomeWorkInfo(String user_id, Model model){
 
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
+
+        model.addAttribute("homeWork", homeWorkInfo);
 
         return "/MyStudy/MenteeHomeWorkInfo";
     }

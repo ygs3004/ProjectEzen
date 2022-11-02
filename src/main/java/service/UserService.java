@@ -54,6 +54,17 @@ public class UserService {
             loginUserBean.setUserLogin(true);
         }
     }
+//    public void getLoginUserInfo(User tempLoginUserBean) {
+//
+//        User tempLoginUserBean2 = userDao.getLoginUserInfo(tempLoginUserBean);
+//
+//        if(tempLoginUserBean2 != null) {
+//            loginUser.setUser_role(tempLoginUserBean2.getUser_role());
+//            loginUser.setUser_name(tempLoginUserBean2.getUser_name());
+//            loginUser.setUserLogin(true);
+//        }
+//    }
+
 }
 
 

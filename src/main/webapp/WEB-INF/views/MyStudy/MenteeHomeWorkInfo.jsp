@@ -17,15 +17,15 @@
         <tbody>
         <tr>
             <th scope="row" >과제명</th>
-            <td>hwName</td>
+            <td><c:out value="${homeWork.hwName}"/> </td>
         </tr>
         <tr>
             <th scope="row">과제 내용</th>
-            <td>hwContent</td>
+            <td><c:out value="${homeWork.hwContent}"/> </td>
         </tr>
         <tr>
             <th scope="row">과제 기한</th>
-            <td>hwDeadLine</td>
+            <td><c:out value="${homeWork.hwDeadLine}"/> </td>
         </tr>
 
         </tbody>

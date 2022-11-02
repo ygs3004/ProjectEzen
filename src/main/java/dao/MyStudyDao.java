@@ -20,8 +20,8 @@ public class MyStudyDao {
         return mapper.uploadHomeWork(homeWorkInfo);
     }
 
-    public HomeWorkInfo getHomeWork(String user_id) {
-        return mapper.getHomeWork(user_id);
+    public HomeWorkInfo getHomeWork(String mentor_id) {
+        return mapper.getHomeWork(mentor_id);
     }
 
 }
