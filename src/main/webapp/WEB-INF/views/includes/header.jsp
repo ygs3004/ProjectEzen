@@ -2,6 +2,13 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ko">
+<style>
+
+    #grean{
+        height: 710px;
+
+    }
+</style>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -57,20 +64,20 @@
 </nav>
 <!-- Masthead-->
 
-<header class="masthead bg-primary text-white text-center">
+<header class="masthead bg-primary text-white text-center" id="grean">
 
 
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img src="..\img\mento.png" width="400" height="200"/>
+        <img src="..\img\mento.png" width="400" height="185"/>
         <!-- Masthead Heading-->
         <br>
         <br>
-        <h1 class="masthead-heading text-uppercase mb-0">멘토 멘티 사이트</h1>
+        <h3 class="masthead-heading text-uppercase mb-0">멘토 멘티 사이트</h3>
         <br>
         <br>
 
-        <h1 class="masthead-heading text-uppercase mb-0"> 멘토 멘티</h1>
+        <h3 class="masthead-heading text-uppercase mb-0"> 멘토 멘티</h3>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>

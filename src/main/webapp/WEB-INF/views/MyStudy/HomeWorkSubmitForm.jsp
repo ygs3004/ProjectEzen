@@ -28,6 +28,7 @@
 
     </style>
 </head>
+
 <body>
 <div class="container submit">
   <form action="/MyStudy/HomeWorkSubmit" class="submit" method="post" enctype="multipart/form-data">
@@ -62,14 +63,49 @@
           </div>
           <div class="form-row">
               <label for="uploadFile">파일 첨부</label>
-              <input type="file" class="form-control" id="uploadFile" name="uploadFile" placeholder="첨부파일(20MB 용량제한)">
+              <input type="file" class="form-control" id="uploadFile" name="uploadFile" placeholder="첨부파일(5MB 용량제한)">
               <input type="file" class="form-control" name="uploadFile" placeholder="첨부파일">
               <input type="file" class="form-control" name="uploadFile" placeholder="첨부파일">
           </div>
-          <button type="submit" class="btn btn-primary">제출</button>
+          <button type="submit" id="submitButton" class="btn btn-primary">제출</button>
           <button type="reset" class="btn btn-primary">다시작성</button>
       </form>
 </div>
+
+<%--jquery--%>
+<script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+        crossorigin="anonymous"></script>
+
+<script>
+
+    var maxSize = 5242880; // 5mb
+
+    function checkFile(filename, fileSize){
+        if(fileSize >= maxSize){
+            alert("파일 사이즈가 너무 큽니다")
+            return false
+        }
+        return true;
+    }
+
+    $("#submitButton").on("click", function (e){
+
+        var inputFile = $("input[name='uploadFile']");
+        var files = inputFile[0].files;
+        console.log(files);
+
+        for(var i=0; i<files.length; i++){
+            if(!checkFile(files[i].name, files[i].size)){
+                e.preventDefault();
+                return false;
+            }
+        }
+
+        return true;
+    })
+
+</script>
 
 </body>
 </html>

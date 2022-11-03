@@ -225,3 +225,6 @@ target/ProjectMentor/WEB-INF/classes/mapper/UserMapper.class
 target/ProjectMentor/WEB-INF/classes/dao/UserDao.class
 target/ProjectMentor/WEB-INF/classes/config/ServletAppContext.class
 target/ProjectMentor/META-INF/MANIFEST.MF
+*.MF
+*.class
+*.MF
