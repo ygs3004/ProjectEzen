@@ -1,20 +1,23 @@
 package controller;
 
+import domain.HomeWork;
 import domain.HomeWorkInfo;
 import domain.MentorRoom;
 import domain.User;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import service.MyStudyService;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@Log4j
 @RequestMapping("/MyStudy")
 @RequiredArgsConstructor
 public class MyStudyController {
@@ -22,9 +25,8 @@ public class MyStudyController {
     final MyStudyService myStudyService;
 
     @GetMapping("/StudyInfo")
-    public String myStudyMentor(String user_id, Model model, HttpServletRequest request){
+    public String myStudyMentor(String user_id, Model model, HttpSession session){
 
-        HttpSession session =  request.getSession();
         session.setAttribute("user_id", user_id);
         MentorRoom mentorRoom =  myStudyService.getMyStudyRoom(user_id);
 
@@ -38,9 +40,9 @@ public class MyStudyController {
     }
 
     @PostMapping("/UploadSuccess")
-    public String uploadSuccess(HomeWorkInfo homeWorkInfo, HttpServletRequest request, Model model){
+    public String uploadSuccess(HomeWorkInfo homeWorkInfo, HttpSession session, Model model){
 
-        String user_id = User.getSessionUserId(request);
+        String user_id = (String) session.getAttribute("user_id");
 
         homeWorkInfo.setWriter(user_id);
 
@@ -51,9 +53,9 @@ public class MyStudyController {
     }
 
     @GetMapping("/MentorHomeWorkInfo")
-    public String MentorHomeWorkInfo (HttpServletRequest request, Model model) {
+    public String MentorHomeWorkInfo (HttpSession session, Model model) {
 
-        String user_id = User.getSessionUserId(request);
+        String user_id = (String) session.getAttribute("user_id");
 
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
         MentorRoom mentorRoom = myStudyService.getMyStudyRoom(user_id);
@@ -65,9 +67,9 @@ public class MyStudyController {
     }
 
     @GetMapping("/MenteeHomeWorkInfo")
-    public String MenteeHomeWorkInfo(HttpServletRequest request, Model model){
+    public String MenteeHomeWorkInfo(HttpSession session, Model model){
 
-        String user_id = User.getSessionUserId(request);
+        String user_id = (String) session.getAttribute("user_id");
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
 
         model.addAttribute("homeWork", homeWorkInfo);
@@ -76,8 +78,26 @@ public class MyStudyController {
     }
 
     @GetMapping("/HomeWorkSubmitForm")
-    public String HomeWorkSubmit(){
+    public String HomeWorkSubmit(HttpSession session, Model model){
+
+        String user_id = (String) session.getAttribute("user_id");
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
+
+        model.addAttribute("homeWork", homeWorkInfo);
+
         return "/MyStudy/HomeWorkSubmitForm";
+    }
+
+    @PostMapping("/HomeWorkSubmit")
+    public String HomeWorkSubmit(HomeWork homeWork, MultipartFile[] uploadFile){
+        for(MultipartFile multi : uploadFile){
+            log.info("==========================");
+            log.info("upload File name :" +multi.getOriginalFilename());
+            log.info("upload File Size : "+multi.getSize());
+        }
+
+        log.info(homeWork);
+        return "redirect:/MyStudy/MenteeHomeWorkInfo";
     }
 
 }

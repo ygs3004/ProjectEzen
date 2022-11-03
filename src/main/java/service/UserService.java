@@ -72,20 +72,6 @@ public class UserService {
     /**
      *  user_id를 넣엇을때 mentee의 아이디면 mentor id를 알려주는 method
     */
-    public String getMentorId(String user_id){
-
-        User user = userDao.getUserInfo(user_id);
-        String mentor_id = "";
-
-        // 접속해 있는 유저가 멘티라면
-        if(user.getUser_role() == 2){
-            int mentorRoomNo = user.getMentorRoomNo();
-            mentor_id = mentorRoomDAO.getMentorRoomInfo(mentorRoomNo).getUser_id();
-        }else{ // 멘티가 아니라면(멘토라면
-            mentor_id = user_id;
-        }
-        return mentor_id;
-    }
 
 }
 

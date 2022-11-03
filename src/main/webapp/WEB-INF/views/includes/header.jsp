@@ -38,12 +38,12 @@
                 <%-- 멘토 : user_role==1 멘티 : user_role==2 --%>
 
                 <c:choose>
-                    <c:when test="${empty user}"> <!-- 로그인하지 않았을 격우 -->
+                    <c:when test="${empty user_id}"> <!-- 로그인하지 않았을 격우 -->
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">My Study</a></li>
                     </c:when>
                     <c:otherwise>
                         <%--<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo?user_id=${user_id}">My Study</a></li>--%>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo?user_id=멘토철수">My Study 철수</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo?user_id=김멘토">My Study 멘토</a></li>
                     </c:otherwise>
                 </c:choose>
 

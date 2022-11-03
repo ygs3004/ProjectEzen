@@ -15,15 +15,12 @@ import org.springframework.stereotype.Service;
 @Log4j
 public class MyStudyService {
 
-    final UserService userService;
     final UserDao userDao;
     final MyStudyDao studyDao;
     final MentorRoomDAO mentorRoomDAO;
 
     public MentorRoom getMyStudyRoom(String user_id) {
-
-        String mentor_id = userService.getMentorId(user_id);
-
+        String mentor_id = userDao.getMentorId(user_id);
         return studyDao.getMyStudyRoom(mentor_id);
     }
 
@@ -32,11 +29,8 @@ public class MyStudyService {
     }
 
     public HomeWorkInfo getHomeWork(String user_id) {
-
-        String mentor_id = userService.getMentorId(user_id);
-
+        String mentor_id = userDao.getMentorId(user_id);
         return studyDao.getHomeWork(mentor_id);
     }
-
 
 }
