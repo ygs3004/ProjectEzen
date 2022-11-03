@@ -22,6 +22,7 @@ public class MentorRoom {
     private String school;
     private String content;
 
+
     public void setStudyWeekly(String[] studyWeekly) {
         String weekly = String.join(", ", studyWeekly);
         System.out.println(weekly);

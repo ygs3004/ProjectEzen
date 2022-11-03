@@ -30,6 +30,10 @@ public class MentorRoomService {
         userDAO.usersAddRoomNo(num, user_id);
     }
 
+    public int getRoomNo(String user_id){
+        return mentorRoomDAO.getRoomNo(user_id);
+    }
+
 
 
 

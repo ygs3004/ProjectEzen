@@ -12,6 +12,7 @@ public class MentorRoomDAO {
 
     final MentorRoomMapper roomMapper;
 
+    // mentorRoom 에 info db추가
     public void createRoom(MentorRoom roomInfo) {
         roomMapper.createRoom(roomInfo);
     }
@@ -21,5 +22,8 @@ public class MentorRoomDAO {
         return roomMapper.getUserMentorRoom(num);
     }
 
-
+    // user_id로 MentorRoom Num 찾기
+    public int getRoomNo(String user_id){
+        return roomMapper.getRoomNo(user_id);
+    }
 }
