@@ -15,10 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import service.MyStudyService;
 
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
 
 @Controller
 @Log4j
@@ -50,7 +46,7 @@ public class MyStudyController {
 
         homeWorkInfo.setWriter(user_id);
 
-        int success = myStudyService.uploadHomeWorkInfo(homeWorkInfo);
+        int success = myStudyService.uploadHomeWork(homeWorkInfo);
         model.addAttribute("homeWork", homeWorkInfo);
 
         return "redirect:/MyStudy/MentorHomeWorkInfo";
@@ -93,12 +89,15 @@ public class MyStudyController {
     }
 
     @PostMapping("/HomeWorkSubmit")
-    public String homeWorkSubmit(HomeWork homeWork, MultipartFile[] uploadFile){
+    public String HomeWorkSubmit(HomeWork homeWork, MultipartFile[] uploadFile){
+        for(MultipartFile multi : uploadFile){
+            log.info("==========================");
+            log.info("upload File name :" +multi.getOriginalFilename());
+            log.info("upload File Size : "+multi.getSize());
+        }
 
-        myStudyService.homeWorkSubmit(homeWork, uploadFile);
-
+        log.info(homeWork);
         return "redirect:/MyStudy/MenteeHomeWorkInfo";
     }
-
 
 }
