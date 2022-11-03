@@ -15,7 +15,6 @@ import dao.UserDao;
 public class UserService {
 
     final UserDao userDao;
-
     final MentorRoomDAO mentorRoomDAO;
 
     @Resource(name = "loginUserBean")

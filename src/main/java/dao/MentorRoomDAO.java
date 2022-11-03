@@ -10,16 +10,16 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class MentorRoomDAO {
 
-    final MentorRoomMapper mapper;
+    final MentorRoomMapper roomMapper;
 
     public void createRoom(MentorRoom roomInfo) {
-        mapper.createRoom(roomInfo);
-        System.out.println("createRoom DAO실행");
+        roomMapper.createRoom(roomInfo);
     }
 
     // num == 멘토룸 num
     public MentorRoom getMentorRoomInfo(int num){
-        return mapper.getUserMentorRoom(num);
+        return roomMapper.getUserMentorRoom(num);
     }
+
 
 }

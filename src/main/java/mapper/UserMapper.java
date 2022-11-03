@@ -49,4 +49,6 @@ public interface UserMapper {
     @Select("select sysdate from dual")
     public String getTime();
 
+    @Update("update users set MentorRoomNo =${num} where user_id= ${user_id}")
+    public int updateRoomNo(int num, String user_id);
 }

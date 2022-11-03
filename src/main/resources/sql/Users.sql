@@ -33,3 +33,4 @@ values (user_idx_seq.nextval, 1, 2, '김제자', 'JEJA', '1234', '1234', 'studen
 
 -- 커밋
 commit;
+
