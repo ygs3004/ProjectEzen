@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 public class MentorRoomDAO {
 
     final MentorRoomMapper roomMapper;
+    final UserMapper userMapper;
 
     // mentorRoom 에 info db추가
     public void createRoom(MentorRoom roomInfo) {
@@ -22,8 +23,13 @@ public class MentorRoomDAO {
         return roomMapper.getUserMentorRoom(num);
     }
 
-    // user_id로 MentorRoom Num 찾기
-    public int getRoomNo(String user_id){
-        return roomMapper.getRoomNo(user_id);
+    public MentorRoom getUserMentorRoomByID(String user_id){
+        return roomMapper.getUserMentorRoomByID(user_id);
     }
+    // user_id로 MentorRoom No 찾기
+    public int getAssignedRoomNo(String user_id){
+        return userMapper.getAssignedRoomNo(user_id);
+    }
+
+
 }

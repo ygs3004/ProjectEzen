@@ -2,14 +2,12 @@ package domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @AllArgsConstructor
 public class MentorRoom {
 
-    private Integer num;
+    private int num;
     private String user_id;
     private String title;
     private String studyPeriod;
@@ -35,14 +33,5 @@ public class MentorRoom {
         this.career = careers;
     }
 
-//    null값일 때 set to 0
-//    public void setNum(String num){
-//        System.out.println(num);
-//        if(num==null){
-//            this.num= 0 ;
-//        }else{
-//            this.num = Integer.parseInt(num);
-//        }
-//    }
 
 }

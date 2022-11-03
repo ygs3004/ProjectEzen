@@ -30,14 +30,17 @@ public class MentorRoomService {
         userDAO.usersAddRoomNo(num, user_id);
     }
 
-    public int getRoomNo(String user_id){
-        return mentorRoomDAO.getRoomNo(user_id);
+    // mentorRoom 에서 user_id 로 No 존재하는지 확인
+    public MentorRoom getUserMentorRoomByID(String user_id){
+        return mentorRoomDAO.getUserMentorRoomByID(user_id);
     }
 
-    // created Room 있는지 여부 확인 (있을 시 true / 없을 시 false)
-    public boolean searchCreatedRoom(String user_id){
-        if(!userDAO.getRoomNo(user_id)){
-
+    // users 에서 user_id 로 소속된 MentorRoomNo 존재하는지 확인.
+    public boolean getAssignedRoomNo(String user_id){
+        if(mentorRoomDAO.getAssignedRoomNo(user_id)>=1){
+            return true; //있음
+        }else{
+            return false; //없음
         }
     }
 

@@ -48,4 +48,7 @@ public interface UserMapper {
 
     @Update("update users set MentorRoomNo =${num} where user_id= ${user_id}")
     public int updateRoomNo(int num, String user_id);
+
+    @Select("select MentorRoomNo from users where user_id = #{user_id}")
+    public int getAssignedRoomNo(String user_id);
 }
