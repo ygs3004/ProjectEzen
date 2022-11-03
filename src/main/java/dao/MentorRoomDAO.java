@@ -23,8 +23,8 @@ public class MentorRoomDAO {
         return roomMapper.getUserMentorRoom(num);
     }
 
-    public MentorRoom getUserMentorRoomByID(String user_id){
-        return roomMapper.getUserMentorRoomByID(user_id);
+    public int getRoomNoByID(String user_id){
+        return roomMapper.getRoomNoByID(user_id);
     }
     // user_id로 MentorRoom No 찾기
     public int getAssignedRoomNo(String user_id){

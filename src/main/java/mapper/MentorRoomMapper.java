@@ -22,8 +22,8 @@ public interface MentorRoomMapper {
     @Select("select * from MentorRoom where num = ${num}")
     MentorRoom getUserMentorRoom(int num);
 
-    // User_id 넣으면 MentorRoom 나옴
-    @Select("select * from MentorRoom where num = ${user_id}")
-    MentorRoom getUserMentorRoomByID(String user_id);
+    // User_id 넣으면 MentorRoomNo 나옴
+    @Select("select NUM from MentorRoom where user_id = #{user_id}")
+    int getRoomNoByID(String user_id);
 
 }

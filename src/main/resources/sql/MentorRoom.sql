@@ -35,3 +35,5 @@ INSERT INTO MentorRoom
     '2022/01/01 - 2022/12/31', '2,3', '09:00', '18:00',
     30, 0, '경력1,경력2', '연세대', '스터디상세설명');
 commit;
+
+select NUM from MentorRoom where user_id = 'mentor_id';

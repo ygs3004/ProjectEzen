@@ -31,8 +31,8 @@ public class MentorRoomService {
     }
 
     // mentorRoom 에서 user_id 로 No 존재하는지 확인
-    public MentorRoom getUserMentorRoomByID(String user_id){
-        return mentorRoomDAO.getUserMentorRoomByID(user_id);
+    public int getRoomNoByID(String user_id){
+        return mentorRoomDAO.getRoomNoByID(user_id);
     }
 
     // users 에서 user_id 로 소속된 MentorRoomNo 존재하는지 확인.

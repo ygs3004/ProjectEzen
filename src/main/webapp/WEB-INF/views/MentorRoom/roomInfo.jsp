@@ -18,7 +18,7 @@
             <td><c:out value="${roomInfo.title}"></td>
             <td><c:out value="${roomInfo.num}"></td>
         </tr>
-
     </table>
 </div>
+
 <%@ include file="../includes/footer.jsp"%>

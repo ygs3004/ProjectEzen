@@ -2,10 +2,7 @@ package mapper;
 
 import domain.MentorRoom;
 import domain.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
@@ -46,8 +43,8 @@ public interface UserMapper {
     @Select("select sysdate from dual")
     public String getTime();
 
-    @Update("update users set MentorRoomNo =${num} where user_id= ${user_id}")
-    public int updateRoomNo(int num, String user_id);
+    @Update("update users set MentorRoomNo = #{num} where user_id= #{user_id}")
+    public int updateRoomNo(@Param("num") int num, @Param("user_id") String user_id);
 
     @Select("select MentorRoomNo from users where user_id = #{user_id}")
     public int getAssignedRoomNo(String user_id);
