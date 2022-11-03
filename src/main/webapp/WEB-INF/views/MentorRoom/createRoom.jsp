@@ -102,7 +102,7 @@
             <textarea class="form-control" id="content" name="content" rows="15" style="resize: none;"></textarea>
             <label for="content"><span class="content">스터디 상세설명</span></label>
         </div>
-        <input type="hidden" name="user_id" value="user_id">
+<%--        <input type="hidden" id="num" value="0">--%>
         <div style="text-align: center; margin-bottom: 2%;">
             <button id="formCheck" type="submit" class="btn btn-primary">스터디 개설</button>
         </div>

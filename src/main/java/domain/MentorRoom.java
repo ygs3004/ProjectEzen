@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 public class MentorRoom {
 
-    private int num;
+    private Integer num;
     private String user_id;
     private String title;
     private String studyPeriod;
@@ -34,4 +34,15 @@ public class MentorRoom {
         System.out.println(careers);
         this.career = careers;
     }
+
+//    null값일 때 set to 0
+//    public void setNum(String num){
+//        System.out.println(num);
+//        if(num==null){
+//            this.num= 0 ;
+//        }else{
+//            this.num = Integer.parseInt(num);
+//        }
+//    }
+
 }

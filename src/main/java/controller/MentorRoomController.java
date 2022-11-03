@@ -15,20 +15,23 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/MentorRoom")
 @RequiredArgsConstructor
 public class MentorRoomController {
+
+    final String user_id = "JEJA"; //테스트용
     final MentorRoomService mentorRoomService;
 
     //스터디개설 (추후 @SessionAttribute("user_id") String user_id 추가 )
     @GetMapping("/createRoom")
     public String CreateMentorRoom(HttpServletRequest request){
+
         HttpSession session = request.getSession();
-        session.setAttribute("user_id", "김멘토");
+        session.setAttribute("user_id", user_id);
         return "/MentorRoom/createRoom";
     }
 
     //스터디개설 후 이동 (@SessionAttribute("user_id") String user_id)
     @PostMapping("/roomInfo")
     public String createRoom(MentorRoom roomInfo, Model model){
-
+        roomInfo.setUser_id(user_id);
         System.out.println(roomInfo.getNum());
         System.out.println(roomInfo.getUser_id());
         System.out.println(roomInfo.getTitle());
@@ -47,6 +50,8 @@ public class MentorRoomController {
         model.addAttribute("roomInfo", roomInfo);
         return "/MentorRoom/roomInfo";
     }
+
+
 
 
 }
