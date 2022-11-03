@@ -86,6 +86,7 @@ public class ServletAppContext implements WebMvcConfigurer {
         return factoryBean;
     }
 
+
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
         ReloadableResourceBundleMessageSource res = new ReloadableResourceBundleMessageSource();
