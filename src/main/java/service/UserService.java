@@ -14,7 +14,9 @@ import dao.UserDao;
 @RequiredArgsConstructor
 public class UserService {
 
+    @Autowired
     final UserDao userDao;
+
     final MentorRoomDAO mentorRoomDAO;
 
     @Resource(name = "loginUserBean")
@@ -56,18 +58,21 @@ public class UserService {
             loginUserBean.setUserLogin(true);
         }
     }
-//    public void getLoginUserInfo(User tempLoginUserBean) {
-//
-//        User tempLoginUserBean2 = userDao.getLoginUserInfo(tempLoginUserBean);
-//
-//        if(tempLoginUserBean2 != null) {
-//            loginUser.setUser_role(tempLoginUserBean2.getUser_role());
-//            loginUser.setUser_name(tempLoginUserBean2.getUser_name());
-//            loginUser.setUserLogin(true);
-//        }
-//    }
 
 
+    public void getModifyUserInfo(User modifyUserBean) {
+        User tempModifyUserBean = userDao.getModifyUserInfo(loginUserBean.getUser_idx());
+
+        modifyUserBean.setUser_id(tempModifyUserBean.getUser_id());
+        modifyUserBean.setUser_name(tempModifyUserBean.getUser_name());
+        modifyUserBean.setUser_idx(loginUserBean.getUser_idx());
+    }
+    public void modifyUserInfo(User modifyUserBean) {
+
+        modifyUserBean.setUser_idx(loginUserBean.getUser_idx());
+
+        userDao.modifyUserInfo(modifyUserBean);
+    }
     /**
      *  user_id를 넣엇을때 mentee의 아이디면 mentor id를 알려주는 method
     */

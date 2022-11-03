@@ -5,10 +5,7 @@ import domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 import service.MentorRoomService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,21 +17,35 @@ import javax.servlet.http.HttpSession;
 public class MentorRoomController {
     final MentorRoomService mentorRoomService;
 
-    //스터디개설 (추후 @SessionAttribute String user_id 추가 )
+    //스터디개설 (추후 @SessionAttribute("user_id") String user_id 추가 )
     @GetMapping("/createRoom")
     public String CreateMentorRoom(HttpServletRequest request){
-        HttpSession session =  request.getSession();
+        HttpSession session = request.getSession();
         session.setAttribute("user_id", "김멘토");
         return "/MentorRoom/createRoom";
     }
 
-    //스터디개설 후 이동
+    //스터디개설 후 이동 (@SessionAttribute("user_id") String user_id)
     @PostMapping("/roomInfo")
-    public String createRoom(MentorRoom roomInfo, @SessionAttribute String user_id, Model model){
+    public String createRoom(MentorRoom roomInfo, Model model){
+
+        System.out.println(roomInfo.getNum());
+        System.out.println(roomInfo.getUser_id());
+        System.out.println(roomInfo.getTitle());
+        System.out.println(roomInfo.getStudyPeriod());
+        System.out.println(roomInfo.getStudyWeekly());
+        System.out.println(roomInfo.getStudyTimeStart());
+        System.out.println(roomInfo.getStudyTimeEnd());
+        System.out.println(roomInfo.getCapacity());
+        System.out.println(roomInfo.getNowCapacity());
+        System.out.println(roomInfo.getCareer());
+        System.out.println(roomInfo.getSchool());
+        System.out.println(roomInfo.getContent());
         mentorRoomService.createRoom(roomInfo); //roominfo db추가
-        mentorRoomService.usersAddRoomNo(roomInfo.getNum(), user_id);
+        int roomNum = mentorRoomService.getRoomNo(roomInfo.getUser_id()); //id로 만들어진 roomNum 조회
+        mentorRoomService.usersAddRoomNo(roomNum, roomInfo.getUser_id()); //roomNum user에 추가
         model.addAttribute("roomInfo", roomInfo);
-        return "redirect:/MentorRoom/roomInfo";
+        return "/MentorRoom/roomInfo";
     }
 
 

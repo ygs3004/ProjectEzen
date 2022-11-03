@@ -38,9 +38,7 @@ public class UserDao {
     public void modifyUserInfo(User modifyUserBean) {
         userMapper.modifyUserInfo(modifyUserBean);
     }
-//    public User getLoginUserInfo(User tempLoginUser) {
-//        return userMapper.getLoginUserInfo(tempLoginUser);
-//    }
+
 
     public User getUserInfo(String user_id){
         return userMapper.getUserInfo(user_id);

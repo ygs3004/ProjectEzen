@@ -16,12 +16,13 @@ public interface MentorRoomMapper {
             "values (#{user_id}, mentor_room_seq.nextval, #{title}," +
             "#{studyPeriod}, #{studyWeekly}, #{studyTimeStart}, #{studyTimeEnd}," +
             "#{capacity}, 0, #{career}, #{school}, #{content})")
-    public int createRoom(MentorRoom roomInfo);
+    int createRoom(MentorRoom roomInfo);
 
     // MentorRoom 방번호 넣으면 MentorRoom 나옴
     @Select("select * from MentorRoom where num = ${num}")
     MentorRoom getUserMentorRoom(int num);
 
-
-
+    // iuser_id로 roomNum찾기
+    @Select("select num from MentorRoom where user_id = ${user_id}")
+    int getRoomNo(String user_id);
 }
