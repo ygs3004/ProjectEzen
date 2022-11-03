@@ -53,20 +53,20 @@ $(function() {
 // // });
 
 
-
-//입력값이 잘못된 경우 false를 리턴.
-function doCheck(){
-    let enterdPeriod = document.getElementById("studyPeriod");
-    let periodRule = /\d{4}\/\d{2}\/\d{2} - \d{4}\/\d{2}\/\d{2}/;
-    if(enterdPeriod)
-
-    //check 후 이동
-    let form = document.getElementById("createForm").value;
-    console.log(form);
-    form.action = "/MentorRoom/roomInfo";
-    form.mothod = "POST";
-    form.submit();
-}
+//
+// //입력값이 잘못된 경우 false를 리턴.
+// function doCheck(){
+//     let enterdPeriod = document.getElementById("studyPeriod");
+//     let periodRule = /\d{4}\/\d{2}\/\d{2} - \d{4}\/\d{2}\/\d{2}/;
+//     if(enterdPeriod)
+//
+//     //check 후 이동
+//     let form = document.getElementById("createForm").value;
+//     console.log(form);
+//     form.action = "/MentorRoom/roomInfo";
+//     form.mothod = "POST";
+//     form.submit();
+// }
 
 // let formCheck = document.getElementById("formCheck");
 // formCheck.addEventListener("click", function () {

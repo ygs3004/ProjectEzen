@@ -4,6 +4,7 @@ import domain.MentorRoom;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface MentorRoomMapper {
@@ -20,5 +21,7 @@ public interface MentorRoomMapper {
     // MentorRoom 방번호 넣으면 MentorRoom 나옴
     @Select("select * from MentorRoom where num = ${num}")
     MentorRoom getUserMentorRoom(int num);
+
+
 
 }
