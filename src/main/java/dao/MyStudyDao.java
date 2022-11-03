@@ -1,5 +1,6 @@
 package dao;
 
+import domain.HomeWork;
 import domain.HomeWorkInfo;
 import domain.MentorRoom;
 import lombok.RequiredArgsConstructor;
@@ -16,12 +17,15 @@ public class MyStudyDao {
         return mapper.getMyStudyRoom(mentor_id);
     }
 
-    public int uploadHomeWork(HomeWorkInfo homeWorkInfo) {
-        return mapper.uploadHomeWork(homeWorkInfo);
+    public int uploadHomeWorkInfo(HomeWorkInfo homeWorkInfo) {
+        return mapper.uploadHomeWorkInfo(homeWorkInfo);
     }
 
     public HomeWorkInfo getHomeWork(String mentor_id) {
         return mapper.getHomeWork(mentor_id);
     }
 
+    public void homeWorkSubmit(HomeWork homeWork) {
+        mapper.homeWorkSubmit(homeWork);
+    }
 }
