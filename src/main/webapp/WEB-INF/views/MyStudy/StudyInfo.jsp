@@ -65,13 +65,14 @@
     <tr>
         <th scope="row">진행중인 과제</th>
         <%--<c:if test="${과제 == null}">버튼 넣기</c:if> 과제 있는지 없는지 체크할것 --%>
-        <td> 없음 or 있음 따라 다름 <br>
-            멘토 과제 없을 경우<a type="button" class="btn btn-secondary" href="/MyStudy/UploadHomeWork">과제 생성</a><br>
-            멘티 과제 없을 경우  => "없음 끝<br>
+        <td> 없음 or 있음 따라 다름 <br><br>
+            멘토 과제 無  <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/UploadHomeWork">과제 생성</button><br><br>
 
-            멘토 + 과제 있을경우 &nbsp; <a type="button" class="btn btn-secondary" href="/MyStudy/HomeWorkInfo">과제 정보(수정 삭제)</a><br>
-            멘토 + 과제 있 & 미제출&nbsp; <a type="button" class="btn btn-secondary" href="/MyStudy/MenteeHomeWorkInfo">과제 정보 </a><br>
-            멘토 + 과제 있 & 제출&nbsp; <a type="button" class="btn btn-secondary" href="/MyStudy/MenteeHomeWorkInfo">과제 정보확인(수정/삭제)</a><br>
+            멘티 과제 無  => 끝<br><br>
+
+            멘토 + 과제 有 &nbsp;  <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/HomeWorkInfo">과제 정보(수정 삭제)</button><br><br>
+            멘토 + 과제 有 & 미제출&nbsp; <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/MenteeHomeWorkInfo">과제 정보 </button><br><br>
+            멘토 + 과제 有 & 제출&nbsp; <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/MenteeHomeWorkInfo">과제 정보확인(수정/삭제)</button><br>
         </td>
     </tr>
     </tbody>
