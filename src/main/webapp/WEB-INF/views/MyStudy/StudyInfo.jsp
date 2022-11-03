@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ include file="../includes/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set value="${pageContext.request.contextPath}" var="root"/>
 <style>
     .study-information{
         margin-top: 40px;
@@ -70,9 +70,9 @@
 
             멘티 과제 無  => 끝<br><br>
 
-            멘토 + 과제 有 &nbsp;  <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/HomeWorkInfo">과제 정보(수정 삭제)</button><br><br>
-            멘토 + 과제 有 & 미제출&nbsp; <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/MenteeHomeWorkInfo">과제 정보 </button><br><br>
-            멘토 + 과제 有 & 제출&nbsp; <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/MenteeHomeWorkInfo">과제 정보확인(수정/삭제)</button><br>
+            멘토 + 과제 有 &nbsp;  <button type="button" class="btn btn-outline-success btn-sm" location.href='${root}/MyStudy/HomeWorkInfo'">과제 정보(수정 삭제)</button><br><br>
+            멘토 + 과제 有 & 미제출&nbsp; <button type="button" class="btn btn-outline-success btn-sm" location.href='${root}/MyStudy/MenteeHomeWorkInfo'">과제 정보 </button><br><br>
+            멘토 + 과제 有 & 제출&nbsp; <button type="button" class="btn btn-outline-success btn-sm" location.href='${root}/MyStudy/MenteeHomeWorkInfo'">과제 정보확인(수정/삭제)</button><br>
         </td>
     </tr>
     </tbody>

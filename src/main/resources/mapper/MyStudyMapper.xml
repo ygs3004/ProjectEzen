@@ -17,4 +17,8 @@
         select * from hwInfo
     </select>
 
+    <insert id="homeWorkSubmit">
+        insert into homework
+    </insert>
+
 </mapper>
