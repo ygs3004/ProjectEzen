@@ -25,7 +25,7 @@
     </section>
     <div class="shadow p-3 mb-5 bg-white rounded formBody">
         <div class="user_name">
-            <span>멘토 user_name 님</span>
+            <span>멘토 ${user_id} 님</span>
         </div>
         <div class="useMove">
             <input type="text" class="form-control" id="title" name="title" autocomplete="on" required>
