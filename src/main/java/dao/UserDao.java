@@ -29,6 +29,7 @@ public class UserDao {
         userMapper.addUserInfo(joinUser);
     }
     public User getLoginUserInfo(User tempLoginUserBean) {
+
         return userMapper.getLoginUserInfo(tempLoginUserBean);
     }
     public User getModifyUserInfo(int user_idx) {

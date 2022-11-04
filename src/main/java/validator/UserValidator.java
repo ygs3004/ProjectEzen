@@ -18,10 +18,15 @@ public class UserValidator implements Validator{
         // TODO Auto-generated method stub
         User userBean = (User)target;
 
-        String beanName = errors.getObjectName();
-
         if(userBean.isUserEmailExist() == false) {
             errors.rejectValue("user_email", "DontCheckUserEmailExist");
+        }
+        String beanName = errors.getObjectName();
+        if(beanName.equals("joinUserBean")) {
+
+            if(userBean.isUserIdExist() == false) {
+                errors.rejectValue("user_id", "DontCheckUserIdExist");
+            }
         }
         if(userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
             errors.rejectValue("user_pw", "NotEquals");
@@ -32,12 +37,6 @@ public class UserValidator implements Validator{
             if(userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
                 errors.rejectValue("user_pw", "NotEquals");
                 errors.rejectValue("user_pw2", "NotEquals");
-            }
-        }
-        if(beanName.equals("joinUserBean")) {
-
-            if(userBean.isUserIdExist() == false) {
-                errors.rejectValue("user_id", "DontCheckUserIdExist");
             }
         }
 

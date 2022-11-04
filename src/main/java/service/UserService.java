@@ -22,6 +22,8 @@ public class UserService {
     @Resource(name = "loginUserBean")
     private User loginUserBean;
 
+
+
     public boolean checkuserIdExist(String user_id) {
 
         String user_name = userDao.checkUserIdExist(user_id);
