@@ -30,6 +30,8 @@ public class UserDao {
     }
     public User getLoginUserInfo(User tempLoginUserBean) {
 
+        System.out.println("dao : "+tempLoginUserBean.getUser_id());
+        System.out.println("dao : "+tempLoginUserBean.getUser_pw());
         return userMapper.getLoginUserInfo(tempLoginUserBean);
     }
     public User getModifyUserInfo(int user_idx) {

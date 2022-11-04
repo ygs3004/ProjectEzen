@@ -33,14 +33,13 @@ public class UserValidator implements Validator{
             errors.rejectValue("user_pw2", "NotEquals");
         }
 
-        if(beanName.equals("joinUserBean") || beanName.equals("modifyUserBean")) {
-            if(userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
-                errors.rejectValue("user_pw", "NotEquals");
-                errors.rejectValue("user_pw2", "NotEquals");
-            }
+//        if(beanName.equals("joinUserBean") || beanName.equals("modifyUserBean")) {
+//            if(userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
+//                errors.rejectValue("user_pw", "NotEquals");
+//                errors.rejectValue("user_pw2", "NotEquals");
+//            }
         }
 
 
     }
 
-}

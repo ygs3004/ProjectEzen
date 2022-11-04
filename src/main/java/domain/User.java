@@ -10,7 +10,11 @@ import javax.validation.constraints.*;
 @Getter
 @Setter
 public class User {
-
+    public User() {
+        this.userIdExist = false;
+        this.userEmailExist = false;
+        this.userLogin = false;
+    }
     private int user_idx;
     private int mentorRoomNo;
     private int user_role;

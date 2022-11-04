@@ -43,11 +43,14 @@ public class UserController {
     //로그인할때
     @PostMapping("/login_pro")
     public String login_pro(@Valid @ModelAttribute("tempLoginUserBean") User tempLoginUser, BindingResult result) {
+        System.out.println("controller : "+tempLoginUser.getUser_id());
+        System.out.println("controller : "+tempLoginUser.getUser_pw());
 
         if(result.hasErrors()) {
             return "user/login";
-        }
 
+        }
+        // 여기는 실행이안되는듯....? 왜지..
         userService.getLoginUserInfo(tempLoginUser);
 
         if(loginUserBean.isUserLogin() == true) {
