@@ -46,6 +46,7 @@ public interface UserMapper {
     @Select("select sysdate from dual")
     public String getTime();
 
+    // mentorRoom 생성 후 users에 mentorRoomNo update
     @Update("update users set MentorRoomNo = #{num} where user_id= #{user_id}")
     public int updateRoomNo(@Param("num") int num, @Param("user_id") String user_id);
 

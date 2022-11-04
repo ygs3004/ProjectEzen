@@ -1,15 +1,15 @@
 --테이블 초기화 용
 drop table users;
-drop sequence user_idx_seq;
+drop sequence user_seq;
 
 -- 테이블 , 시퀀스 생성
-create sequence user_idx_seq start with 1 increment by 1;
+create sequence user_seq start with 1 increment by 1;
 CREATE TABLE USERS
 (
     user_idx    number       Not null,
     mentorRoomNo number,
     user_role   NUMBER       NOT NULL,
-    user_name   VARCHAR2(10) NOT NULL,
+    user_name   VARCHAR2(30) NOT NULL,
     user_id     VARCHAR2(30) NOT NULL primary key,
     user_pw     VARCHAR2(35) NOT NULL,
     user_pw2    VARCHAR2(35) NOT NULL,
