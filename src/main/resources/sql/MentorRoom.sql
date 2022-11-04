@@ -31,7 +31,9 @@ INSERT INTO MentorRoom
     (num, user_id,  title,
     studyPeriod, studyWeekly, studyTimeStart, studyTimeEnd,
     capacity, nowCapacity, career, school, content)
-    values (mentor_room_seq.nextval,'user_id1',  '스터디룸',
+    values (mentor_room_seq.nextval,'mentor_id',  '스터디룸',
     '2022/01/01 - 2022/12/31', '2,3', '09:00', '18:00',
     30, 0, '경력1,경력2', '연세대', '스터디상세설명');
 commit;
+
+select NUM from MentorRoom where user_id = 'mentor_id';
