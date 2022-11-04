@@ -18,5 +18,11 @@ CREATE TABLE hwInfo
 select * from hwInfo;
 
 -- 가짜 데이터 테스트용
-INSERT INTO hwInfo values('숙제명', '숙제내용', '멘토이륾', SYSDATE, SYSDATE + (INTERVAL '1' YEAR), 0);
+INSERT INTO hwInfo values('숙제명', '숙제내용', '김멘토', SYSDATE, SYSDATE + (INTERVAL '1' YEAR), 0);
 
+--커밋
+commit;
+
+
+
+select count(*) from HWINFO where writer = '김멘토' ;

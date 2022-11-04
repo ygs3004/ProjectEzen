@@ -4,20 +4,21 @@
 //     };
 // }, true);
 
-
-
 function addCreerList() {
-    const add = document.getElementById('addCareer').value;
+    const add = document.getElementById('addCareer');
     const p = document.createElement('p');
     const input = document.createElement('input');
+    // const a = document.createElement('a');
     input.setAttribute('type',"hidden");
     input.setAttribute('name','career');
-    input.setAttribute('value',add);
-    const temp = document.createTextNode(add);
+    input.setAttribute('value',add.value);
+    // a.append("x");
+    // a.setAttribute('onclick','delCareer()');
+    const temp = document.createTextNode(add.value);
     p.appendChild(temp);
-
     document.getElementById('careerList').appendChild(p);
     document.getElementById('careerList').appendChild(input);
+    add.value="";
 };
 
 // const temp= document.getElementById("careerList");
@@ -41,51 +42,44 @@ $(function() {
     });
 });
 
-// $(function() {
-//     $('input[name="datetimes"]').daterangepicker({
-//         timePicker: true,
-//         startDate: moment().startOf('hour'),
-//         endDate: moment().startOf('hour').add(32, 'hour'),
-//         locale: {
-//             format: 'M/DD hh:mm A'
-//         }
-//     });
-// // });
+//입력값이 잘못된 경우 false를 리턴.
+function doCheck(){
+    let enPeriod = document.getElementById("studyPeriod").value;
+    let periodRule = /\d{4}\/\d{2}\/\d{2} - \d{4}\/\d{2}\/\d{2}/; //폼양식
+    let enWeekly = document.querySelectorAll("input[type=checkbox][name=studyWeekly]:checked"); //체크된 요일리스트 불러오기
+    if(document.getElementById("title").value.length == 0){
+        alert('스터디 이름을 입력해주세요.')
+        document.getElementById("title").focus();
+        return false;
+    }
+    //스터디 기간 양식에 맞는지 확인
+    if(!periodRule.test(enPeriod)){
+            alert('스터디 기간을 정확히 입력해주세요.\r(YYYY/MM/DD - YYYY/MM/DD)')
+            document.getElementById("studyPeriod").focus();
+        return false;
+    }
+    //요일이 선택되었는지 확인
+    if(enWeekly.length == 0 | enWeekly==null){
+        alert('요일을 선택해 주세요.');
+        return false;
+    }
 
+    if(document.getElementById("capacity").value.length == 0){
+        alert('모집인원을 입력해주세요.');
+        return false;
+    }
 
-//
-// //입력값이 잘못된 경우 false를 리턴.
-// function doCheck(){
-//     let enterdPeriod = document.getElementById("studyPeriod");
-//     let periodRule = /\d{4}\/\d{2}\/\d{2} - \d{4}\/\d{2}\/\d{2}/;
-//     if(enterdPeriod)
-//
-//     //check 후 이동
-//     let form = document.getElementById("createForm").value;
-//     console.log(form);
-//     form.action = "/MentorRoom/roomInfo";
-//     form.mothod = "POST";
-//     form.submit();
-// }
-
-// let formCheck = document.getElementById("formCheck");
-// formCheck.addEventListener("click", function () {
-//      // 스터디기간 폼 체크
-//     let period = document.getElementById("studyPeriod");
-//     let weekly = document.getElementsByName("studyWeekly"); // 요일 체크되었는지 확인
-//     // var pw = document.getElementById("pw");
-//
-//     let periodRule = /\d{4}\/\d{2}\/\d{2} - \d{4}\/\d{2}\/\d{2}/;
-//
-//     if (!periodRule.test(period.value)) {
-//         alert("날짜를 다시 입력하세요.");
-//         period.focus();
-//         return false;
-//     }
-//     form.action = "/createRoom";
-//     form.mothod = "POST";
-//     form.submit();
-// });
-
-//인원수 30이하 체크
+    if(document.getElementById("content").value.length == 0){
+        alert('상세설명을 입력해주세요.');
+        return false;
+    }
+        return lastCheck();
+}
+function lastCheck() {
+    if (confirm("스터디를 등록하시겠습니까?") == true){    //확인
+        return true;
+    }else{   //취소
+        return false;
+    }
+}
 

@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import mapper.MyStudyMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class MyStudyDao {
@@ -27,5 +29,13 @@ public class MyStudyDao {
 
     public void homeWorkSubmit(HomeWork homeWork) {
         mapper.homeWorkSubmit(homeWork);
+    }
+
+    public int checkHomeWork(String mentor_id) {
+        return mapper.checkHomeWork(mentor_id); // count HomeWorkInfo table
+    }
+
+    public List<HomeWork> getHomeWorkList(String user_id) {
+        return mapper.getHomeWorkList(user_id);
     }
 }

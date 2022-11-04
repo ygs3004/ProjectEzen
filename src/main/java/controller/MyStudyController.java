@@ -1,5 +1,6 @@
 package controller;
 
+import dao.UserDao;
 import domain.HomeWork;
 import domain.HomeWorkInfo;
 import domain.MentorRoom;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -28,13 +30,22 @@ public class MyStudyController {
 
     final MyStudyService myStudyService;
 
-    @GetMapping("/StudyInfo")
-    public String myStudyMentor(String user_id, Model model, HttpSession session){
+    final UserDao userDao;
 
+    @GetMapping("/StudyInfo")
+    public String myStudy(String user_id, Model model, HttpSession session){
+
+        // 접속한 회원의 멘토룸 정보
         session.setAttribute("user_id", user_id);
         MentorRoom mentorRoom =  myStudyService.getMyStudyRoom(user_id);
+        // 접속한 회원의 등급정보
+        int user_role = userDao.getUserInfo(user_id).getUser_role();
+        //접속한 회원의 과제 유무 체크
+        boolean checkHomeWork = myStudyService.checkHomeWork(user_id);
 
         model.addAttribute("mentorRoom", mentorRoom);
+        model.addAttribute("user_role", user_role);
+        model.addAttribute("checkHomeWork", checkHomeWork);
         return "/MyStudy/StudyInfo";
     }
 
@@ -63,7 +74,9 @@ public class MyStudyController {
 
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
         MentorRoom mentorRoom = myStudyService.getMyStudyRoom(user_id);
+        List<HomeWork> hwList = myStudyService.getHomeWorkList(user_id);
 
+        model.addAttribute("hwList", hwList);
         model.addAttribute("homeWork", homeWorkInfo);
         model.addAttribute("mentorRoom", mentorRoom);
 

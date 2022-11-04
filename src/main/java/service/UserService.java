@@ -22,6 +22,8 @@ public class UserService {
     @Resource(name = "loginUserBean")
     private User loginUserBean;
 
+
+
     public boolean checkuserIdExist(String user_id) {
 
         String user_name = userDao.checkUserIdExist(user_id);
@@ -49,6 +51,8 @@ public class UserService {
     }
 
     public void getLoginUserInfo(User tempLoginUserBean) {
+        System.out.println("service : "+tempLoginUserBean.getUser_id());
+        System.out.println("service : "+tempLoginUserBean.getUser_pw());
 
         User tempLoginUserBean2 = userDao.getLoginUserInfo(tempLoginUserBean);
 
@@ -76,6 +80,7 @@ public class UserService {
     /**
      *  user_id를 넣엇을때 mentee의 아이디면 mentor id를 알려주는 method
     */
+
 
 }
 

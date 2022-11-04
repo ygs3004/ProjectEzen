@@ -40,10 +40,27 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/board/boardList">자유게시판</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">로그인</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/join">회원가입</a></li>
+<%--                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">로그인</a></li>--%>
+<%--                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/join">회원가입</a></li>--%>
                 <%-- 멘토 : user_role==1 멘티 : user_role==2 --%>
-
+                <c:choose>
+                    <c:when test="${loginUserBean.isLogin() == true}">
+                        <li class="nav-item">
+                            <a href="${root}user/update" class="nav-link">회원수정</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="${root}user/logout" class="nav-link">로그아웃</a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item">
+                            <a href="${root}user/login" class="nav-link">로그인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="${root}user/join"class="nav-link">회원가입</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
                 <c:choose>
                     <c:when test="${empty user_id}"> <!-- 로그인하지 않았을 격우 -->
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">My Study</a></li>

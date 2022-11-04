@@ -29,6 +29,9 @@ public class UserDao {
         userMapper.addUserInfo(joinUser);
     }
     public User getLoginUserInfo(User tempLoginUserBean) {
+
+        System.out.println("dao : "+tempLoginUserBean.getUser_id());
+        System.out.println("dao : "+tempLoginUserBean.getUser_pw());
         return userMapper.getLoginUserInfo(tempLoginUserBean);
     }
     public User getModifyUserInfo(int user_idx) {
@@ -43,6 +46,7 @@ public class UserDao {
     public User getUserInfo(String user_id){
         return userMapper.getUserInfo(user_id);
     }
+
     public int usersAddRoomNo(int num, String user_id){
         return userMapper.updateRoomNo(num,user_id);
     }
@@ -61,6 +65,5 @@ public class UserDao {
         }
         return mentor_id;
     }
-
 
 }
