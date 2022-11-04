@@ -25,7 +25,6 @@
     </section>
     <div class="shadow p-3 mb-5 bg-white rounded formBody">
         <div class="user_name">
-
             <span> ${user_name} 님 (${user_id})</span>
         </div>
         <div class="useMove">

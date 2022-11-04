@@ -19,7 +19,7 @@ import java.io.PrintWriter;
 @RequiredArgsConstructor
 public class MentorRoomController {
 
-    final String user_id = "mentor_id"; //테스트용
+    final String user_id = "mentee_id"; //테스트용
     final UserDao userDao;
     final MentorRoomService mentorRoomService;
     final MyStudyService myStudyService;
@@ -46,7 +46,7 @@ public class MentorRoomController {
             model.addAttribute("user_school",mentorRoomService.getUserByID(user_id).getUser_school());
             model.addAttribute("user_name",mentorRoomService.getUserByID(user_id).getUser_name());
 
-            return "/MentorRoom/createRoom"+user_id;
+            return "/MentorRoom/createRoom";
         }
     }
 
@@ -61,14 +61,12 @@ public class MentorRoomController {
         mentorRoomService.usersAddRoomNo(roomNum, roomInfo.getUser_id()); //roomNum user에 추가
 
         //StudyInfo
-        model.addAttribute("mentorRoom", roomInfo);
-
-        //
         int user_role = userDao.getUserInfo(user_id).getUser_role();
         System.out.println("user_role"+user_role);
         boolean checkHomeWork = myStudyService.checkHomeWork(user_id);
         System.out.println("checkHomeWork"+checkHomeWork);
 
+        model.addAttribute("mentorRoom", roomInfo);
         model.addAttribute("user_id",user_id);
         model.addAttribute("user_role", user_role);
         model.addAttribute("checkHomeWork", checkHomeWork);

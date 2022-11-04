@@ -8,10 +8,12 @@ function addCreerList() {
     const add = document.getElementById('addCareer');
     const p = document.createElement('p');
     const input = document.createElement('input');
+    const delBtn = document.createElement('button');
     // const a = document.createElement('a');
     input.setAttribute('type',"hidden");
     input.setAttribute('name','career');
     input.setAttribute('value',add.value);
+
     // a.append("x");
     // a.setAttribute('onclick','delCareer()');
     const temp = document.createTextNode(add.value);
