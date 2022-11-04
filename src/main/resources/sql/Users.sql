@@ -22,6 +22,8 @@ CREATE TABLE USERS
 -- 테이블 확인용
 select * from users;
 
+SELECT user_idx_seq.currval FROM DUAL;
+
 -- 테스트용
 -- 멘토 테스트, mentoRoom 넘버 임의로 1로 넣어뒀음
 insert into users(user_idx, mentorRoomNo, user_role, user_name, user_id, user_pw, user_pw2, user_email, user_phone, user_gender, user_school)

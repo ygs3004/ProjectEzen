@@ -51,6 +51,8 @@ public class UserService {
     }
 
     public void getLoginUserInfo(User tempLoginUserBean) {
+        System.out.println("service : "+tempLoginUserBean.getUser_id());
+        System.out.println("service : "+tempLoginUserBean.getUser_pw());
 
         User tempLoginUserBean2 = userDao.getLoginUserInfo(tempLoginUserBean);
 

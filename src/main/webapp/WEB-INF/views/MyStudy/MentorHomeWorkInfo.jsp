@@ -77,7 +77,19 @@
         <tr>
             <th scope="row">제출자 명단</th>
             <td>
-                제출자,
+                <ul>
+                <c:forEach var="hw" items="${hwList}" varStatus="index">
+                    <li>
+                        <c:out value="${index}. 제출자 : ${hw.userId}, 제출일 : ${hw.hwRegDate}"/>
+                        <textarea rows="15">
+                            <c:out value="${hw.content}"/>
+                        </textarea>
+                    </li>
+                    <li>
+                        <a href="#"><c:out value="${hw.filename}"/></a>
+                    </li>
+                </c:forEach>
+                </ul>
             </td>
         </tr>
         </tbody>
