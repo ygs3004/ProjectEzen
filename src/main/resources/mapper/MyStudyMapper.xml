@@ -20,5 +20,9 @@
     <select id="checkHomeWork" resultType="int">
         select count(*) from HWINFO where writer = #{mentor_id}
     </select>
-    
+
+    <select id="getHomeWorkList" resultType="domain.HomeWork">
+        select * from homework;
+    </select>
+
 </mapper>

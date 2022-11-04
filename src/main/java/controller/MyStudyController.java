@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -73,7 +74,9 @@ public class MyStudyController {
 
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
         MentorRoom mentorRoom = myStudyService.getMyStudyRoom(user_id);
+        List<HomeWork> hwList = myStudyService.getHomeWorkList(user_id);
 
+        model.addAttribute("hwList", hwList);
         model.addAttribute("homeWork", homeWorkInfo);
         model.addAttribute("mentorRoom", mentorRoom);
 

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -33,6 +34,10 @@ public class MyStudyService {
 
     public int uploadHomeWorkInfo(HomeWorkInfo homeWorkInfo) {
         return myStudyDao.uploadHomeWorkInfo(homeWorkInfo);
+    }
+
+    public List<HomeWork> getHomeWorkList(String user_id) {
+        return myStudyDao.getHomeWorkList(user_id);
     }
 
     public HomeWorkInfo getHomeWork(String user_id) {
