@@ -17,12 +17,16 @@
         select * from hwInfo
     </select>
 
+    <insert id="homeWorkSubmit">
+        insert into homework
+    </insert>
+
     <select id="checkHomeWork" resultType="int">
         select count(*) from HWINFO where writer = #{mentor_id}
     </select>
 
     <select id="getHomeWorkList" resultType="domain.HomeWork">
-        select * from homework;
+        select * from homework
     </select>
 
 </mapper>

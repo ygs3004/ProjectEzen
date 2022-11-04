@@ -25,7 +25,9 @@
         .form-row{
             margin : 10px 0;
         }
-
+        textarea{
+            resize: none;
+        }
     </style>
 </head>
 
@@ -71,11 +73,6 @@
           <button type="reset" class="btn btn-primary">다시작성</button>
       </form>
 </div>
-
-<%--jquery--%>
-<script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
-        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
-        crossorigin="anonymous"></script>
 
 <script>
 

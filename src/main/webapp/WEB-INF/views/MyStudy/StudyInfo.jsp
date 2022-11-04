@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ include file="../includes/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set value="${pageContext.request.contextPath}" var="root"/>
 <style>
     .study-information{
         margin-top: 40px;
@@ -101,6 +101,7 @@
                     </c:choose>
                 </c:when>
             </c:choose>
+
         </td>
     </tr>
     </tbody>
