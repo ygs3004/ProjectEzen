@@ -29,7 +29,6 @@ import java.util.UUID;
 public class MyStudyController {
 
     final MyStudyService myStudyService;
-
     final UserDao userDao;
 
     @GetMapping("/StudyInfo")
