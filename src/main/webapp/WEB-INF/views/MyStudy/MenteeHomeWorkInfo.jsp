@@ -32,7 +32,9 @@
 
         </tbody>
     </table>
+    <%--제출 상황에 따라 변해야함--%>
     <button type="button" onclick="location.href='HomeWorkSubmitForm'">제출하기</button>
+    <button type="button" onclick="location.href='#'">제출된 과제 확인하기</button>
 </div>
 </body>
 </html>

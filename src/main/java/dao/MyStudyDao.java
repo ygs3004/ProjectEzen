@@ -28,4 +28,8 @@ public class MyStudyDao {
     public void homeWorkSubmit(HomeWork homeWork) {
         mapper.homeWorkSubmit(homeWork);
     }
+
+    public int checkHomeWork(String mentor_id) {
+        return mapper.checkHomeWork(mentor_id); // count HomeWorkInfo table
+    }
 }
