@@ -23,21 +23,30 @@ import java.util.UUID;
 public class MyStudyService {
 
     final UserDao userDao;
-    final MyStudyDao studyDao;
+    final MyStudyDao myStudyDao;
     final MentorRoomDAO mentorRoomDAO;
 
     public MentorRoom getMyStudyRoom(String user_id) {
         String mentor_id = userDao.getMentorId(user_id);
-        return studyDao.getMyStudyRoom(mentor_id);
+        return myStudyDao.getMyStudyRoom(mentor_id);
     }
 
     public int uploadHomeWorkInfo(HomeWorkInfo homeWorkInfo) {
-        return studyDao.uploadHomeWorkInfo(homeWorkInfo);
+        return myStudyDao.uploadHomeWorkInfo(homeWorkInfo);
     }
 
     public HomeWorkInfo getHomeWork(String user_id) {
         String mentor_id = userDao.getMentorId(user_id);
-        return studyDao.getHomeWork(mentor_id);
+        return myStudyDao.getHomeWork(mentor_id);
+    }
+
+    public boolean checkHomeWork(String user_id){
+        String mentor_id = userDao.getMentorId(user_id);
+
+        if(myStudyDao.checkHomeWork(mentor_id) > 0)
+            return true;
+
+        return false;
     }
 
     public void homeWorkSubmit(HomeWork homeWork, MultipartFile[] uploadFile){
@@ -80,7 +89,7 @@ public class MyStudyService {
 
         }
         log.info("MyStudyService.howeWorkSubmit 실행 : "+homeWork.toString());
-        studyDao.homeWorkSubmit(homeWork);
+        myStudyDao.homeWorkSubmit(homeWork);
     }
 
     private String getFolder(){

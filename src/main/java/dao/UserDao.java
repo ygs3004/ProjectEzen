@@ -46,6 +46,7 @@ public class UserDao {
     public User getUserInfo(String user_id){
         return userMapper.getUserInfo(user_id);
     }
+
     public int usersAddRoomNo(int num, String user_id){
         return userMapper.updateRoomNo(num,user_id);
     }
@@ -64,6 +65,5 @@ public class UserDao {
         }
         return mentor_id;
     }
-
 
 }

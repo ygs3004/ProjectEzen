@@ -36,7 +36,7 @@ public interface UserMapper {
             "where user_idx = #{user_idx}")
     void modifyUserInfo(User modifyUserBean);
 
-    @Insert("insert into users (user_idx, user_role, user_name, user_id, user_pw, user_pw2, user_email, user_phone, user_gender, user_school) " +"values (user_seq.nextval, #{user_role}, #{user_name}, #{user_id}, #{user_pw}, #{user_pw2}, #{user_email}, #{user_phone}, #{user_gender}, #{user_school})")
+    @Insert("insert into users (user_idx,mentorRoomNo, user_role, user_name, user_id, user_pw, user_pw2, user_email, user_phone, user_gender, user_school) " +"values (user_seq.nextval, 0, #{user_role}, #{user_name}, #{user_id}, #{user_pw}, #{user_pw2}, #{user_email}, #{user_phone}, #{user_gender}, #{user_school})")
     void addUserInfo(User joinUserBean);
 
     @Select("select * from users where user_id = #{user_id}")

@@ -15,6 +15,8 @@ public interface MyStudyMapper {
 
     public void homeWorkSubmit(HomeWork homeWork);
 
+    public int checkHomeWork(String mentor_id);
+
     // 매퍼 테스트용
     @Select("select sysdate from dual")
     public String getTime();

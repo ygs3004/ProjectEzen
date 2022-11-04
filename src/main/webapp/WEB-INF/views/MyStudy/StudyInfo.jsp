@@ -65,14 +65,42 @@
     <tr>
         <th scope="row">진행중인 과제</th>
         <%--<c:if test="${과제 == null}">버튼 넣기</c:if> 과제 있는지 없는지 체크할것 --%>
-        <td> 없음 or 있음 따라 다름 <br><br>
-            멘토 과제 無  <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/UploadHomeWork">과제 생성</button><br><br>
+        <td>
+            <c:choose>
+                <%--멘토일때--%>
+                <c:when test="${user_role == 1}">
+                    <c:choose>
+                        <%--과제가 있을때(멘토)--%>
+                        <c:when test="${checkHomeWork}">
+                            <c:out value="현재 진행중인 과제가 있습니다"/>
+                            <button type="button" class="btn btn-outline-success btn-sm"
+                                    onclick="location.href='/MyStudy/MentorHomeWorkInfo'" >과제 정보</button><br><br>
+                        </c:when>
+                        <%-- 과제가 없을때--%>
+                        <c:otherwise>
+                            <c:out value="현재 진행중인 과제가 없습니다"/>
+                            <button type="button" class="btn btn-outline-success btn-sm"
+                                    onclick="location.href='/MyStudy/UploadHomeWork'">과제 생성</button><br><br>
+                        </c:otherwise>
+                    </c:choose>
+                </c:when>
 
-            멘티 과제 無  => 끝<br><br>
-
-            멘토 + 과제 有 &nbsp;  <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/HomeWorkInfo">과제 정보(수정 삭제)</button><br><br>
-            멘토 + 과제 有 & 미제출&nbsp; <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/MenteeHomeWorkInfo">과제 정보 </button><br><br>
-            멘토 + 과제 有 & 제출&nbsp; <button type="button" class="btn btn-outline-success btn-sm" href="/MyStudy/MenteeHomeWorkInfo">과제 정보확인(수정/삭제)</button><br>
+                <%--멘티일때--%>
+                <c:when test="${user_role == 2}">
+                    <c:choose>
+                        <%--과제가 있을때(멘티)--%>
+                        <c:when test="${checkHomeWork}">
+                            <c:out value="현재 진행중인 과제가 있습니다"/>
+                            <button type="button" class="btn btn-outline-success btn-sm"\
+                                    onclick="location.href='/MyStudy/MenteeHomeWorkInfo'">과제 정보 </button>
+                        </c:when>
+                        <%-- 과제가 없을때--%>
+                        <c:otherwise>
+                            <c:out value="현재 진행중인 과제가 없습니다"/>
+                        </c:otherwise>
+                    </c:choose>
+                </c:when>
+            </c:choose>
         </td>
     </tr>
     </tbody>
