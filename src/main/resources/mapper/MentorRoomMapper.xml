@@ -19,7 +19,7 @@
     </select>
 
     <select id="getRoomInfoByID"  resultType="domain.MentorRoom">
-        select * from MentorRoom where num = #{user_id}
+        select * from MentorRoom where user_id = #{user_id}
     </select>
 
 

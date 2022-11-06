@@ -7,15 +7,15 @@ import lombok.Data;
 @AllArgsConstructor
 public class MentorRoom {
 
-    private int num;
+    private Integer num;
     private String user_id;
     private String title;
     private String studyPeriod;
     private String studyWeekly;
     private String studyTimeStart;
     private String studyTimeEnd;
-    private int capacity;
-    private int nowCapacity;
+    private Integer capacity;
+    private Integer nowCapacity;
     private String career;
     private String school;
     private String content;
