@@ -90,8 +90,8 @@
                 <ul>
                 <c:forEach var="hw" items="${hwList}" varStatus="index">
                     <li>
-                        <c:out value="${index.count}. 제출자 : ${hw.userId}, 제출일 : ${hw.hwRegDate}"/><br>
-                        <textarea rows="5" readonly>
+                        <c:out value="${index.count}. 제출자 : ${hw.user_id}, 제출일 : ${hw.hwRegDate}"/><br>
+                        <textarea rows="5" cols="15" readonly>
                             <c:out value="${hw.content}"/>
                         </textarea>
                         <br>
@@ -106,8 +106,11 @@
 </div>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous"></script>
 <script>
-    $(function(){
+    $(function () {
 
         let writer = '<c:out value="${homeWork.writer}"/>';
 

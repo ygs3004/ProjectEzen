@@ -18,7 +18,8 @@
     </select>
 
     <insert id="homeWorkSubmit">
-        insert into homework
+        insert into homework (mentorid, userid, content, hwregdate, uuid, filename, uploadpath)
+        VALUES (#{mentorId}, #{user_id}, #{content}, sysdate, #{uuid}, #{filename}, #{uploadPath})
     </insert>
 
     <select id="checkHomeWork" resultType="int">
