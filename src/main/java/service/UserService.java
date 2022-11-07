@@ -59,6 +59,7 @@ public class UserService {
         if(tempLoginUserBean2 != null) {
             loginUserBean.setUser_idx(tempLoginUserBean2.getUser_idx());
             loginUserBean.setUser_name(tempLoginUserBean2.getUser_name());
+            loginUserBean.setUser_id(tempLoginUserBean2.getUser_id());
             loginUserBean.setUserLogin(true);
         }
     }

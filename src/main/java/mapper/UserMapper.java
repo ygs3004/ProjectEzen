@@ -17,7 +17,7 @@ public interface UserMapper {
             "where user_email = #{user_email}")
     String checkUserEmailExist(String user_email);
 
-    @Select("select user_idx, user_name " +
+    @Select("select user_idx, user_name, user_id " +
             "from users " +
             "where user_id=#{user_id} and user_pw=#{user_pw}")
     User getLoginUserInfo(User tempLoginUserBean);
@@ -26,7 +26,7 @@ public interface UserMapper {
 //            "from users " +
 //            "where user_id=#{user_id} and user_pw=#{user_pw}")
 //    User getLoginUserInfo(User tempLoginUserBean);
-    @Select("select user_id, user_name " +
+    @Select("select user_id, user_name, user_id" +
             "from users " +
             "where user_idx = #{user_idx}")
     User getModifyUserInfo(int user_idx);

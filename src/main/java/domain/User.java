@@ -1,5 +1,6 @@
 package domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,8 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.*;
 
-@Getter
-@Setter
+@Data
 public class User {
     public User() {
         this.userIdExist = false;
@@ -45,4 +45,17 @@ public class User {
 
     private boolean userEmailExist;
 
+    public boolean isUserIdExist() {
+        return userIdExist;
+    }
+    public void setUserIdExist(boolean userIdExist) {
+        this.userIdExist = userIdExist;
+    }
+    public boolean isUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(boolean userLogin) {
+        this.userLogin = userLogin;
+    }
 }

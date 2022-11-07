@@ -66,6 +66,7 @@ public class UserController {
     }
 
     // 가입하기눌렀을때
+
     @PostMapping("/join_pro")
     public String join_pro(@Valid @ModelAttribute("joinUser") User joinUserBean, BindingResult result) {
         if(result.hasErrors()) {
