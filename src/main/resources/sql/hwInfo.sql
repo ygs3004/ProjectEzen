@@ -23,6 +23,6 @@ INSERT INTO hwInfo values('숙제명', '숙제내용', '김멘토', SYSDATE, SYS
 --커밋
 commit;
 
-
+delete from hwInfo;
 
 select count(*) from HWINFO where writer = '김멘토' ;
