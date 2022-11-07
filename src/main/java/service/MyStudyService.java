@@ -78,7 +78,7 @@ public class MyStudyService {
                 UUID uuid = UUID.randomUUID();
 
                 homeWork.setUuid(uuid.toString());
-                homeWork.setUploadPath(uploadFolder+uploadFolderPath);
+                homeWork.setUploadPath(uploadFolderPath);
                 homeWork.setFilename(uploadFileName);
 
                 uploadFileName = uuid.toString() + "_" + uploadFileName;

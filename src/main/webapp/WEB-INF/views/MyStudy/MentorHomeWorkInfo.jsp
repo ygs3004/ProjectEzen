@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/WEB-INF/views/includes/header.jsp"%>
+<c:import url="/WEB-INF/views/includes/header.jsp"/>
 <html>
 <head>
     <title>과제 정보</title>
@@ -85,19 +85,10 @@
             <td> <c:out value="${homeWork.completeMentee} / ${mentorRoom.nowCapacity} 명" /> </td>
         </tr>
         <tr>
-            <th scope="row">제출자 명단</th>
+            <th scope="row">제출자 명단 ajax</th>
             <td>
-                <ul>
-                <c:forEach var="hw" items="${hwList}" varStatus="index">
-                    <li>
-                        <c:out value="${index.count}. 제출자 : ${hw.user_id}, 제출일 : ${hw.hwRegDate}"/><br>
-                        <textarea rows="5" cols="15" readonly>
-                            <c:out value="${hw.content}"/>
-                        </textarea>
-                        <br>
-                        <a href="#"><c:out value="첨부파일 : ${hw.filename}"/></a>
-                    </li>
-                </c:forEach>
+                <ul class="uploadedHwList">
+                    <%--ajax 출력--%>
                 </ul>
             </td>
         </tr>
@@ -110,15 +101,63 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous"></script>
 <script>
-    $(function () {
 
-        let writer = '<c:out value="${homeWork.writer}"/>';
+    var uploadedHwList = $(".uploadedHwList");
 
-        $.getJSON("/MyStudy/homeWorkList", {writer: writer},
-            arr => console.log(arr)
-        )
-    });
+    function showUploadedHwList(uploadedHwResultArr){
+
+        let str = "";
+
+        $(uploadedHwResultArr).each((i, obj) =>{
+
+            str += "<li> 제출자 : " + obj.user_id + " 제출일 : " + obj.hwRegDate + "</li>";
+            str += "<textarea rows='5' cols='40' readonly>" + obj.content + "/></textarea>"
+
+            if(obj.filename) {
+                let uploadPathArr = obj.uploadPath.split(",");
+                let uuidArr = obj.uuid.split(",")
+                let filenameArr = obj.filename.split(",");
+
+                for(let j=0; j<filenameArr.length; j++){
+                    if(filenameArr[j].length>0) {
+                        let fileCallPath = encodeURIComponent(uploadPathArr[j] + "/" + uuidArr[j] + "_" + filenameArr[j]);
+                        str += "<li><a href='/MyStudy/downloadHw?filename=" + fileCallPath + "'> 첨부파일 : " + filenameArr[j] + "</a></li>";
+                    }
+                }
+            }
+
+        })
+
+        uploadedHwList.append(str);
+    }
+
+    let writer = '<c:out value="${homeWork.writer}"/>';
+
+    $(function(){
+        $.getJSON("/MyStudy/homeWorkList", {writer:writer}, function(hwList) {
+            console.log(hwList);
+            showUploadedHwList(hwList);
+
+        });
+       /* 참고 예제
+        $.getJSON("/replies/pages/"+bno+"/"+page+".json",
+            function(data){
+                if(callback){
+                    //callback(data); // 댓글 목록만 가져오는 경우
+                    callback(data.replyCnt, data.list);
+                }
+            }).fail(function(xhr, status, er){
+                if(error){
+                    error();
+                }
+            }
+        );
+        */
+
+    })
+
+
 </script>
 
 </html>
-<%@ include file="/WEB-INF/views/includes/footer.jsp"%>
+<c:import url="/WEB-INF/views/includes/footer.jsp"/>

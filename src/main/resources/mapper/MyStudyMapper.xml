@@ -17,9 +17,9 @@
         select * from hwInfo
     </select>
 
-    <insert id="homeWorkSubmit">
-        insert into homework (mentorid, userid, content, hwregdate, uuid, filename, uploadpath)
-        VALUES (#{mentorId}, #{user_id}, #{content}, sysdate, #{uuid}, #{filename}, #{uploadPath})
+    <insert id="homeWorkSubmit" parameterType="domain.HomeWork">
+        insert into homework (mentorid, user_id, content, hwregdate, uuid, filename, uploadpath)
+        VALUES (#{mentorId}, #{user_id}, #{content}, sysdate, #{uuid, jdbcType=VARCHAR}, #{filename, jdbcType=VARCHAR}, #{uploadPath, jdbcType=VARCHAR})
     </insert>
 
     <select id="checkHomeWork" resultType="int">
