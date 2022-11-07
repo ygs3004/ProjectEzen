@@ -24,25 +24,8 @@ import org.springframework.web.servlet.config.annotation.*;
 // Controller 어노테이션이 셋팅되어 있는 클래스를 Controller로 등록한다.
 @EnableWebMvc
 //스캔할 패키지를 지정한다.
-@ComponentScan(basePackages = "dao")
-@ComponentScan(basePackages = "service")
 @ComponentScan(basePackages = "controller")
-@MapperScan(basePackages = "mapper")
-@PropertySource("/WEB-INF/properties/db.properties")
-
 public class ServletAppContext implements WebMvcConfigurer {
-
-    @Value("${db.classname}")
-    private String db_classname;// = "oracle.jdbc.OracleDriver";
-
-    @Value("${db.url}")
-    private String db_url;// = "jdbc:oracle:thin:@localhost:1521:xe";
-
-    @Value("${db.username}")
-    private String db_username;// = "scott";
-
-    @Value("${db.password}")
-    private String db_password;// = "tiger";
 
     // Controller의 메서드가 반환하는 jsp의 이름 앞뒤에 확장자를 붙여주도록 한다.
     @Override
@@ -58,39 +41,17 @@ public class ServletAppContext implements WebMvcConfigurer {
         registry.addResourceHandler("/**").addResourceLocations("/resources/");
     }
 
-    // 데이터베이스 접속 정보 관리
-    @Bean
-    public BasicDataSource dataSource() {
-        BasicDataSource source = new BasicDataSource();
-        source.setDriverClassName(db_classname);
-        source.setUrl(db_url);
-        source.setUsername(db_username);
-        source.setPassword(db_password);
-
-        return source;
-    }
-
-    // 쿼리문과 접속 관리하는 객체
-    @Bean
-    public SqlSessionFactory factory(BasicDataSource source) throws Exception{
-        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-        factoryBean.setDataSource(source);
-        SqlSessionFactory factory = factoryBean.getObject();
-        return factory;
-    }
-
-    @Bean
-    public MapperFactoryBean<UserMapper> UserMapper(SqlSessionFactory factory) throws Exception{
-        MapperFactoryBean<UserMapper> factoryBean = new MapperFactoryBean<>(UserMapper.class);
-        factoryBean.setSqlSessionFactory(factory);
-        return factoryBean;
-    }
-
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
         ReloadableResourceBundleMessageSource res = new ReloadableResourceBundleMessageSource();
         res.setBasenames("/WEB-INF/properties/error_message");
         return res;
+    }
+
+    @Bean
+    public MultipartResolver multipartResolver() {
+        StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
+        return resolver;
     }
 
     //@PropertySource 를 붙여 프로퍼티 파일을 로드하려면 정의해야 하는 @Bean
@@ -101,26 +62,12 @@ public class ServletAppContext implements WebMvcConfigurer {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
-    @Bean
-    public MultipartResolver multipartResolver() {
-        StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
-        return resolver;
-    }
-
 //    @Bean("loginUserBean")
 //    @SessionScope
 //    public User loginUserBean() {
 //        return new User();
 //    }
-/*
-    // 쿼리문 실행을 위한 객체
-    @Bean
-    public MapperFactoryBean<TopMenuMapper> getTopMenuMapper(SqlSessionFactory factory) throws Exception{
-        MapperFactoryBean<TopMenuMapper> factoryBean = new MapperFactoryBean<>(TopMenuMapper.class);
-        factoryBean.setSqlSessionFactory(factory);
-        return factoryBean;
-    }
-*/
+
 /*
 
     @Override

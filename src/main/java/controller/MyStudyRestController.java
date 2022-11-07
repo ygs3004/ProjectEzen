@@ -3,6 +3,8 @@ package controller;
 import domain.HomeWork;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,5 +31,14 @@ public class MyStudyRestController {
 
         return new ResponseEntity<>(hwList, HttpStatus.OK);
     }
+
+/*    @GetMapping("/downloadHw")
+    @ResponseBody
+    public ResponseEntity<Resource> downloadFile(String filename){
+        log.info("멘티의 첨부파일 : " + filename);
+
+        Resource resource = new FileSystemResource("c:\\upload\\temp");
+    }*/
+
 
 }

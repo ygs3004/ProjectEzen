@@ -49,8 +49,8 @@
 
           <div class="form-row">
               <div class="form-group col-md-6">
-                  <label for="userId">제출자(멘티)</label>
-                  <input type="text" class="form-control" id="userId" name="userId" value="${user_id}" readonly>
+                  <label for="user_id">제출자(멘티)</label>
+                  <input type="text" class="form-control" id="user_id" name="user_id" value="${user_id}" readonly>
               </div>
           </div>
           <div class="form-row">
@@ -83,6 +83,11 @@
             alert("파일 사이즈가 너무 큽니다")
             return false
         }
+
+        if(fileSize===0){
+            return confirm("첨부된 파일의 내용이 없습니다. 등록하시겠습니까?");
+        }
+
         return true;
     }
 
