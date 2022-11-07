@@ -20,16 +20,13 @@ public class MentorRoom {
     private String school;
     private String content;
 
-
     public void setStudyWeekly(String[] studyWeekly) {
         String weekly = String.join(",", studyWeekly);
-        System.out.println(weekly);
         this.studyWeekly = weekly;
     }
 
     public void setCareer(String[] career) {
         String careers = String.join(",", career);
-        System.out.println(careers);
         this.career = careers;
     }
 

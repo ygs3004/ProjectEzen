@@ -1,5 +1,4 @@
 package service;
-
 import dao.MentorRoomDAO;
 import dao.UserDao;
 import domain.MentorRoom;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @Service
 @RequiredArgsConstructor
 public class MentorRoomService {
+
     final UserDao userDAO;
     final MentorRoomDAO mentorRoomDAO;
 
@@ -20,38 +20,32 @@ public class MentorRoomService {
 //        return userInfo;
 //    }
 
-    // R: user_id로 정보 받아오기
+    // GET userInfo BY user_id
     public User getUserByID(String user_id){
         return userDAO.getUserInfo(user_id);
     }
 
-    // C: mentorroom 에 roomInfo 추가
-    public void createRoom(MentorRoom roomInfo) {
-        mentorRoomDAO.createRoom(roomInfo);
+    // ADD roomInfo BY roominfo
+    public int createRoom(MentorRoom roomInfo) {
+        return mentorRoomDAO.createRoom(roomInfo);
     }
 
-    // U : users 에 roomNo 추가
+    // ADD RoomNum BY user_id
     public void usersAddRoomNo(int num, String user_id){
         userDAO.usersAddRoomNo(num, user_id);
     }
 
-    // R: mentorRoom 에서 user_id 로 No 존재하는지 확인
+    // CHECK RoomNum BY user_id
     public int getRoomNoByID(String user_id){
-        return mentorRoomDAO.getRoomNoByID(user_id);
+        return mentorRoomDAO.getRoomInfoByID(user_id).getNum();
     }
 
-    // R : users 에서 user_id 로 소속된 MentorRoomNo 존재하는지 확인.
+    //CHECK RoomNum BY user_id
     public boolean getAssignedRoomNo(String user_id){
         if(mentorRoomDAO.getAssignedRoomNo(user_id)>=1){
-            return true; //있음
+            return true; // 멘토룸 있음
         }else{
-            return false; //없음
+            return false; // 멘토룸 없음
         }
     }
-
-
-
-
-
-
 }

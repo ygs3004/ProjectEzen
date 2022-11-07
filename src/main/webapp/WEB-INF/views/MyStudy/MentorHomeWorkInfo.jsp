@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <html>
 <head>
     <title>과제 정보</title>
@@ -20,29 +20,39 @@
         }
     }
 
-    .container{
+    .container {
         margin-top: 40px;
         margin-bottom: 40px;
     }
 
-    .study-informartion{
+    .study-informartion {
         margin-top: 40px;
         margin-bottom: 40px;
         width: 70%;
     }
 
-    table{
+    table {
         height: 70%;
         width: 70%;
     }
 
     th, td {
-        vertical-align : middle;
+        vertical-align: middle;
     }
 
-    th{
+    th {
         text-align: center;
-        width:30%;
+        width: 30%;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    ul, li {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 15px;
     }
 
 </style>
@@ -80,13 +90,12 @@
                 <ul>
                 <c:forEach var="hw" items="${hwList}" varStatus="index">
                     <li>
-                        <c:out value="${index}. 제출자 : ${hw.userId}, 제출일 : ${hw.hwRegDate}"/>
-                        <textarea rows="15">
+                        <c:out value="${index.count}. 제출자 : ${hw.userId}, 제출일 : ${hw.hwRegDate}"/><br>
+                        <textarea rows="5" readonly>
                             <c:out value="${hw.content}"/>
                         </textarea>
-                    </li>
-                    <li>
-                        <a href="#"><c:out value="${hw.filename}"/></a>
+                        <br>
+                        <a href="#"><c:out value="첨부파일 : ${hw.filename}"/></a>
                     </li>
                 </c:forEach>
                 </ul>
@@ -97,5 +106,16 @@
 </div>
 </div>
 </body>
+<script>
+    $(function(){
+
+        let writer = '<c:out value="${homeWork.writer}"/>';
+
+        $.getJSON("/MyStudy/homeWorkList", {writer: writer},
+            arr => console.log(arr)
+        )
+    });
+</script>
+
 </html>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
