@@ -3,6 +3,7 @@ package controller;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import domain.User;
 import service.UserService;
 import validator.UserValidator;
-
+@Log4j
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -43,7 +44,9 @@ public class UserController {
     //로그인할때
     @PostMapping("/login_pro")
     public String login_pro(@Valid @ModelAttribute("tempLoginUserBean") User tempLoginUser, BindingResult result) {
+        log.info(tempLoginUser.toString());
         System.out.println("controller : "+tempLoginUser.getUser_id());
+
         System.out.println("controller : "+tempLoginUser.getUser_pw());
 
         if(result.hasErrors()) {

@@ -19,6 +19,7 @@ public class UserService {
 
     final MentorRoomDAO mentorRoomDAO;
 
+
     @Resource(name = "loginUserBean")
     private User loginUserBean;
 
