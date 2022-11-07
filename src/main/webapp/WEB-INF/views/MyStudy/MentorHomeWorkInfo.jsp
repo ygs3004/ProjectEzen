@@ -139,6 +139,7 @@
             showUploadedHwList(hwList);
 
         });
+    })
        /* 참고 예제
         $.getJSON("/replies/pages/"+bno+"/"+page+".json",
             function(data){
@@ -153,8 +154,6 @@
             }
         );
         */
-
-    })
 
 </script>
 
