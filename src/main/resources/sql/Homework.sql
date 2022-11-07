@@ -4,7 +4,7 @@ drop table homework;
 -- 테이블 생성
 create table homework(
     mentorId varchar2(30), --HomeWork를 내준 멘토 이름
-    userId varchar2(30), -- HomeWork 제출자
+    user_id varchar2(30), -- HomeWork 제출자
     content varchar2(3000), -- 내용
     hwRegDate date, -- 제출일, 수정일
     uuid varchar2(200), -- 파일명 중복방지 id

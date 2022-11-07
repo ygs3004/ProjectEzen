@@ -173,3 +173,7 @@ target/ProjectMentor/WEB-INF/views/user/login.jsp
 *.class
 .idea/.name
 *.MF
+*.class
+target/ProjectMentor/WEB-INF/classes/mapper/UserMapper.class
+target/ProjectMentor/WEB-INF/classes/dao/UserDao.class
+target/ProjectMentor/META-INF/MANIFEST.MF
