@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class MentorRoom {
 
-    private Integer num;
+    private Integer num = 0;
     private String user_id;
     private String title;
     private String studyPeriod;

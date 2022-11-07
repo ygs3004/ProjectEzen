@@ -18,7 +18,6 @@ public class User {
     private int user_idx;
     private int mentorRoomNo;
     private int user_role;
-
     @Size(min=2, max=5)
     @Pattern(regexp = "[가-힣]*")
     private String user_name;

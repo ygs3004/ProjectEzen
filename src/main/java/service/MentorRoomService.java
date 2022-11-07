@@ -4,6 +4,9 @@ import dao.UserDao;
 import domain.MentorRoom;
 import domain.User;
 import lombok.RequiredArgsConstructor;
+import mapper.MentorRoomMapper;
+import mapper.UserMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
@@ -13,6 +16,8 @@ public class MentorRoomService {
 
     final UserDao userDAO;
     final MentorRoomDAO mentorRoomDAO;
+    final UserMapper userMapper;
+    final MentorRoomMapper roomMapper;
 
 //    // user 에서 userInfo 조회 (나중에 uerService로 옮기기..)
 //    public User getUserInfo (@SessionAttribute("user_id") String user_id){
@@ -25,27 +30,33 @@ public class MentorRoomService {
         return userDAO.getUserInfo(user_id);
     }
 
-    // ADD roomInfo BY roominfo
-    public int createRoom(MentorRoom roomInfo) {
-        return mentorRoomDAO.createRoom(roomInfo);
+    // GET roomInfo BY user_id
+    public MentorRoom getRoomInfoByID(String user_id){
+        return roomMapper.getRoomInfoByID(user_id);
     }
 
-    // ADD RoomNum BY user_id
-    public void usersAddRoomNo(int num, String user_id){
-        userDAO.usersAddRoomNo(num, user_id);
+    // ADD roomInfo
+    public int createRoom(MentorRoom roomInfo) {
+        return roomMapper.createRoom(roomInfo);
+    }
+
+    // ADD RoomNum TO users BY user_id
+    public void usersAddRoomNo(int mentorRoomNo, String user_id){
+        userMapper.updateRoomNo(mentorRoomNo, user_id);
     }
 
     // CHECK RoomNum BY user_id
     public int getRoomNoByID(String user_id){
-        return mentorRoomDAO.getRoomInfoByID(user_id).getNum();
+        int roomNum = roomMapper.getRoomInfoByID(user_id).getNum();
+        return roomNum;
     }
 
     //CHECK RoomNum BY user_id
     public boolean getAssignedRoomNo(String user_id){
-        if(mentorRoomDAO.getAssignedRoomNo(user_id)>=1){
-            return true; // 멘토룸 있음
-        }else{
-            return false; // 멘토룸 없음
+        if(roomMapper.getRoomInfoByID(user_id) == null){
+            return false; //멘토룸 있음
+        } else{
+            return true; // 멘토룸 없음
         }
     }
 }

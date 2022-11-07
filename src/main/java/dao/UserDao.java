@@ -49,9 +49,6 @@ public class UserDao {
         return userMapper.getUserInfo(user_id);
     }
 
-    public int usersAddRoomNo(int num, String user_id){
-        return userMapper.updateRoomNo(num,user_id);
-    }
 
     public String getMentorId(String user_id){
         User user = getUserInfo(user_id);

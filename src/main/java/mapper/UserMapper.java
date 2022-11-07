@@ -47,7 +47,7 @@ public interface UserMapper {
     public String getTime();
 
     // mentorRoom 생성 후 users에 mentorRoomNo update
-    @Update("update users set MentorRoomNo = #{num} where user_id = #{user_id}")
-    public int updateRoomNo(int num, String user_id);
+    @Update("update USERS set MENTORROOMNO = #{mentorRoomNo} where user_id = #{user_id}")
+    public int updateRoomNo(@Param("mentorRoomNo") int mentorRoomNo, @Param("user_id") String user_id);
 }
 

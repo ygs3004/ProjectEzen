@@ -32,11 +32,6 @@ public class createRoomTest {
     @Autowired
     MentorRoomService mentorRoomService;
 
-    @Test
-    public void getAssignedRoomNo(){
-        boolean result = mentorRoomService.getAssignedRoomNo(user_id);
-        log.info(result);
-    }
 
     @Test
     public void daoGetAssignedRoomNo(){

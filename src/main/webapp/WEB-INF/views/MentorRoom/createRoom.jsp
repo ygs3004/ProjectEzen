@@ -17,7 +17,6 @@
 <script type="text/javascript" src="/js/mentorRoomScripts.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/mentorRoomStyles.css">
 <%--<form:form id="createForm" modelAttribute="createRoom">--%>
-
 <form action="/MentorRoom/roomInfo" method="POST" name="createForm" id="createForm" onsubmit="return doCheck()">
 <%--    <input type="hidden" name="num" value="0">--%>
 <%--    <input type="hidden" name="nowCapacity" value="0">--%>
@@ -113,5 +112,4 @@
     </div>
 </form>
 <%--</form:form>--%>
-
 <%@ include file="../includes/footer.jsp"%>
