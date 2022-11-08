@@ -73,11 +73,11 @@ public class UserService {
 
         modifyUserBean.setUser_id(tempModifyUserBean.getUser_id());
         modifyUserBean.setUser_name(tempModifyUserBean.getUser_name());
+
         modifyUserBean.setUser_idx(loginUserBean.getUser_idx());
     }
 
     public void modifyUserInfo(User modifyUserBean) {
-
 
         modifyUserBean.setUser_idx(loginUserBean.getUser_idx());
 

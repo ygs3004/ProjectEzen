@@ -32,7 +32,7 @@
     <div class="col-sm-6">
       <div class="card shadow">
         <div class="card-body">
-          <form:form action='${root }user/modify_pro' method='post' modelAttribute="modifyUserBean">
+          <form:form action='${root}user/modify_pro' method='post' modelAttribute="modifyUserBean">
             <div class="form-group">
               <form:label path="user_name">이름</form:label>
               <form:input path="user_name" class='form-control' readonly="true"/>
