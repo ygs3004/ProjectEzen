@@ -104,7 +104,7 @@ public class UserController {
     public String not_login() {
         return "user/not_login";
     }
-    
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         UserValidator validator1 = new UserValidator();
