@@ -39,7 +39,6 @@ public class User {
     @Pattern(regexp = "[1-2]")
     private String user_gender;
     @Size(min=4, max=20)
-    @Pattern(regexp = "학교")
     private String user_school;
 
     private boolean userIdExist;
