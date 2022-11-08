@@ -29,6 +29,4 @@ public class MentorRoom {
         String careers = String.join(",", career);
         this.career = careers;
     }
-
-
 }

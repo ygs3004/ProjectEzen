@@ -17,9 +17,11 @@
 <script type="text/javascript" src="/js/mentorRoomScripts.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/mentorRoomStyles.css">
 <%--<form:form id="createForm" modelAttribute="createRoom">--%>
+
 <form action="/MentorRoom/roomInfo" method="POST" name="createForm" id="createForm" onsubmit="return doCheck()">
 <%--    <input type="hidden" name="num" value="0">--%>
 <%--    <input type="hidden" name="nowCapacity" value="0">--%>
+
     <section class="formHeader">
             <span id="formTitle"><b>스터디 개설</b></span>
             <p id="formDes">스터디를 개설해 멘티들을 모아볼까요?</p>
@@ -103,7 +105,6 @@
             <textarea class="form-control" id="content" name="content" rows="15" style="resize: none;"></textarea>
             <label for="content"><span class="content">스터디 상세설명</span></label>
         </div>
-
         <div style="text-align: center; margin-bottom: 2%;">
             <button id="formCheck" type="submit" class="btn btn-primary">스터디개설</button>
             &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="개설취소" onclick="history.back();">
