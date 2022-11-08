@@ -3,7 +3,7 @@ drop table MENTORROOM;
 drop sequence mentor_room_seq;
 
 -- 시퀀스, 테이블 생성
-create sequence mentor_room_seq;
+create sequence mentor_room_seq start with 1 increment by 1;
 CREATE TABLE MENTORROOM
 (
     NUM             NUMBER        NOT NULL primary key,
@@ -26,4 +26,15 @@ select * from MENTORROOM;
 -- 테스트용 더미
 INSERT INTO MENTORROOM ( num, user_id, title, studyPeriod, studyWeekly, studytimestart, studyTimeEnd, capacity, nowcapacity, career, school, content)
 values ( mentor_room_seq.nextval, '김멘토','김멘토의 스터디룸','2022/11/01 - 2022/11/02', '1,5', '09:00', '18:00',  30, 0, 1, '서울대학교', '열공을 하는 모임입니다.');
+
+
+INSERT INTO MentorRoom
+    (num, user_id,  title,
+    studyPeriod, studyWeekly, studyTimeStart, studyTimeEnd,
+    capacity, nowCapacity, career, school, content)
+    values (mentor_room_seq.nextval,'mentor_id',  '스터디룸',
+    '2022/01/01 - 2022/12/31', '2,3', '09:00', '18:00',
+    30, 0, '경력1,경력2', '연세대', '스터디상세설명');
 commit;
+
+

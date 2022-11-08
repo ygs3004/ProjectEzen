@@ -1,5 +1,6 @@
 package MyStudy;
 
+import config.RootAppContext;
 import config.ServletAppContext;
 import dao.MyStudyDao;
 import dao.UserDao;
@@ -20,7 +21,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ServletAppContext.class})
+@ContextConfiguration(classes = {RootAppContext.class})
 @WebAppConfiguration
 @Log4j
 public class MyStudyTest {
@@ -62,4 +63,10 @@ public class MyStudyTest {
         assertThat(user_id, is(mentorRoom.getUser_id()));
     }
 
+    @Test
+    public void getUserInfoTest(){
+        String user_id = "JEJA";
+        userDao.getUserInfo(user_id);
+        log.info(userDao.getUserInfo(user_id));
+    }
 }

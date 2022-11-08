@@ -1,5 +1,6 @@
 package controller;
 
+import dao.UserDao;
 import domain.HomeWork;
 import domain.HomeWorkInfo;
 import domain.MentorRoom;
@@ -14,7 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import service.MyStudyService;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 @Log4j
@@ -24,13 +31,20 @@ public class MyStudyController {
 
     final MyStudyService myStudyService;
 
-    @GetMapping("/StudyInfo")
-    public String myStudyMentor(String user_id, Model model, HttpSession session){
+    @Resource(name = "loginUserBean")
+    private User loginUserBean;
 
-        session.setAttribute("user_id", user_id);
+    @GetMapping("/StudyInfo")
+    public String myStudy(Model model){
+        // 접속한 회원의 멘토룸 정보
+        log.info("접속한 loginUserBean : "+loginUserBean);
+        String user_id = loginUserBean.getUser_id();
         MentorRoom mentorRoom =  myStudyService.getMyStudyRoom(user_id);
+        //접속한 회원의 과제 유무 체크
+        boolean checkHomeWork = myStudyService.checkHomeWork(user_id);
 
         model.addAttribute("mentorRoom", mentorRoom);
+        model.addAttribute("checkHomeWork", checkHomeWork);
         return "/MyStudy/StudyInfo";
     }
 
@@ -40,26 +54,28 @@ public class MyStudyController {
     }
 
     @PostMapping("/UploadSuccess")
-    public String uploadSuccess(HomeWorkInfo homeWorkInfo, HttpSession session, Model model){
+    public String uploadSuccess(HomeWorkInfo homeWorkInfo, Model model){
 
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = loginUserBean.getUser_id();
 
         homeWorkInfo.setWriter(user_id);
 
-        int success = myStudyService.uploadHomeWork(homeWorkInfo);
+        int success = myStudyService.uploadHomeWorkInfo(homeWorkInfo);
         model.addAttribute("homeWork", homeWorkInfo);
 
         return "redirect:/MyStudy/MentorHomeWorkInfo";
     }
 
     @GetMapping("/MentorHomeWorkInfo")
-    public String MentorHomeWorkInfo (HttpSession session, Model model) {
+    public String MentorHomeWorkInfo (Model model) {
 
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = loginUserBean.getUser_id();
 
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
         MentorRoom mentorRoom = myStudyService.getMyStudyRoom(user_id);
+        List<HomeWork> hwList = myStudyService.getHomeWorkList(user_id);
 
+        model.addAttribute("hwList", hwList);
         model.addAttribute("homeWork", homeWorkInfo);
         model.addAttribute("mentorRoom", mentorRoom);
 
@@ -67,9 +83,9 @@ public class MyStudyController {
     }
 
     @GetMapping("/MenteeHomeWorkInfo")
-    public String MenteeHomeWorkInfo(HttpSession session, Model model){
+    public String MenteeHomeWorkInfo(Model model){
 
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = loginUserBean.getUser_id();
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
 
         model.addAttribute("homeWork", homeWorkInfo);
@@ -78,9 +94,9 @@ public class MyStudyController {
     }
 
     @GetMapping("/HomeWorkSubmitForm")
-    public String HomeWorkSubmit(HttpSession session, Model model){
+    public String HomeWorkSubmit(Model model){
 
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = loginUserBean.getUser_id();
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
 
         model.addAttribute("homeWork", homeWorkInfo);
@@ -89,15 +105,12 @@ public class MyStudyController {
     }
 
     @PostMapping("/HomeWorkSubmit")
-    public String HomeWorkSubmit(HomeWork homeWork, MultipartFile[] uploadFile){
-        for(MultipartFile multi : uploadFile){
-            log.info("==========================");
-            log.info("upload File name :" +multi.getOriginalFilename());
-            log.info("upload File Size : "+multi.getSize());
-        }
+    public String homeWorkSubmit(HomeWork homeWork, MultipartFile[] uploadFile){
 
-        log.info(homeWork);
+        myStudyService.homeWorkSubmit(homeWork, uploadFile);
+
         return "redirect:/MyStudy/MenteeHomeWorkInfo";
     }
+
 
 }

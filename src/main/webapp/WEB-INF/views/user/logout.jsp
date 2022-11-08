@@ -11,5 +11,5 @@
 <c:set var='root' value="${pageContext.request.contextPath }/"/>
 <script>
     alert('로그아웃 되었습니다')
-    location.href = '${root}main'
+    location.href = '${root}'
 </script>

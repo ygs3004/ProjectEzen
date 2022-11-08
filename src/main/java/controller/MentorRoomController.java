@@ -1,40 +1,76 @@
 package controller;
 
+import dao.UserDao;
 import domain.MentorRoom;
 import domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 import service.MentorRoomService;
+import service.MyStudyService;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 @Controller
 @RequestMapping("/MentorRoom")
 @RequiredArgsConstructor
 public class MentorRoomController {
-    final MentorRoomService mentorRoomService;
 
-    //스터디개설 (추후 @SessionAttribute String user_id 추가 )
+    @Resource(name = "loginUserBean")
+    private User loginUserBean;
+
+    final UserDao userDao;
+    final MentorRoomService mentorRoomService;
+    final MyStudyService myStudyService;
+    final HomeController homeController;
+
+    //스터디개설
     @GetMapping("/createRoom")
-    public String CreateMentorRoom(HttpServletRequest request){
-        HttpSession session =  request.getSession();
-        session.setAttribute("user_id", "김멘토");
-        return "/MentorRoom/createRoom";
+    public String CreateMentorRoom(HttpServletResponse response) throws IOException {
+        String user_id = loginUserBean.getUser_id();
+
+        //user_id 앞으로 개설된 방 있는지 확인
+        boolean result = mentorRoomService.getAssignedRoomNo(user_id);
+        if(result){
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('스터디는 한개만 개설할 수 있습니다.'); history.back();</script>");
+            out.close();
+//            request.setAttribute("message", "스터디는 한개만 개설할 수 있습니다.");
+            return homeController.home();
+        }else{
+            return "/MentorRoom/createRoom";
+        }
     }
 
     //스터디개설 후 이동
     @PostMapping("/roomInfo")
-    public String createRoom(MentorRoom roomInfo, @SessionAttribute String user_id, Model model){
-        mentorRoomService.createRoom(roomInfo); //roominfo db추가
-        mentorRoomService.usersAddRoomNo(roomInfo.getNum(), user_id);
-        model.addAttribute("roomInfo", roomInfo);
-        return "redirect:/MentorRoom/roomInfo";
+    public String createRoom(MentorRoom mentorRoom, Model model){
+        mentorRoom.setNum(0);
+        mentorRoom.setUser_id(loginUserBean.getUser_id());
+        mentorRoomService.createRoom(mentorRoom, loginUserBean.getUser_id());
+
+        //StudyInfo
+//        int user_role = userDao.getUserInfo(loginUserBean.getUser_id()).getUser_role();
+        boolean checkHomeWork = myStudyService.checkHomeWork(loginUserBean.getUser_id());
+
+        model.addAttribute("mentorRoom", mentorRoom);
+//        model.addAttribute("user_id",loginUserBean.getUser_id());
+//        model.addAttribute("user_role", user_role);
+        model.addAttribute("checkHomeWork", checkHomeWork);
+        return "redirect:/MyStudy/StudyInfo";
+    }
+
+    @GetMapping("/modifyRoom")
+    public String modifyRoom(Model model){
+        model.addAttribute("mentorRoom",mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id()));
+        return "/MentorRoom/modifyRoom";
     }
 
 
