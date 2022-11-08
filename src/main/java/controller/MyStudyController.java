@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import service.MyStudyService;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -29,15 +30,17 @@ import java.util.UUID;
 public class MyStudyController {
 
     final MyStudyService myStudyService;
-    final UserDao userDao;
+
+    @Resource(name = "loginUserBean")
+    private User loginUserBean;
 
     @GetMapping("/StudyInfo")
-    public String myStudy(Model model, HttpSession session){
+    public String myStudy(Model model){
         // 접속한 회원의 멘토룸 정보
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = loginUserBean.getUser_id();
         MentorRoom mentorRoom =  myStudyService.getMyStudyRoom(user_id);
         // 접속한 회원의 등급정보
-        int user_role = userDao.getUserInfo(user_id).getUser_role();
+        int user_role = loginUserBean.getUser_role();
         //접속한 회원의 과제 유무 체크
         boolean checkHomeWork = myStudyService.checkHomeWork(user_id);
 
@@ -53,9 +56,9 @@ public class MyStudyController {
     }
 
     @PostMapping("/UploadSuccess")
-    public String uploadSuccess(HomeWorkInfo homeWorkInfo, HttpSession session, Model model){
+    public String uploadSuccess(HomeWorkInfo homeWorkInfo, Model model){
 
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = loginUserBean.getUser_id();
 
         homeWorkInfo.setWriter(user_id);
 
@@ -66,9 +69,9 @@ public class MyStudyController {
     }
 
     @GetMapping("/MentorHomeWorkInfo")
-    public String MentorHomeWorkInfo (HttpSession session, Model model) {
+    public String MentorHomeWorkInfo (Model model) {
 
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = loginUserBean.getUser_id();
 
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
         MentorRoom mentorRoom = myStudyService.getMyStudyRoom(user_id);
@@ -82,9 +85,9 @@ public class MyStudyController {
     }
 
     @GetMapping("/MenteeHomeWorkInfo")
-    public String MenteeHomeWorkInfo(HttpSession session, Model model){
+    public String MenteeHomeWorkInfo(Model model){
 
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = loginUserBean.getUser_id();
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
 
         model.addAttribute("homeWork", homeWorkInfo);
@@ -93,9 +96,9 @@ public class MyStudyController {
     }
 
     @GetMapping("/HomeWorkSubmitForm")
-    public String HomeWorkSubmit(HttpSession session, Model model){
+    public String HomeWorkSubmit(Model model){
 
-        String user_id = (String) session.getAttribute("user_id");
+        String user_id = loginUserBean.getUser_id();
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
 
         model.addAttribute("homeWork", homeWorkInfo);

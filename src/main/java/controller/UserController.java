@@ -44,7 +44,7 @@ public class UserController {
 
     //로그인할때
     @PostMapping("/login_pro")
-    public String login_pro(@Valid @ModelAttribute("tempLoginUserBean") User tempLoginUser, BindingResult result, HttpSession session) {
+    public String login_pro(@Valid @ModelAttribute("tempLoginUserBean") User tempLoginUser, BindingResult result) {
         log.info(tempLoginUser.toString());
         System.out.println("controller : "+tempLoginUser.getUser_id());
 
@@ -60,8 +60,6 @@ public class UserController {
         userService.getLoginUserInfo(tempLoginUser);
 
         if(loginUserBean.isUserLogin() == true) {
-            session.setAttribute("user_id", tempLoginUser.getUser_id());
-            session.setAttribute("user_role", tempLoginUser.getUser_role());
 
             return "user/login_success";
         } else {
