@@ -57,9 +57,10 @@ public class MentorRoomService {
     //CHECK RoomNum BY user_id
     public boolean getAssignedRoomNo(String user_id){
         if(roomMapper.getRoomInfoByID(user_id) == null){
-            return false; //멘토룸 있음
+            return false;
         } else{
-            return true; // 멘토룸 없음
+            return true;
         }
     }
+
 }

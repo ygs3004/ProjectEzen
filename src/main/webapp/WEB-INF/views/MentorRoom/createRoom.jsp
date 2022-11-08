@@ -98,7 +98,7 @@
         <div id="careerList">
         </div>
         <div class="notMove">
-            <input type="text" class="form-control" id="school" name="school" value="${user_school}" readonly>
+            <input type="text" class="form-control" id="school" name="school" value="${loginUser.getUser_school()}" readonly>
             <label for="school"><span class="block">멘토 학력</span></label>
         </div>
         <div>

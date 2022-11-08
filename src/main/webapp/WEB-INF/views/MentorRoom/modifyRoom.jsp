@@ -8,6 +8,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="../includes/header.jsp"%>
+<script type="text/javascript" src="/js/mentorRoomScripts.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/mentorRoomStyles.css">
 <form action="/MentorRoom/modifyRoom" method="POST" name="createForm" id="createForm" onsubmit="return doCheck()">
     <%--    <input type="hidden" name="num" value="0">--%>
     <%--    <input type="hidden" name="nowCapacity" value="0">--%>
@@ -17,7 +19,7 @@
     </section>
     <div class="shadow p-3 mb-5 bg-white rounded formBody">
         <div class="user_name">
-            <span> ${user_name} 님 (${user_id})</span>
+            <span> ${loginUser.getUser_name()} 님 (${loginUser.getUser_id()})</span>
         </div>
         <div class="useMove">
             <input type="text" class="form-control" id="title" name="title" value="${mentorRoom.title}" autocomplete="on">
@@ -87,11 +89,11 @@
         <div id="careerList">
         </div>
         <div class="notMove">
-            <input type="text" class="form-control" id="school" name="school" value="${user_school}" readonly>
+            <input type="text" class="form-control" id="school" name="school" value="${loginUser.getUser_school()}" readonly>
             <label for="school"><span class="block">멘토 학력</span></label>
         </div>
         <div>
-            <textarea class="form-control" id="content" name="content" rows="15" style="resize: none;" value="${mentorRoom.content}"></textarea>
+            <textarea class="form-control" id="content" name="content" rows="15" style="resize: none;" >${mentorRoom.content}</textarea>
             <label for="content"><span class="content">스터디 상세설명</span></label>
         </div>
 
