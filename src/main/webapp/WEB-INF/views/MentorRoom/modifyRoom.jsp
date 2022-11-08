@@ -8,11 +8,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="../includes/header.jsp"%>
-<script type="text/javascript" src="/js/mentorRoomScripts.js"></script>
+<script type="text/javascript" src="/js/modifyRoomScripts.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/mentorRoomStyles.css">
 <form action="/MentorRoom/modifyRoom" method="POST" name="createForm" id="createForm" onsubmit="return doCheck()">
-    <%--    <input type="hidden" name="num" value="0">--%>
-    <%--    <input type="hidden" name="nowCapacity" value="0">--%>
     <section class="formHeader">
         <span id="formTitle"><b>스터디 정보 수정</b></span>
         <p id="formDes">스터디 정보를 수정하는 페이지입니다.</p>
@@ -87,6 +85,9 @@
             <input type="button" class="form-control btn-outline-primary" id="addList" value="add" onclick="addCreerList()">
         </div>
         <div id="careerList">
+            <c:forEach var="careers" items="${mentorRoom.getCareerList()}" varStatus="status">
+                <p><c:out value="${careers}" /><input type="hidden" name="career" value="${careers}"></p>
+            </c:forEach>
         </div>
         <div class="notMove">
             <input type="text" class="form-control" id="school" name="school" value="${loginUser.getUser_school()}" readonly>

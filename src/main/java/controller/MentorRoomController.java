@@ -64,11 +64,9 @@ public class MentorRoomController {
 
     @GetMapping("/modifyRoom")
     public String modifyRoom(Model model){
-        model.addAttribute("mentorRoom",mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id()));
+        MentorRoom roomInfo = mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id());
+        model.addAttribute("mentorRoom",roomInfo);
         return "/MentorRoom/modifyRoom";
     }
-
-
-
 
 }
