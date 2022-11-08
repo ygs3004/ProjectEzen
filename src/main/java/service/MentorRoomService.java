@@ -37,8 +37,10 @@ public class MentorRoomService {
     }
 
     // ADD roomInfo
-    public int createRoom(MentorRoom roomInfo) {
-        return roomMapper.createRoom(roomInfo);
+    public void createRoom(MentorRoom roomInfo, String user_id) {
+        roomMapper.createRoom(roomInfo);
+        int roomNo = getRoomNoByID(user_id); //id로 만들어진 roomNum 조회
+        usersAddRoomNo(roomNo, user_id);
     }
 
     // ADD RoomNum TO users BY user_id

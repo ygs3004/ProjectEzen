@@ -28,7 +28,7 @@
     </section>
     <div class="shadow p-3 mb-5 bg-white rounded formBody">
         <div class="user_name">
-            <span> ${user_name} 님 (${user_id})</span>
+            <span> ${loginUser.getUser_name()} 님 (${loginUser.getUser_id()})</span>
         </div>
         <div class="useMove">
             <input type="text" class="form-control" id="title" name="title" autocomplete="on">
