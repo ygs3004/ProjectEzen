@@ -7,6 +7,7 @@
     <title>게시판 목록</title>
     <!-- 공통 CSS -->
 
+    <link rel = stylesheet href="/css/bootstrap.css" >
 
     <!-- 공통 JavaScript -->
     <script type="text/javascript" src="/js/common/jquery.js"></script>
