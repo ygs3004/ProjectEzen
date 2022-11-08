@@ -50,7 +50,7 @@
           <div class="form-row">
               <div class="form-group col-md-6">
                   <label for="user_id">제출자(멘티)</label>
-                  <input type="text" class="form-control" id="user_id" name="user_id" value="${user_id}" readonly>
+                  <input type="text" class="form-control" id="user_id" name="user_id" value="${loginUser.user_id}" readonly>
               </div>
           </div>
           <div class="form-row">

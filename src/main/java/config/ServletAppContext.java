@@ -1,6 +1,8 @@
 package config;
+import dao.UserDao;
 import domain.User;
 import interceptor.CheckLoginInterceptor;
+import interceptor.UpdateUserStatus;
 import mapper.MyStudyMapper;
 import mapper.UserMapper;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -8,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -32,6 +35,9 @@ public class ServletAppContext implements WebMvcConfigurer {
 
     @Resource(name = "loginUserBean")
     private User loginUserBean;
+
+    @Autowired
+    private UserDao userDao;
 
     // Controller의 메서드가 반환하는 jsp의 이름 앞뒤에 확장자를 붙여주도록 한다.
     @Override
@@ -74,15 +80,19 @@ public class ServletAppContext implements WebMvcConfigurer {
 //        return new User();
 //    }
 
-        @Override
-        public void addInterceptors(InterceptorRegistry registry) {
-            // TODO Auto-generated method stub
-            WebMvcConfigurer.super.addInterceptors(registry);
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        // TODO Auto-generated method stub
+        WebMvcConfigurer.super.addInterceptors(registry);
 
-            CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean);
+        CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean);
+        UpdateUserStatus updateUserStatus = new UpdateUserStatus(loginUserBean, userDao);
 
-            InterceptorRegistration reg1 = registry.addInterceptor(checkLoginInterceptor);
-            reg1.addPathPatterns("/user/login_pro");
+        InterceptorRegistration reg1 = registry.addInterceptor(checkLoginInterceptor);
+        reg1.addPathPatterns("/user/login_pro");
+
+        InterceptorRegistration reg2 = registry.addInterceptor(updateUserStatus);
+        reg2.addPathPatterns("/MyStudy/**", "/MentorRoom/**");
 
     }
 
