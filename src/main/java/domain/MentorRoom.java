@@ -29,4 +29,14 @@ public class MentorRoom {
         String careers = String.join(",", career);
         this.career = careers;
     }
+
+    public String[] getWeeklyList (){
+        String[] weeklyList = studyWeekly.split(",");
+       return weeklyList;
+    }
+
+    public String[] getCareerList (){
+        String[] careerList = career.split(",");
+        return careerList;
+    }
 }

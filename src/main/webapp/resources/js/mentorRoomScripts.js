@@ -115,6 +115,7 @@ function doCheck(){
         return false;
     }
 
+
     if(document.getElementById("content").value.length == 0){
         alert('상세설명을 입력해주세요.');
         return false;
@@ -124,11 +125,14 @@ function doCheck(){
 
 
 function lastCheck() {
+
+
     if (confirm("스터디를 등록하시겠습니까?") == true){    //확인
         return true;
     }else{   //취소
         return false;
     }
+
 // }
 // =======
 // function doCheck(){
