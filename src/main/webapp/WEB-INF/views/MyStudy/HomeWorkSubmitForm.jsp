@@ -25,12 +25,9 @@
         .form-row{
             margin : 10px 0;
         }
-        textarea{
-            resize: none;
-        }
+
     </style>
 </head>
-
 <body>
 <div class="container submit">
   <form action="/MyStudy/HomeWorkSubmit" class="submit" method="post" enctype="multipart/form-data">
@@ -49,8 +46,8 @@
 
           <div class="form-row">
               <div class="form-group col-md-6">
-                  <label for="user_id">제출자(멘티)</label>
-                  <input type="text" class="form-control" id="user_id" name="user_id" value="${user_id}" readonly>
+                  <label for="userId">제출자(멘티)</label>
+                  <input type="text" class="form-control" id="userId" name="userId" value="${user_id}" readonly>
               </div>
           </div>
           <div class="form-row">
@@ -65,49 +62,14 @@
           </div>
           <div class="form-row">
               <label for="uploadFile">파일 첨부</label>
-              <input type="file" class="form-control" id="uploadFile" name="uploadFile" placeholder="첨부파일(5MB 용량제한)">
+              <input type="file" class="form-control" id="uploadFile" name="uploadFile" placeholder="첨부파일(20MB 용량제한)">
               <input type="file" class="form-control" name="uploadFile" placeholder="첨부파일">
               <input type="file" class="form-control" name="uploadFile" placeholder="첨부파일">
           </div>
-          <button type="submit" id="submitButton" class="btn btn-primary">제출</button>
+          <button type="submit" class="btn btn-primary">제출</button>
           <button type="reset" class="btn btn-primary">다시작성</button>
       </form>
 </div>
-
-<script>
-
-    var maxSize = 5242880; // 5mb
-
-    function checkFile(filename, fileSize){
-        if(fileSize >= maxSize){
-            alert("파일 사이즈가 너무 큽니다")
-            return false
-        }
-
-        if(fileSize===0){
-            return confirm("첨부된 파일의 내용이 없습니다. 등록하시겠습니까?");
-        }
-
-        return true;
-    }
-
-    $("#submitButton").on("click", function (e){
-
-        var inputFile = $("input[name='uploadFile']");
-        var files = inputFile[0].files;
-        console.log(files);
-
-        for(var i=0; i<files.length; i++){
-            if(!checkFile(files[i].name, files[i].size)){
-                e.preventDefault();
-                return false;
-            }
-        }
-
-        return true;
-    })
-
-</script>
 
 </body>
 </html>

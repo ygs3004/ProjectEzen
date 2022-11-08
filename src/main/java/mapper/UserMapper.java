@@ -2,7 +2,10 @@ package mapper;
 
 import domain.MentorRoom;
 import domain.User;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface UserMapper {
@@ -17,18 +20,26 @@ public interface UserMapper {
             "where user_email = #{user_email}")
     String checkUserEmailExist(String user_email);
 
-    @Select("select * from users " +
+    @Select("select user_idx, user_name " +
+            "from users " +
             "where user_id=#{user_id} and user_pw=#{user_pw}")
     User getLoginUserInfo(User tempLoginUserBean);
 
-    @Select("select user_id, user_name from users where user_idx = #{user_idx}")
+//    @Select("select user_name " +
+//            "from users " +
+//            "where user_id=#{user_id} and user_pw=#{user_pw}")
+//    User getLoginUserInfo(User tempLoginUserBean);
+    @Select("select user_id, user_name " +
+        "from user_table " +
+        "where user_idx = #{user_idx}")
     User getModifyUserInfo(int user_idx);
 
-
-    @Update("update users set user_pw = #{user_pw}, user_pw2 = #{user_pw2} where user_idx = #{user_idx}")
+    @Update("update user_table " +
+            "set user_pw = #{user_pw} " +
+            "where user_idx = #{user_idx}")
     void modifyUserInfo(User modifyUserBean);
 
-    @Insert("insert into users (user_idx,mentorRoomNo, user_role, user_name, user_id, user_pw, user_pw2, user_email, user_phone, user_gender, user_school) " + "values (user_idx_seq.nextval, 0, #{user_role}, #{user_name}, #{user_id}, #{user_pw}, #{user_pw2}, #{user_email}, #{user_phone}, #{user_gender}, #{user_school})")
+    @Insert("insert into users (user_idx, user_role, user_name, user_id, user_pw, user_pw2, user_email, user_phone, user_gender, user_school) " +"values (user_seq.nextval, #{user_role}, #{user_name}, #{user_id}, #{user_pw}, #{user_pw2}, #{user_email}, #{user_phone}, #{user_gender}, #{user_school})")
     void addUserInfo(User joinUserBean);
 
     @Select("select * from users where user_id = #{user_id}")
@@ -38,8 +49,6 @@ public interface UserMapper {
     @Select("select sysdate from dual")
     public String getTime();
 
-    // mentorRoom 생성 후 users에 mentorRoomNo update
-    @Update("update USERS set MENTORROOMNO = #{mentorRoomNo} where user_id = #{user_id}")
-    public int updateRoomNo(@Param("mentorRoomNo") int mentorRoomNo, @Param("user_id") String user_id);
+    @Update("update users set MentorRoomNo =${num} where user_id= ${user_id}")
+    public int updateRoomNo(int num, String user_id);
 }
-
