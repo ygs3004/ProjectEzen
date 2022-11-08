@@ -62,6 +62,7 @@ public class UserService {
             loginUserBean.setUser_name(tempLoginUserBean2.getUser_name());
             loginUserBean.setUser_id(tempLoginUserBean2.getUser_id());
             loginUserBean.setUser_role(tempLoginUserBean2.getUser_role());
+            loginUserBean.setUser_school(tempLoginUserBean2.getUser_school());
             loginUserBean.setUserLogin(true);
         }
     }
