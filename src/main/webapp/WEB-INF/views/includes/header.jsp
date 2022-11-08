@@ -47,16 +47,16 @@
 <%--                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">로그인</a></li>--%>
 <%--                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/join">회원가입</a></li>--%>
                 <%-- 멘토 : user_role==1 멘티 : user_role==2 --%>
-                <c:choose>
-                    <c:when test="${loginUserBean.isLogin() == true}">
+                <c:choose>  <%-- 로그인 했을경우--%>
+                    <c:when test="${loginUser.userLogin}">
                         <li class="nav-item">
-                            <a href="${root}/user/update" class="nav-link">회원수정</a>
+                            <a href="${root}/user/modify" class="nav-link">회원수정</a>
                         </li>
                         <li class="nav-item">
                             <a href="${root}/user/logout" class="nav-link">로그아웃</a>
                         </li>
                     </c:when>
-                    <c:otherwise>
+                    <c:otherwise> <%-- 로그인 하지않았을 경우 --%>
                         <li class="nav-item">
                             <a href="${root}/user/login" class="nav-link">로그인</a>
                         </li>
@@ -66,7 +66,7 @@
                     </c:otherwise>
                 </c:choose>
                 <c:choose>
-                    <c:when test="${!loginUser.userLogin}"> <!-- 로그인하지 않았을 격우 -->
+                    <c:when test="${!loginUser.userLogin}"> <!-- 로그인하지 않았을 경우 -->
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">My Study</a></li>
                     </c:when>
                     <c:otherwise>
