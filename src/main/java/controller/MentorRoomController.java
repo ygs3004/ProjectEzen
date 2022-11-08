@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @Controller
 @RequestMapping("/MentorRoom")
@@ -27,7 +26,6 @@ public class MentorRoomController {
     final MentorRoomService mentorRoomService;
     final MyStudyService myStudyService;
     final HomeController homeController;
-
 
     //스터디개설 (추후 @SessionAttribute("user_id") String user_id 추가 )
     @GetMapping("/createRoom")
