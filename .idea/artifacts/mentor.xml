@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mentor">
+    <output-path>$PROJECT_DIR$/out/artifacts/mentor</output-path>
+    <root id="root" />
+  </artifact>
+</component>
