@@ -24,6 +24,7 @@ public class MentorRoomController {
 
     @Resource(name = "loginUserBean")
     private User loginUserBean;
+
     final UserDao userDao;
     final MentorRoomService mentorRoomService;
     final MyStudyService myStudyService;
@@ -71,4 +72,6 @@ public class MentorRoomController {
         model.addAttribute("mentorRoom",mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id()));
         return "/MentorRoom/modifyRoom";
     }
+
+
 }
