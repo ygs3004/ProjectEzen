@@ -68,7 +68,7 @@
         <td>
             <c:choose>
                 <%--멘토일때--%>
-                <c:when test="${user_role == 1}">
+                <c:when test="${loginUser.user_role == 1}">
                     <c:choose>
                         <%--과제가 있을때(멘토)--%>
                         <c:when test="${checkHomeWork}">
@@ -86,7 +86,7 @@
                 </c:when>
 
                 <%--멘티일때--%>
-                <c:when test="${user_role == 2}">
+                <c:when test="${loginUser.user_role == 2}">
                     <c:choose>
                         <%--과제가 있을때(멘티)--%>
                         <c:when test="${checkHomeWork}">

@@ -17,8 +17,7 @@ public interface UserMapper {
             "where user_email = #{user_email}")
     String checkUserEmailExist(String user_email);
 
-    @Select("select * " +
-            "from users " +
+    @Select("select * from users " +
             "where user_id=#{user_id} and user_pw=#{user_pw}")
     User getLoginUserInfo(User tempLoginUserBean);
 
