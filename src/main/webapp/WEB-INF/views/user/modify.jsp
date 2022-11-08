@@ -29,6 +29,42 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
 </head>
+<script>
+  function checkUserEmailExist(){
+
+    var user_email = $("#user_email").val()
+
+    if(user_email.length == 0){
+      alert('이메일을 입력해주세요')
+      return
+    }
+    $.ajax({
+      url : '${root}user/checkUserEmailExist/' + user_email+'.',
+      type : 'get',
+      // data : {'email' : user_email},
+      dataType : 'text',
+
+
+      success : function(result){
+        if(result.trim() == 'true'){
+          alert('사용할 수 있는 이메일입니다')
+          $("#userEmailExist").val('true')
+        } else {
+          alert('사용할 수 없는 이메일 입니다')
+          $("#userEmailExist").val('false')
+        }
+      }
+    })
+  }
+
+
+  function resetUserEmailExist(){
+    $("#userEmailExist").val('false')
+  }
+
+
+
+</script>
 <body>
 
 <c:import url="/WEB-INF/views/includes/header.jsp"/>
@@ -39,6 +75,7 @@
       <div class="card shadow">
         <div class="card-body">
           <form:form action='${root}user/modify_pro' method='post' modelAttribute="modifyUserBean">
+            <form:hidden path="userEmailExist"/>
             <div class="form-group">
               <form:label path="user_name">이름</form:label>
               <form:input path="user_name" class='form-control' readonly="true"/>
@@ -48,16 +85,27 @@
               <form:input path="user_id" class='form-control' readonly="true"/>
             </div>
             <div class="form-group">
-              <form:label path="user_pw">비밀번호</form:label>
+              <form:label path="user_pw">변경 비밀번호</form:label>
               <form:password path="user_pw" class='form-control'/>
               <form:errors path='user_pw' style='color:red'/>
             </div>
             <div class="form-group">
-              <form:label path="user_pw2">비밀번호 확인</form:label>
+              <form:label path="user_pw2">변경 비밀번호 확인</form:label>
               <form:password path="user_pw2" class='form-control'/>
               <form:errors path='user_pw2' style='color:red'/>
             </div>
+            <!-- 이메일 & 중복확인 -->
             <div class="form-group">
+              <form:label path="user_email">이메일</form:label>
+              <div class="input-group">
+                <form:input path="user_email" class='form-control' onkeypress="resetUserEmailExist()"/>
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-primary" onclick='checkUserEmailExist()'>중복확인</button>
+                </div>
+              </div>
+              <form:errors path="user_email" style='color:red'/>
+              <br>
+              <div class="form-group">
               <div class="text-right">
                 <form:button class='btn btn-primary'>정보수정</form:button>
               </div>

@@ -118,14 +118,12 @@
                           <form:radiobutton path="user_role" value="2" label="멘티로 가입하기 " ></form:radiobutton>
                           <br>
                       </div>
-
                         <!-- 이름 -->
                           <div class="form-group">
                             <form:label path="user_name">이름</form:label>
                             <form:input path="user_name" class='form-control'/>
                             <form:errors path="user_name" style='color:red'/>
                         </div>
-
                         <!-- 아이디 & 중복확인 -->
                         <div class="form-group">
                             <form:label path="user_id">아이디</form:label>
@@ -137,7 +135,6 @@
                             </div>
                             <form:errors path="user_id" style='color:red'/>
                         </div>
-
                         <!-- 비밀번호 입력 -->
                         <div class="form-group">
                             <form:label path="user_pw">비밀번호 (영 대,소문자,숫자만 입력가능)</form:label>
@@ -150,7 +147,7 @@
                             <form:password path="user_pw2" class='form-control'/>
                             <form:errors path='user_pw2' style='color:red'/>
                         </div>
-                        <!-- 이메일 입력 중복확인 -->
+                        <!-- 이메일 & 중복확인 -->
                         <div class="form-group">
                             <form:label path="user_email">이메일</form:label>
                             <div class="input-group">
@@ -167,26 +164,19 @@
                                 <form:input path="user_phone" class='form-control' width="80px"/>
                                 <form:errors path="user_phone" style='color:red'/>
                             </div>
-
-                            <!--  성별 확인 (변경해야할듯 .. )-->
+                            <!-- 성별 선택 -->
                             <div class="form-group">
                                 <form:label path="user_gender">성별</form:label><br>
                                 <form:radiobutton path="user_gender" value="1" label="남자"></form:radiobutton>
                                 <form:radiobutton path="user_gender" value="2" label="여자"></form:radiobutton>
-
-<%--                                <form:input path="user_gender" class='form-control'/>--%>
-
                                 <form:errors path="user_gender" style='color:red'/>
                             </div>
-
                             <!-- 학교 입력 -->
                              <div class="form-group">
                                 <form:label path="user_school">학교</form:label>
                                 <form:input path="user_school" class='form-control'/>
                                 <form:errors path="user_school" style='color:red'/>
                             </div>
-
-
                         <div class="form-group">
                             <div class="text-right">
 

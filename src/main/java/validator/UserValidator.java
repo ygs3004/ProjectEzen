@@ -43,6 +43,9 @@ public class UserValidator implements Validator {
                 errors.rejectValue("user_pw", "NotEquals");
                 errors.rejectValue("user_pw2", "NotEquals");
             }
+            if (userBean.isUserEmailExist() == false) {
+                errors.rejectValue("user_email", "DontCheckUserEmailExist");
+            }
         }
     }
 }
