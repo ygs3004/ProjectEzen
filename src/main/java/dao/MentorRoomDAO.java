@@ -12,28 +12,27 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class MentorRoomDAO {
 
+
     final MentorRoomMapper roomMapper;
     final UserMapper userMapper;
-
-    // mentorRoom 에 info db추가
-    public void createRoom(MentorRoom roomInfo) {
-        roomMapper.createRoom(roomInfo);
-
-    }
-
-    // num == 멘토룸 num
-    public MentorRoom getMentorRoomInfo(int num){
-        return roomMapper.getUserMentorRoom(num);
-    }
-
-    public int getRoomNoByID(String user_id){
-        return roomMapper.getRoomNoByID(user_id);
-    }
-    // user_id로 MentorRoom No 찾기
-    public int getAssignedRoomNo(String user_id){
-        return userMapper.getAssignedRoomNo(user_id);
-    }
-
+//
+//    // mentorRoom 에 info db추가
+//    public void createRoom(MentorRoom roomInfo) {
+//        roomMapper.createRoom(roomInfo);
+//    }
+//    // num == 멘토룸 num
+//    public MentorRoom getMentorRoomInfo(int num){
+//        return roomMapper.getUserMentorRoom(num);
+//    }
+//
+//    public int getRoomNoByID(String user_id){
+//        return roomMapper.getRoomNoByID(user_id);
+//    }
+//
+//    // user_id로 MentorRoom No 찾기
+//    public int getAssignedRoomNo(String user_id){
+//        return userMapper.getAssignedRoomNo(user_id);
+//    }
 
 
 }
