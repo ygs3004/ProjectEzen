@@ -4,17 +4,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 작성</title>
-
 <!-- 공통 CSS -->
-<link rel="stylesheet" type="text/css" href="/css/common/common.css"/>
 
 <!-- 공통 JavaScript -->
 <script type="text/javascript" src="/js/common/jquery.js"></script>
 <script type="text/javascript" src="/js/common/jquery.form.js"></script>
 <script type="text/javascript">
-	
+
 	$(document).ready(function(){		
-		
+
 	});
 		
 	/** 게시판 - 목록 페이지 이동 */
@@ -85,12 +83,12 @@
 </head>
 <body>
 <%@ include file="../includes/header.jsp" %>
-<div id="wrap">
-	<div id="container">
-		<div class="inner">		
-			<h2>게시글 작성</h2>
+<div >
+	<div>
+		<div >
+			<h2 align="center">게시글 작성</h2>
 			<form id="boardForm" name="boardForm" action="/board/insertBoard" enctype="multipart/form-data" method="post" onsubmit="return false;">
-				<table width="100%" class="table02">
+				<table class="table table-dark table-sm">
 				<caption><strong><span class="t_red">*</span> 표시는 필수입력 항목입니다.</strong></caption>
 				    <colgroup>
 				        <col width="20%">
@@ -116,9 +114,9 @@
 				    </tbody>
 				</table>
 			</form>
-			<div class="btn_right mt15">
-				<button type="button" class="btn black mr5" onclick="javascript:goBoardList();">목록으로</button>
-				<button type="button" class="btn black" onclick="javascript:insertBoard();">등록하기</button>
+			<div>
+				<button type="button" class="btn btn-dark" onclick="javascript:goBoardList();">목록으로</button>
+				<button type="button" class="btn btn-dark" onclick="javascript:insertBoard();">등록하기</button>
 			</div>
 		</div>
 	</div>

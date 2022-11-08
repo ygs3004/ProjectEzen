@@ -5,11 +5,14 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>게시판 목록</title>
+
     <!-- 공통 CSS -->
-    <link rel="stylesheet" type="text/css" href="/css/common/common.css"/>
+
+    <link rel = stylesheet href="/css/bootstrap.css" >
+
 
     <!-- 공통 JavaScript -->
-    <script type="text/javascript" src="/js/common/jquery.js"></script>
+    <script type="text/javascript" src="js/common/jquery.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function(){
@@ -126,27 +129,22 @@
     </script>
 </head>
 <body>
+
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
-<div id="wrap">
-    <div id="container">
-        <div class="inner">
-            <h2>게시글 목록</h2>
+<div class="text-bg-primary p-3">
+            <h1 align="center">
+                게시글 목록
+            </h1>
             <form id="boardForm" name="boardForm">
                 <input type="hidden" id="function_name" name="function_name" value="getBoardList" />
                 <input type="hidden" id="current_page_no" name="current_page_no" value="1" />
 
-                <div class="page_info">
+                <div class="text-bg-primary p-3">
                     <span class="total_count"><strong>전체</strong> : <span id="total_count" class="t_red">0</span>개</span>
                 </div>
 
-                <table width="100%" class="table01">
-                    <colgroup>
-                        <col width="10%" />
-                        <col width="25%" />
-                        <col width="10%" />
-                        <col width="15%" />
-                        <col width="20%" />
-                    </colgroup>
+                <table class="table table-dark table-sm">
+
                     <thead>
                     <tr>
                         <th>글번호</th>
@@ -161,12 +159,12 @@
                     </tbody>
                 </table>
             </form>
-            <div class="btn_right mt15">
-                <button type="button" class="btn black mr5" onclick="javascript:goBoardWrite();">작성하기</button>
+            <div>
+                <button type="button" class="btn btn-dark" onclick="javascript:goBoardWrite();">작성하기</button>
             </div>
         </div>
 
-        <div id="pagination"></div>
+        <div></div>
 
     </div>
 </div>
