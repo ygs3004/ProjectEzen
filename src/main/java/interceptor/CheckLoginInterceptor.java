@@ -4,10 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import domain.User;
+import org.springframework.web.servlet.ModelAndView;
 
 public class CheckLoginInterceptor implements HandlerInterceptor{
 
@@ -19,19 +21,16 @@ public class CheckLoginInterceptor implements HandlerInterceptor{
     }
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+                            @Nullable ModelAndView modelAndView) throws Exception {
         if(loginUserBean.isUserLogin()) {
-            request.setAttribute("loginUser", loginUserBean);
-            return true;
+            request.getSession().setAttribute("loginUser", loginUserBean);
         }
 //        if(loginUserBean.isUserLogin() == false) {
 //            String contextPath = request.getContextPath();
 //            response.sendRedirect(contextPath + "/user/not_login");
 //            return false;
 //        }
-
-        return true;
     }
 }
 

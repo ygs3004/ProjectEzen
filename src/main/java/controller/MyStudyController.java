@@ -37,15 +37,13 @@ public class MyStudyController {
     @GetMapping("/StudyInfo")
     public String myStudy(Model model){
         // 접속한 회원의 멘토룸 정보
+        log.info("접속한 loginUserBean : "+loginUserBean);
         String user_id = loginUserBean.getUser_id();
         MentorRoom mentorRoom =  myStudyService.getMyStudyRoom(user_id);
-        // 접속한 회원의 등급정보
-        int user_role = loginUserBean.getUser_role();
         //접속한 회원의 과제 유무 체크
         boolean checkHomeWork = myStudyService.checkHomeWork(user_id);
 
         model.addAttribute("mentorRoom", mentorRoom);
-        model.addAttribute("user_role", user_role);
         model.addAttribute("checkHomeWork", checkHomeWork);
         return "/MyStudy/StudyInfo";
     }

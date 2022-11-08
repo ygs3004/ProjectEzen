@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var='root' value="${pageContext.request.contextPath }/"/>
 <!DOCTYPE html>
 <html>
@@ -31,7 +32,7 @@
     <div class="col-sm-6">
       <div class="card shadow">
         <div class="card-body">
-          <form:form action='${root }user/modify_pro' method='post' modelAttribute="modifyUserBean">
+          <form:form action='${root}user/modify_pro' method='post' modelAttribute="modifyUserBean">
             <div class="form-group">
               <form:label path="user_name">이름</form:label>
               <form:input path="user_name" class='form-control' readonly="true"/>

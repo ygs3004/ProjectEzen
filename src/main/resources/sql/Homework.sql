@@ -19,6 +19,3 @@ insert into homework values('a', 'a', 'a,', sysdate, '1', '1', '1');
 
 -- 커밋
 commit ;
-
-
-

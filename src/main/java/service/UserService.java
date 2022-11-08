@@ -19,11 +19,8 @@ public class UserService {
 
     final MentorRoomDAO mentorRoomDAO;
 
-
     @Resource(name = "loginUserBean")
     private User loginUserBean;
-
-
 
     public boolean checkuserIdExist(String user_id) {
 
@@ -63,16 +60,17 @@ public class UserService {
             loginUserBean.setUser_id(tempLoginUserBean2.getUser_id());
             loginUserBean.setUser_role(tempLoginUserBean2.getUser_role());
             loginUserBean.setUser_school(tempLoginUserBean2.getUser_school());
+            loginUserBean.setMentorRoomNo(tempLoginUserBean2.getMentorRoomNo());
             loginUserBean.setUserLogin(true);
         }
     }
-
 
     public void getModifyUserInfo(User modifyUserBean) {
         User tempModifyUserBean = userDao.getModifyUserInfo(loginUserBean.getUser_idx());
 
         modifyUserBean.setUser_id(tempModifyUserBean.getUser_id());
         modifyUserBean.setUser_name(tempModifyUserBean.getUser_name());
+
         modifyUserBean.setUser_idx(loginUserBean.getUser_idx());
     }
 

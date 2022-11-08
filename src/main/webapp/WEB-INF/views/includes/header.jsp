@@ -67,11 +67,17 @@
                 </c:choose>
                 <c:choose>
                     <c:when test="${!loginUser.userLogin}"> <!-- 로그인하지 않았을 경우 -->
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">My Study</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">마이스터디</a></li>
                     </c:when>
                     <c:otherwise>
-                        <%--<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo?user_id=${user_id}">My Study</a></li>--%>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo">My Study(로그인되었을때)</a></li>
+                        <c:if test="${loginUser.mentorRoomNo >= 1}">
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo">마이스터디</a></li>
+                        </c:if>
+                        <c:if test="${loginUser.mentorRoomNo == 0}">
+                            <c:if test="${loginUser.user_role == 1}">
+                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MentorRoom/createRoom">마이스터디</a></li>
+                            </c:if>
+                        </c:if>
                     </c:otherwise>
                 </c:choose>
 
