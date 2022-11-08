@@ -28,7 +28,6 @@ public class MentorRoomController {
     final MyStudyService myStudyService;
     final HomeController homeController;
 
-
     //스터디개설 (추후 @SessionAttribute("user_id") String user_id 추가 )
     @GetMapping("/createRoom")
     public String CreateMentorRoom(HttpSession session, HttpServletResponse response, Model model) throws IOException {
