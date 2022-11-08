@@ -75,6 +75,35 @@ function doCheck(){
             document.getElementById("studyPeriod").focus();
         return false;
     }
+
+    // 기간 오늘자 이후로 선택가능
+    // period1이 period2보다 빠른날이면 false
+    let period1 = enPeriod.value.slice(0, 10);
+    let period2 = enPeriod.value.slice(13, 23);
+
+    function getFormatDate(date){
+        let year = date.getFullYear();              //yyyy
+        let month = (1 + date.getMonth());          //M
+        month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+        let day = date.getDate();                   //d
+        day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+        return  year + '/' + month + '/' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+    }
+
+    // A기간 - B기간 중
+    if(period1>period2){
+        alert('스터디 종료일이 시작일보다 빠릅니다.')
+        document.getElementById("studyPeriod").focus();
+        return false;
+    }
+
+    //오늘자 이후로 선택
+    if(getFormatDate(new Date(period1))>getFormatDate(new Date)){
+        alert('스터디 시작일은 오늘보다 빠를 수 없습니다.')
+        document.getElementById("studyPeriod").focus();
+        return false;
+    }
+
     //요일이 선택되었는지 확인
     if(enWeekly.length == 0 | enWeekly==null){
         alert('요일을 선택해 주세요.');

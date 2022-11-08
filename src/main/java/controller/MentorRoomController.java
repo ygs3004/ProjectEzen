@@ -9,11 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import service.MentorRoomService;
 import service.MyStudyService;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -33,10 +30,8 @@ public class MentorRoomController {
     //스터디개설
     @GetMapping("/createRoom")
     public String CreateMentorRoom(HttpServletResponse response) throws IOException {
-        String user_id = loginUserBean.getUser_id();
-
         //user_id 앞으로 개설된 방 있는지 확인
-        boolean result = mentorRoomService.getAssignedRoomNo(user_id);
+        boolean result = mentorRoomService.getAssignedRoomNo(loginUserBean.getUser_id());
         if(result){
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
@@ -72,6 +67,8 @@ public class MentorRoomController {
         model.addAttribute("mentorRoom",mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id()));
         return "/MentorRoom/modifyRoom";
     }
+
+
 
 
 }

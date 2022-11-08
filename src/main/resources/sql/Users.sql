@@ -29,30 +29,3 @@ commit;
 
 
 
-
--- 테스트용
--- 멘토 테스트, mentoRoom 넘버 임의로 1로 넣어뒀음
-insert into users(user_idx, mentorRoomNo, user_role, user_name, user_id, user_pw, user_pw2, user_email, user_phone, user_gender, user_school)
-values (user_idx_seq.nextval, 1, 1, '김이름', '김멘토', '1234', '1234', 'ygs3004@naver.com',  '01011112222', 1, '서울대학교');
-
--- 멘티 테스트용, mentoRoom 넘버 1인상태
-insert into users(user_idx, mentorRoomNo, user_role, user_name, user_id, user_pw, user_pw2, user_email, user_phone, user_gender, user_school)
-values (user_idx_seq.nextval, 1, 2, '김제자', 'JEJA', '1234', '1234', 'student@naver.com',  '01022223333', 2, '서울고등학교');
-
--- 정상 회원가입햇을 때(멘토/멘티)
-insert into users
-    (user_idx, mentorRoomNo, user_role, user_name, user_id, user_pw, user_pw2,
-     user_email, user_phone, user_gender, user_school)
-    values (user_idx_seq.nextval, 0, 1, '멘토', 'mentor_id', '1234', '1234', 'mentor@com', '010-111-1111', 1, '멘토대학교');
-insert into users
-    (user_idx,mentorRoomNo,  user_role, user_name, user_id, user_pw, user_pw2,
-    user_email, user_phone, user_gender, user_school)
-    values (user_idx_seq.nextval, 0, 2, '멘티', 'mentee_id', '1234', '1234', 'mentee@com', '010-222-2222', 2, '멘티고등학교');
-
--- 커밋
-commit;
-
-
-
-
-
