@@ -11,7 +11,9 @@
         <appender-ref ref="console"/>
     </logger>
   
+
       <logger name="board" level="debug" additivity="false">
+
         <appender-ref ref="console"/>
     </logger>
     

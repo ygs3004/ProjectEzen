@@ -4,7 +4,7 @@ import domain.HomeWork;
 import domain.HomeWorkInfo;
 import domain.MentorRoom;
 import lombok.RequiredArgsConstructor;
-import mapper.MyStudyMapper;
+import service.mapper.MyStudyMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

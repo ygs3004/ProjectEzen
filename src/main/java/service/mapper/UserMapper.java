@@ -1,4 +1,4 @@
-package mapper;
+package service.mapper;
 
 import domain.MentorRoom;
 import domain.User;

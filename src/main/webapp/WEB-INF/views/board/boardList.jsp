@@ -5,12 +5,14 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>게시판 목록</title>
+
     <!-- 공통 CSS -->
 
     <link rel = stylesheet href="/css/bootstrap.css" >
 
+
     <!-- 공통 JavaScript -->
-    <script type="text/javascript" src="/js/common/jquery.js"></script>
+    <script type="text/javascript" src="js/common/jquery.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function(){
@@ -128,10 +130,10 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
-<div id="wrap">
-    <div id="container">
-        <div class="inner">
-            <h2>게시글 목록</h2>
+<div class = "main">
+            <div class ="title">
+                게시글 목록
+            </div>
             <form id="boardForm" name="boardForm">
                 <input type="hidden" id="function_name" name="function_name" value="getBoardList" />
                 <input type="hidden" id="current_page_no" name="current_page_no" value="1" />
@@ -140,7 +142,7 @@
                     <span class="total_count"><strong>전체</strong> : <span id="total_count" class="t_red">0</span>개</span>
                 </div>
 
-                <table width="100%" class="table01">
+                <table class="table">
                     <colgroup>
                         <col width="10%" />
                         <col width="25%" />
@@ -167,7 +169,7 @@
             </div>
         </div>
 
-        <div id="pagination"></div>
+        <div></div>
 
     </div>
 </div>

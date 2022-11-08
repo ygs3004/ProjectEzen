@@ -4,16 +4,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 작성</title>
-
 <!-- 공통 CSS -->
 
 <!-- 공통 JavaScript -->
 <script type="text/javascript" src="/js/common/jquery.js"></script>
 <script type="text/javascript" src="/js/common/jquery.form.js"></script>
 <script type="text/javascript">
-	
+
 	$(document).ready(function(){		
-		
+
 	});
 		
 	/** 게시판 - 목록 페이지 이동 */

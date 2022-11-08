@@ -1,7 +1,6 @@
 package config;
 import domain.User;
-import mapper.MyStudyMapper;
-import mapper.UserMapper;
+import service.mapper.UserMapper;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;

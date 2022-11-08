@@ -4,9 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+
 import mapper.BoardMapper;
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
 
 import domain.board.BoardDto;
@@ -16,6 +17,7 @@ import form.BoardForm;
  
 @Repository
 public class BoardDao {
+
 
     @Autowired
     BoardMapper mapper;
