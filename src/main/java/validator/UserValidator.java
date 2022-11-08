@@ -19,24 +19,25 @@ public class UserValidator implements Validator {
         User userBean = (User) target;
 
         String beanName = errors.getObjectName();
-
-        if (beanName.equals("joinUser") || beanName.equals("modifyUserBean")) {
-            if (userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
-                errors.rejectValue("user_pw", "NotEquals");
-                errors.rejectValue("user_pw2", "NotEquals");
+        System.out.println(beanName);
+        if(!beanName.equals("tempLoginUserBean")) {
+            if (beanName.equals("joinUser") || beanName.equals("modifyUserBean")) {
+                if (userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
+                    errors.rejectValue("user_pw", "NotEquals");
+                    errors.rejectValue("user_pw2", "NotEquals");
+                }
             }
-        }
 
-        if (beanName.equals("joinUser")) {
+            if (beanName.equals("joinUser")) {
 
-            if (userBean.isUserIdExist() == false) {
-                errors.rejectValue("user_id", "DontCheckUserIdExist");
+                if (userBean.isUserIdExist() == false) {
+                    errors.rejectValue("user_id", "DontCheckUserIdExist");
+                }
             }
-        }
-        if (userBean.isUserEmailExist() == false) {
-            errors.rejectValue("user_email", "DontCheckUserEmailExist");
-        }
+            if (userBean.isUserEmailExist() == false) {
+                errors.rejectValue("user_email", "DontCheckUserEmailExist");
+            }
 
-
+        }
     }
 }

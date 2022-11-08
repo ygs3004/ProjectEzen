@@ -32,9 +32,9 @@ public class MyStudyController {
     final UserDao userDao;
 
     @GetMapping("/StudyInfo")
-    public String myStudy(String user_id, Model model, HttpSession session){
+    public String myStudy(Model model, HttpSession session){
         // 접속한 회원의 멘토룸 정보
-        session.setAttribute("user_id", user_id);
+        String user_id = (String) session.getAttribute("user_id");
         MentorRoom mentorRoom =  myStudyService.getMyStudyRoom(user_id);
         // 접속한 회원의 등급정보
         int user_role = userDao.getUserInfo(user_id).getUser_role();

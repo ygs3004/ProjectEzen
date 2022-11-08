@@ -36,7 +36,7 @@ public class User {
     @Size(min=13, max=13)
     @Pattern(regexp = "^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$")
     private String user_phone;
-    @NotNull
+    @Pattern(regexp = "[1-2]")
     private String user_gender;
     @Size(min=4, max=20)
     @Pattern(regexp = "학교")

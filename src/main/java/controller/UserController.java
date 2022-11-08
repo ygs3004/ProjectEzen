@@ -1,6 +1,7 @@
 package controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import lombok.extern.log4j.Log4j;
@@ -43,11 +44,13 @@ public class UserController {
 
     //로그인할때
     @PostMapping("/login_pro")
-    public String login_pro(@Valid @ModelAttribute("tempLoginUserBean") User tempLoginUser, BindingResult result) {
+    public String login_pro(@Valid @ModelAttribute("tempLoginUserBean") User tempLoginUser, BindingResult result, HttpSession session) {
         log.info(tempLoginUser.toString());
         System.out.println("controller : "+tempLoginUser.getUser_id());
 
         System.out.println("controller : "+tempLoginUser.getUser_pw());
+
+        System.out.println(result.getAllErrors().toString());
 
         if(result.hasErrors()) {
             return "user/login";
@@ -57,6 +60,9 @@ public class UserController {
         userService.getLoginUserInfo(tempLoginUser);
 
         if(loginUserBean.isUserLogin() == true) {
+            session.setAttribute("user_id", tempLoginUser.getUser_id());
+            session.setAttribute("user_role", tempLoginUser.getUser_role());
+
             return "user/login_success";
         } else {
             return "user/login_fail";
