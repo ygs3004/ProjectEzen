@@ -6,36 +6,33 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ include file="../includes/header.jsp"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script type="text/javascript" src="/js/mentorRoomScripts.js"></script>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ include file="../includes/header.jsp"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" type="text/css" href="/css/mentorRoomStyles.css">
 <%--<form:form id="createForm" modelAttribute="createRoom">--%>
 
-<form action="/MentorRoom/roomInfo" method="POST" name="createForm" id="createForm" onsubmit="return doCheck()">
-<%--    <input type="hidden" name="num" value="0">--%>
-<%--    <input type="hidden" name="nowCapacity" value="0">--%>
-
+<form action="/MentorRoom/roomInfo" method="post" id="createForm">
     <section class="formHeader">
             <span id="formTitle"><b>스터디 개설</b></span>
             <p id="formDes">스터디를 개설해 멘티들을 모아볼까요?</p>
     </section>
     <div class="shadow p-3 mb-5 bg-white rounded formBody">
         <div class="user_name">
-            <span> ${loginUser.getUser_name()} 님 (${loginUser.getUser_id()})</span>
+            <span>멘토 user_name 님</span>
         </div>
         <div class="useMove">
-            <input type="text" class="form-control" id="title" name="title" autocomplete="on">
+            <input type="text" class="form-control" id="title" name="title" autocomplete="on" required>
             <label for="title"><span>스터디 이름</span></label>
         </div>
         <div class="useMove">
-            <input type="text" class="form-control" id="studyPeriod" name="studyPeriod">
+            <input type="text" class="form-control" id="studyPeriod" name="studyPeriod" required>
             <label for="studyPeriod"><span>스터디 기간</span></label>
             <form:errors id="errorLine" path="studyPeriod"/>
         </div>
@@ -73,16 +70,16 @@
             </div>
             <div style="display: flex; justify-content: space-between;">
             <div class="useMove">
-                <div><input type="time" class="form-control" id="studyTimeStart" name="studyTimeStart" value="09:00">
+                <div><input type="time" class="form-control" id="studyTimeStart" name="studyTimeStart" value="09:00" required>
                     <label for="studyTimeStart"><span>스터디 시간</span></label></div>
             </div>
             <div class="useMove">
-                <input type="time" class="form-control" id="studyTimeEnd" name="studyTimeEnd" value="18:00">
+                <input type="time" class="form-control" id="studyTimeEnd" name="studyTimeEnd" value="18:00" required>
                 <label for="studyTimeEnd"><span>스터디 종료 시간</span></label>
             </div>
             </div>
         <div class="useMove">
-            <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="30">
+            <input type="number" class="form-control" id="capacity" name="capacity" min="1" max="30" required>
             <label for="capacity"><span>모집인원</span></label>
         </div>
         <div class="desc">
@@ -90,7 +87,7 @@
         </div>
         <div style="display: flex;justify-content: space-between;">
             <div class="useMove">
-                <input type="text" class="form-control" id="addCareer">
+                <input type="text" class="form-control" id="addCareer" required>
                 <label for="addCareer"><span>멘토 경력</span></label>
             </div>
             <input type="button" class="form-control btn-outline-primary" id="addList" value="add" onclick="addCreerList()">
@@ -98,19 +95,20 @@
         <div id="careerList">
         </div>
         <div class="notMove">
-            <input type="text" class="form-control" id="school" name="school" value="${loginUser.user_school}" readonly>
+            <input type="text" class="form-control" id="school" name="school" value="user_school" readonly>
             <label for="school"><span class="block">멘토 학력</span></label>
         </div>
         <div>
             <textarea class="form-control" id="content" name="content" rows="15" style="resize: none;"></textarea>
             <label for="content"><span class="content">스터디 상세설명</span></label>
         </div>
+        <input type="hidden" name="user_id" value="user_id">
         <div style="text-align: center; margin-bottom: 2%;">
-            <button id="formCheck" type="submit" class="btn btn-primary">스터디개설</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="개설취소" onclick="history.back();">
+            <button id="formCheck" type="submit" class="btn btn-primary">스터디 개설</button>
         </div>
-</div>
+<%--            <input type="button" class="btn btn-primary" value="뒤로가기" onclick="history.back();"></div>--%>
     </div>
 </form>
 <%--</form:form>--%>
+
 <%@ include file="../includes/footer.jsp"%>

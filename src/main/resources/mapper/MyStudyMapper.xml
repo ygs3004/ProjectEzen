@@ -8,26 +8,13 @@
         select * from mentorRoom where user_id = #{mentor_id}
     </select>
 
-    <insert id="uploadHomeWorkInfo">
+    <insert id="uploadHomeWork">
         insert into hwInfo (hwName, hwContent, writer, hwRegDate, hwDeadLine, CompleteMentee)
         values(#{hwName}, #{hwContent}, #{writer}, SYSDATE, #{hwDeadLine}, 0)
     </insert>
 
     <select id="getHomeWork"  resultType="domain.HomeWorkInfo">
         select * from hwInfo
-    </select>
-
-    <insert id="homeWorkSubmit" parameterType="domain.HomeWork">
-        insert into homework (mentorid, user_id, content, hwregdate, uuid, filename, uploadpath)
-        VALUES (#{mentorId}, #{user_id}, #{content}, sysdate, #{uuid, jdbcType=VARCHAR}, #{filename, jdbcType=VARCHAR}, #{uploadPath, jdbcType=VARCHAR})
-    </insert>
-
-    <select id="checkHomeWork" resultType="int">
-        select count(*) from HWINFO where writer = #{mentor_id}
-    </select>
-
-    <select id="getHomeWorkList" resultType="domain.HomeWork">
-        select * from homework
     </select>
 
 </mapper>
