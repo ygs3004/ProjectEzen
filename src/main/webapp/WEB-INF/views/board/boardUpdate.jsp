@@ -13,8 +13,8 @@
 <c:set var="boardSeq" value="<%=boardSeq%>"/> <!-- 게시글 번호 -->
  
 <!-- 공통 CSS -->
-
-
+<link rel="stylesheet" type="text/css" href="/css/common/common.css"/>
+ 
 <!-- 공통 JavaScript -->
 <script type="text/javascript" src="/js/common/jquery.js"></script>
 <script type="text/javascript" src="/js/common/jquery.form.js"></script>

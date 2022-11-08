@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ include file="/WEB-INF/views/includes/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="/WEB-INF/views/includes/header.jsp"/>
 <html>
 <head>
     <title>과제 정보</title>
@@ -20,29 +20,39 @@
         }
     }
 
-    .container{
+    .container {
         margin-top: 40px;
         margin-bottom: 40px;
     }
 
-    .study-informartion{
+    .study-informartion {
         margin-top: 40px;
         margin-bottom: 40px;
         width: 70%;
     }
 
-    table{
+    table {
         height: 70%;
         width: 70%;
     }
 
     th, td {
-        vertical-align : middle;
+        vertical-align: middle;
     }
 
-    th{
+    th {
         text-align: center;
-        width:30%;
+        width: 30%;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    ul, li {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 15px;
     }
 
 </style>
@@ -75,9 +85,11 @@
             <td> <c:out value="${homeWork.completeMentee} / ${mentorRoom.nowCapacity} 명" /> </td>
         </tr>
         <tr>
-            <th scope="row">제출자 명단</th>
+            <th scope="row">제출자 명단 ajax</th>
             <td>
-                제출자,
+                <ul class="uploadedHwList">
+                    <%--ajax 출력--%>
+                </ul>
             </td>
         </tr>
         </tbody>
@@ -85,5 +97,65 @@
 </div>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous"></script>
+<script>
+
+    var uploadedHwList = $(".uploadedHwList");
+
+    function showUploadedHwList(uploadedHwResultArr){
+
+        let str = "";
+
+        $(uploadedHwResultArr).each((i, obj) =>{
+
+            str += "<li> 제출자 : " + obj.user_id + " 제출일 : " + obj.hwRegDate + "</li>";
+            str += "<textarea rows='5' cols='40' readonly>" + obj.content + "/></textarea>"
+
+            if(obj.filename) {
+                let uploadPathArr = obj.uploadPath.split(",");
+                let uuidArr = obj.uuid.split(",")
+                let filenameArr = obj.filename.split(",");
+
+                for(let j=0; j<filenameArr.length; j++){
+                    if(filenameArr[j].length>0) {
+                        let fileCallPath = encodeURIComponent(uploadPathArr[j] + "/" + uuidArr[j] + "_" + filenameArr[j]);
+                        str += "<li><a href='/MyStudy/downloadHw?filename=" + fileCallPath + "'> 첨부파일 : " + filenameArr[j] + "</a></li>";
+                    }
+                }
+            }
+
+        })
+
+        uploadedHwList.append(str);
+    }
+
+    let writer = '<c:out value="${homeWork.writer}"/>';
+
+    $(function(){
+        $.getJSON("/MyStudy/homeWorkList", {writer:writer}, function(hwList) {
+            console.log(hwList);
+            showUploadedHwList(hwList);
+
+        });
+    })
+       /* 참고 예제
+        $.getJSON("/replies/pages/"+bno+"/"+page+".json",
+            function(data){
+                if(callback){
+                    //callback(data); // 댓글 목록만 가져오는 경우
+                    callback(data.replyCnt, data.list);
+                }
+            }).fail(function(xhr, status, er){
+                if(error){
+                    error();
+                }
+            }
+        );
+        */
+
+</script>
+
 </html>
-<%@ include file="/WEB-INF/views/includes/footer.jsp"%>
+<c:import url="/WEB-INF/views/includes/footer.jsp"/>

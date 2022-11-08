@@ -1,5 +1,6 @@
 package controller;
 
+import domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -7,6 +8,9 @@ import javax.annotation.Resource;
 
 @Controller
 public class HomeController {
+
+    @Resource(name = "loginUserBean")
+    private User loginUserBean;
 
     @GetMapping("/")
     public String home(){

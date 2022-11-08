@@ -11,5 +11,5 @@
 <c:set var='root' value='${pageContext.request.contextPath }/'/>
 <script>
   alert('로그인 되었습니다')
-  location.href = '${root}MyStudy/StudyInfo'
+  location.href = '${root}'
 </script>

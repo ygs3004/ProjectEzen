@@ -72,8 +72,6 @@
             alert('이메일을 입력해주세요')
             return
         }
-        console.log(user_email);
-
         $.ajax({
             url : '${root}user/checkUserEmailExist/' + user_email+'.',
             type : 'get',

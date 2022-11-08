@@ -2,6 +2,13 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ko">
+<style>
+
+    #grean{
+        height: 710px;
+
+    }
+</style>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -17,6 +24,10 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
+    <%--jquery--%>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"></script>
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -33,20 +44,42 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/board/boardList">자유게시판</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">로그인</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/join">회원가입</a></li>
+<%--                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">로그인</a></li>--%>
+<%--                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/join">회원가입</a></li>--%>
                 <%-- 멘토 : user_role==1 멘티 : user_role==2 --%>
-
-                <c:choose>
-                    <c:when test="${empty user_id}"> <!-- 로그인하지 않았을 격우 -->
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">My Study</a></li>
+                <c:choose>  <%-- 로그인 했을경우--%>
+                    <c:when test="${loginUser.userLogin}">
+                        <li class="nav-item">
+                            <a href="${root}/user/modify" class="nav-link">회원수정</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="${root}/user/logout" class="nav-link">로그아웃</a>
+                        </li>
                     </c:when>
-                    <c:otherwise>
-                        <%--<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo?user_id=${user_id}">My Study</a></li>--%>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo?user_id=김멘토">My Study 멘토</a></li>
+                    <c:otherwise> <%-- 로그인 하지않았을 경우 --%>
+                        <li class="nav-item">
+                            <a href="${root}/user/login" class="nav-link">로그인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="${root}/user/join"class="nav-link">회원가입</a>
+                        </li>
                     </c:otherwise>
                 </c:choose>
-
+                <c:choose>
+                    <c:when test="${!loginUser.userLogin}"> <!-- 로그인하지 않았을 경우 -->
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">마이스터디</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <c:if test="${loginUser.mentorRoomNo >= 1}">
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MyStudy/StudyInfo">마이스터디</a></li>
+                        </c:if>
+                        <c:if test="${loginUser.mentorRoomNo == 0}">
+                            <c:if test="${loginUser.user_role == 1}">
+                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/MentorRoom/createRoom">마이스터디</a></li>
+                            </c:if>
+                        </c:if>
+                    </c:otherwise>
+                </c:choose>
 
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
@@ -57,20 +90,20 @@
 </nav>
 <!-- Masthead-->
 
-<header class="masthead bg-primary text-white text-center">
+<header class="masthead bg-primary text-white text-center" id="grean">
 
 
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img src="..\img\mento.png" width="400" height="200"/>
+        <img src="..\img\mento.png" width="400" height="185"/>
         <!-- Masthead Heading-->
         <br>
         <br>
-        <h1 class="masthead-heading text-uppercase mb-0">멘토 멘티 사이트</h1>
+        <h3 class="masthead-heading text-uppercase mb-0">멘토 멘티 사이트</h3>
         <br>
         <br>
 
-        <h1 class="masthead-heading text-uppercase mb-0"> 멘토 멘티</h1>
+        <h3 class="masthead-heading text-uppercase mb-0"> 멘토 멘티</h3>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>

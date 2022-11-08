@@ -3942,7 +3942,7 @@ textarea.form-control-lg {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 16px 1rem;
   color: #1abc9c;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
@@ -4239,8 +4239,8 @@ textarea.form-control-lg {
     position: absolute;
   }
   .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding-right: 16px;
+    padding-left: 16px;
   }
   .navbar-expand-lg .navbar-nav-scroll {
     overflow: visible;
@@ -11431,7 +11431,7 @@ html {
 }
 
 .masthead {
-  padding-top: calc(6rem + 74px);
+  padding-top: calc(6rem + 80px);
   padding-bottom: 6rem;
 }
 .masthead .masthead-heading {
@@ -11447,7 +11447,7 @@ html {
 
 @media (min-width: 992px) {
   .masthead {
-    padding-top: calc(6rem + 104px);
+    padding-top: calc(6rem + 50px);
     padding-bottom: 6rem;
   }
   .masthead .masthead-heading {
