@@ -16,8 +16,6 @@ public class MentorRoomService {
 
     // user 에서 userInfo 조회 (나중에 uerService로 옮기기..)
     public User getUserInfo(@SessionAttribute("user_id") String user_id) {
-
-
         User userInfo = userDAO.getUserInfo(user_id);
         return userInfo;
     }
@@ -28,9 +26,7 @@ public class MentorRoomService {
     }
 
     // users 에 roomNo 추가
-
     public void usersAddRoomNo(int num, String user_id) {
-
         userDAO.usersAddRoomNo(num, user_id);
     }
 

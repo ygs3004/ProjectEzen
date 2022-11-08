@@ -5,7 +5,7 @@ import org.springframework.validation.Validator;
 
 import domain.User;
 
-public class UserValidator implements Validator{
+public class UserValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -16,11 +16,10 @@ public class UserValidator implements Validator{
     @Override
     public void validate(Object target, Errors errors) {
         // TODO Auto-generated method stub
-<<<<<<<HEAD
         User userBean = (User) target;
 
         String beanName = errors.getObjectName();
-        if (!beanName.equals("tempLoginUserBean") && !beanName.equals("modifyUserBean")) {
+        if(!beanName.equals("tempLoginUserBean") && !beanName.equals("modifyUserBean") ){
             if (beanName.equals("joinUser") || beanName.equals("modifyUserBean")) {
                 if (userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
                     errors.rejectValue("user_pw", "NotEquals");
@@ -37,6 +36,7 @@ public class UserValidator implements Validator{
             if (userBean.isUserEmailExist() == false) {
                 errors.rejectValue("user_email", "DontCheckUserEmailExist");
             }
+
         }
     }
 }
