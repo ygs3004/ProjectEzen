@@ -1,4 +1,4 @@
-package service.mapper;
+package mapper;
 
 import domain.MentorRoom;
 import org.apache.ibatis.annotations.*;

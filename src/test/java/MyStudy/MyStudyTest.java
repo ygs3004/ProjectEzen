@@ -1,7 +1,6 @@
 package MyStudy;
 
 import config.RootAppContext;
-import config.ServletAppContext;
 import dao.MyStudyDao;
 import dao.UserDao;
 import domain.MentorRoom;
@@ -9,8 +8,8 @@ import lombok.extern.log4j.Log4j;
 
 import mapper.BoardMapper;
 
-import service.mapper.MyStudyMapper;
-import service.mapper.UserMapper;
+import mapper.MyStudyMapper;
+import mapper.UserMapper;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

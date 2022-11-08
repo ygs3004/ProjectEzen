@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import domain.User;
-import service.mapper.UserMapper;
+import mapper.UserMapper;
 
 @Repository
 public class UserDao {

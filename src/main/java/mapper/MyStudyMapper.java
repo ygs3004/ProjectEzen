@@ -1,4 +1,4 @@
-package service.mapper;
+package mapper;
 
 import domain.HomeWork;
 import domain.HomeWorkInfo;
