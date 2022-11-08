@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: i7A-56
-  Date: 2022-10-27
-  Time: 오전 10:30
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="../includes/header.jsp"%>
@@ -21,7 +13,15 @@
 <form action="/MentorRoom/roomInfo" method="POST" name="createForm" id="createForm" onsubmit="return doCheck()">
 <%--    <input type="hidden" name="num" value="0">--%>
 <%--    <input type="hidden" name="nowCapacity" value="0">--%>
+    <style>
+            #formTitle{
+                font-size: 4vw;
+            }
+            #formDes{
+                font-size: 18px;
+            }
 
+    </style>
     <section class="formHeader">
             <span id="formTitle"><b>스터디 개설</b></span>
             <p id="formDes">스터디를 개설해 멘티들을 모아볼까요?</p>
