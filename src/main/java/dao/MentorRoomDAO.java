@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class MentorRoomDAO {
+//
+//    final MentorRoomMapper roomMapper;
+//    final UserMapper userMapper;
 
-
-    final MentorRoomMapper roomMapper;
-    final UserMapper userMapper;
 //
 //    // mentorRoom 에 info db추가
 //    public void createRoom(MentorRoom roomInfo) {
@@ -33,6 +33,5 @@ public class MentorRoomDAO {
 //    public int getAssignedRoomNo(String user_id){
 //        return userMapper.getAssignedRoomNo(user_id);
 //    }
-
 
 }

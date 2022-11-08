@@ -20,5 +20,6 @@ public interface MentorRoomMapper {
 //    @Update("update users SET mentorRoomNo = #{num} where #{user_id}")
 //    public int mentorRoomNoIntoUsers(int num);
 
+
 }
 

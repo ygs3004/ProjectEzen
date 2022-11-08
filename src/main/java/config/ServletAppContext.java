@@ -1,5 +1,6 @@
 package config;
 import domain.User;
+import interceptor.CheckLoginInterceptor;
 import mapper.MyStudyMapper;
 import mapper.UserMapper;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -19,6 +20,8 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
+import javax.annotation.Resource;
+
 // Spring MVC 프로젝트에 관련된 설정을 하는 클래스
 @Configuration
 // Controller 어노테이션이 셋팅되어 있는 클래스를 Controller로 등록한다.
@@ -26,6 +29,9 @@ import org.springframework.web.servlet.config.annotation.*;
 //스캔할 패키지를 지정한다.
 @ComponentScan(basePackages = "controller")
 public class ServletAppContext implements WebMvcConfigurer {
+
+    @Resource(name = "loginUserBean")
+    private User loginUserBean;
 
     // Controller의 메서드가 반환하는 jsp의 이름 앞뒤에 확장자를 붙여주도록 한다.
     @Override
@@ -68,19 +74,18 @@ public class ServletAppContext implements WebMvcConfigurer {
 //        return new User();
 //    }
 
-/*
+        @Override
+        public void addInterceptors(InterceptorRegistry registry) {
+            // TODO Auto-generated method stub
+            WebMvcConfigurer.super.addInterceptors(registry);
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry){
-        WebMvcConfigurer.super.addInterceptors(registry);
+            CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean);
 
-        TopMenuInterceptor topMenuInterceptor = new TopMenuInterceptor(topMenuService);
+            InterceptorRegistration reg1 = registry.addInterceptor(checkLoginInterceptor);
+            reg1.addPathPatterns("/**");
 
-        InterceptorRegistration reg1 = registry.addInterceptor(topMenuInterceptor);
-        reg1.addPathPatterns("/**");
 
     }
-*/
 
 
 }

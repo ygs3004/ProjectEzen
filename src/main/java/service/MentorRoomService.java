@@ -8,6 +8,7 @@ import mapper.MentorRoomMapper;
 import mapper.UserMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Service
