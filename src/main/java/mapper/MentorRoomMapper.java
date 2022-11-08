@@ -1,25 +1,27 @@
 package mapper;
 
 import domain.MentorRoom;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface MentorRoomMapper {
 
-    int createRoom(MentorRoom mentorRoom);
+    @Insert("INSERT INTO MentorRoom" +
+            "(user_id, num, title," +
+            "studyPeriod, studyWeekly, studyTimeStart, studyTimeEnd," +
+            "capacity, nowCapacity, career, school, content) " +
+            "values (#{user_id}, mentor_room_seq.nextval, #{title}," +
+            "#{studyPeriod}, #{studyWeekly}, #{studyTimeStart}, #{studyTimeEnd}," +
+            "#{capacity}, 0, #{career}, #{school}, #{content})")
+    public int createRoom(MentorRoom roomInfo);
 
-    // RoomInfo by num
-    MentorRoom getRoomInfoByNum(int num);
+    // MentorRoom 방번호 넣으면 MentorRoom 나옴
+    @Select("select * from MentorRoom where num = ${num}")
+    MentorRoom getUserMentorRoom(int num);
 
-    // RoomInfo by user_id
-    MentorRoom getRoomInfoByID(String user_id);
-
-    // User_id 넣으면 MentorRoomNo 나옴
-    int getRoomNoByID(@Param("user_id") String user_id);
-//
-//    @Update("update users SET mentorRoomNo = #{num} where #{user_id}")
-//    public int mentorRoomNoIntoUsers(int num);
 
 
 }
-

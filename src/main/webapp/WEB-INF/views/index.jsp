@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ include file="includes/header.jsp"%>
+<%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
 
-<%@ include file="includes/footer.jsp"%>
-
+<%@ include file="/WEB-INF/views/includes/footer.jsp"%>

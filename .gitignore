@@ -85,7 +85,7 @@ fabric.properties
 ### Intellij Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
- *.iml
+# *.iml
 # modules.xml
 # .idea/misc.xml
 # *.ipr
@@ -171,9 +171,57 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,windows
 target/ProjectMentor/WEB-INF/views/user/login.jsp
 *.class
-.idea/.name
-*.MF
 *.class
+*.class
+.idea/.name
+target/ProjectMentor/META-INF/MANIFEST.MF
+target/ProjectMentor/resources/assets/favicon.ico
+target/ProjectMentor/resources/assets/img/avataaars.svg
+target/ProjectMentor/resources/assets/img/portfolio/cabin.png
+target/ProjectMentor/resources/assets/img/portfolio/cake.png
+target/ProjectMentor/resources/assets/img/portfolio/circus.png
+target/ProjectMentor/resources/assets/img/portfolio/game.png
+target/ProjectMentor/resources/assets/img/portfolio/safe.png
+target/ProjectMentor/resources/assets/img/portfolio/submarine.png
+target/ProjectMentor/resources/css/styles.css
+target/ProjectMentor/resources/img/mento.png
+target/ProjectMentor/resources/img/mentoring.gif
+target/ProjectMentor/resources/js/scripts.js
+target/ProjectMentor/WEB-INF/classes/sql/MyStudy.sql
+target/ProjectMentor/WEB-INF/properties/db.properties
+target/ProjectMentor/WEB-INF/views/includes/footer.jsp
+target/ProjectMentor/WEB-INF/views/includes/header.jsp
+target/ProjectMentor/WEB-INF/views/index.jsp
+target/ProjectMentor/WEB-INF/views/MentorRoom/createRoom.jsp
+target/ProjectMentor/WEB-INF/views/MentorRoom/js/createMR.js
+target/ProjectMentor/WEB-INF/views/MyStudy/HomeWorkSubmitForm.jsp
+target/ProjectMentor/WEB-INF/views/MyStudy/MenteeHomeWorkInfo.jsp
+target/ProjectMentor/WEB-INF/views/MyStudy/MentorHomeWorkInfo.jsp
+target/ProjectMentor/WEB-INF/views/MyStudy/StudyInfo.jsp
+target/ProjectMentor/WEB-INF/views/MyStudy/UploadHomeWork.jsp
+target/ProjectMentor/WEB-INF/views/reference.jsp
+target/ProjectMentor/WEB-INF/views/user/join.jsp
+target/ProjectMentor/WEB-INF/views/user/join_success.jsp
+target/ProjectMentor/WEB-INF/views/user/login_fail.jsp
+target/ProjectMentor/WEB-INF/views/user/logout.jsp
+target/ProjectMentor/WEB-INF/views/user/modify.jsp
+target/classes/config/SpringConfigClass.class
+target/classes/config/ServletAppContext.class
+target/classes/config/SpringConfigClass.class
+*.class
+*.class
+*.class
+target/classes/config/RootAppContext.class
+target/classes/domain/User.class
+target/ProjectMentor/META-INF/MANIFEST.MF
+target/ProjectMentor/WEB-INF/classes/config/RootAppContext.class
+target/ProjectMentor/WEB-INF/classes/config/ServletAppContext.class
+target/ProjectMentor/WEB-INF/classes/dao/UserDao.class
+target/ProjectMentor/WEB-INF/classes/domain/User.class
+target/ProjectMentor/WEB-INF/classes/mapper/UserMapper.class
+target/ProjectMentor/WEB-INF/classes/service/UserService.class
+target/ProjectMentor/WEB-INF/classes/service/UserService.class
 target/ProjectMentor/WEB-INF/classes/mapper/UserMapper.class
 target/ProjectMentor/WEB-INF/classes/dao/UserDao.class
+target/ProjectMentor/WEB-INF/classes/config/ServletAppContext.class
 target/ProjectMentor/META-INF/MANIFEST.MF
