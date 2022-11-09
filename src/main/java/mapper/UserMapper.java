@@ -25,7 +25,7 @@ public interface UserMapper {
     User getModifyUserInfo(int user_idx);
 
 
-    @Update("update users set user_pw = #{user_pw}, user_pw2 = #{user_pw2}, user_email = #{user_email} where user_idx = #{user_idx}")
+    @Update("update users set user_pw = #{user_pw}, user_pw2 = #{user_pw2}, user_email = #{user_email}, user_phone = #{user_phone} where user_idx = #{user_idx}")
     void modifyUserInfo(User modifyUserBean);
 
     @Insert("insert into users (user_idx,mentorRoomNo, user_role, user_name, user_id, user_pw, user_pw2, user_email, user_phone, user_gender, user_school) " + "values (user_idx_seq.nextval, 0, #{user_role}, #{user_name}, #{user_id}, #{user_pw}, #{user_pw2}, #{user_email}, #{user_phone}, #{user_gender}, #{user_school})")
