@@ -92,7 +92,7 @@
                 <td> <c:out value="${homeWork.completeMentee} / ${mentorRoom.nowCapacity} 명" /> </td>
             </tr>
             <tr>
-                <th scope="row">제출자 명단 ajax</th>
+                <th scope="row">제출자 명단</th>
                 <td>
                     <ul class="uploadedHwList">
                         <%--ajax 출력--%>

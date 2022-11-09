@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import javax.annotation.Resource;
+
 @Service
 @RequiredArgsConstructor
 public class MentorRoomService {
@@ -19,6 +21,9 @@ public class MentorRoomService {
     final MentorRoomDAO mentorRoomDAO;
     final UserMapper userMapper;
     final MentorRoomMapper roomMapper;
+
+    @Resource(name = "loginUserBean")
+    private User loginUserBean;
 
 //    // user 에서 userInfo 조회 (나중에 uerService로 옮기기..)
 //    public User getUserInfo (@SessionAttribute("user_id") String user_id){
@@ -53,6 +58,7 @@ public class MentorRoomService {
      */
     public void usersAddRoomNo(int mentorRoomNo, String user_id){
         userMapper.updateRoomNo(mentorRoomNo, user_id);
+        loginUserBean.setMentorRoomNo(mentorRoomNo);
     }
 
     /**

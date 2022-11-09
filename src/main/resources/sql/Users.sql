@@ -22,6 +22,8 @@ CREATE TABLE USERS
 -- 테이블 확인용
 select * from users;
 
+
+
 -- 커밋
 commit;
 

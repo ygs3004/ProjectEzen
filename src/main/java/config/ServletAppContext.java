@@ -86,13 +86,13 @@ public class ServletAppContext implements WebMvcConfigurer {
         WebMvcConfigurer.super.addInterceptors(registry);
 
         CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean);
-        UpdateUserStatus updateUserStatus = new UpdateUserStatus(loginUserBean, userDao);
+//        UpdateUserStatus updateUserStatus = new UpdateUserStatus(loginUserBean, userDao);
 
         InterceptorRegistration reg1 = registry.addInterceptor(checkLoginInterceptor);
         reg1.addPathPatterns("/user/login_pro");
-
-        InterceptorRegistration reg2 = registry.addInterceptor(updateUserStatus);
-        reg2.addPathPatterns("/MyStudy/**", "/MentorRoom/**");
+//
+//        InterceptorRegistration reg2 = registry.addInterceptor(updateUserStatus);
+//        reg2.addPathPatterns("/MyStudy/**", "/MentorRoom/**");
 
     }
 
