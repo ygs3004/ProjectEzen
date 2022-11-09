@@ -20,29 +20,29 @@ $(function() {
 });
 
 function addCreerList() {
-    const add = document.getElementById('addCareer');
-    const p = document.createElement('p');
+    const addstr = document.getElementById('addCareer');
+    const li = document.createElement('li');
     const input = document.createElement('input');
     const del = document.createElement('a');
 
     //<input type="hidden" name="carrer" value=add.value>
     input.setAttribute('type',"hidden");
     input.setAttribute('name','career');
-    input.setAttribute('value',add.value);
+    input.setAttribute('value',addstr.value);
 
     //<a id="delByn">삭제</a>
     del.append("삭제");
     del.setAttribute('id','delBtn');
+    del.addEventListener("click", delAct);
 
-    //<p>str<input type="hidden" name="carrer" value=add.value>
-    // <a onclick=“delAct”>삭제</a></p>
-    const str = document.createTextNode(add.value);
-    p.appendChild(str);
-    p.append(" ");
-    p.appendChild(input);
+    //<p>str<input type="hidden" name="carrer" value=add.value><a>삭제</a></p>
+    const str = document.createTextNode(addstr.value);
+    li.appendChild(str);
+    li.append(" ");
+    li.appendChild(input);
 
-    document.getElementById('careerList').appendChild(p).appendChild(del).addEventListener("click", delAct);
-    add.value=""; //추가 후 input 비우기
+    document.getElementById('careerList').appendChild(li).appendChild(del);
+    addstr.value=""; //추가 후 input 비우기
 };
 
 //호출한 라인 삭제

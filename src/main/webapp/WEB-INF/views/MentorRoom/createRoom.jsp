@@ -13,7 +13,7 @@
             <span id="formTitle"><b>스터디 개설</b></span>
             <p id="formDes">스터디를 개설해 멘티들을 모아볼까요?</p>
     </section>
-    <div class="shadow p-3 mb-5 bg-white rounded formBody">
+    < class="shadow p-3 mb-5 bg-white rounded formBody">
         <div class="user_name">
             <span> ${loginUser.getUser_name()} 님 (${loginUser.getUser_id()})</span>
         </div>
@@ -81,8 +81,8 @@
             </div>
             <input type="button" class="form-control btn-outline-primary" id="addList" value="add" onclick="addCreerList()">
         </div>
-        <div id="careerList">
-        </div>
+        <ul id="careerList" style="padding-left:0px; line-height: 25px; list-style:none; font-size: 15px;">
+        </ul>
         <div class="notMove">
             <input type="text" class="form-control" id="school" name="school" value="${loginUser.getUser_school()}" readonly>
             <label for="school"><span class="block">멘토 학력</span></label>
