@@ -35,10 +35,10 @@ public class MentorRoomController {
         if(result){
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>alert('스터디는 한개만 개설할 수 있습니다.'); history.back();</script>");
+            out.println("<script>alert('스터디는 한개만 개설할 수 있습니다.');</script>");
             out.close();
 //            request.setAttribute("message", "스터디는 한개만 개설할 수 있습니다.");
-            return homeController.home();
+            return "redirect:/";
         }else{
             return "/MentorRoom/createRoom";
         }
@@ -48,10 +48,7 @@ public class MentorRoomController {
     @PostMapping("/roomInfo")
     public String createRoom(MentorRoom mentorRoom, Model model){
         mentorRoomService.createRoom(mentorRoom, loginUserBean.getUser_id());
-        boolean checkHomeWork = myStudyService.checkHomeWork(loginUserBean.getUser_id());
-        model.addAttribute("mentorRoom", mentorRoom);
-        model.addAttribute("checkHomeWork", checkHomeWork);
-        return "/MyStudy/StudyInfo";
+        return "redirect:/MyStudy/StudyInfo";
     }
 
     @GetMapping("/modifyRoom")
