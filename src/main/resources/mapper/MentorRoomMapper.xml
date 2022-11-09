@@ -10,7 +10,7 @@
                                 career, school, content)
         values (#{user_id}, mentor_room_seq.nextval, #{title}, #{studyPeriod}, #{studyWeekly},
                 #{studyTimeStart}, #{studyTimeEnd}, #{capacity}, 0,
-                #{career}, #{school}, #{content})
+                #{career, jdbcType=VARCHAR}, #{school}, #{content})
     </insert>
 
     <select id="getRoomInfoByNum"  resultType="domain.MentorRoom">

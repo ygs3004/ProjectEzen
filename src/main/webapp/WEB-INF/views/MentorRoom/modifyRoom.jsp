@@ -85,9 +85,15 @@
             <input type="button" class="form-control btn-outline-primary" id="addList" value="add" onclick="addCreerList()">
         </div>
         <div id="careerList">
-            <c:forEach var="careers" items="${mentorRoom.getCareerList()}" varStatus="status">
-                <p><c:out value="${careers}" /><input type="hidden" name="career" value="${careers}"></p>
-            </c:forEach>
+            <c:choose>
+                <c:when test="${mentorRoom.getCareer() eq null}">
+                </c:when>
+                <c:otherwise>
+                    <c:forEach var="careers" items="${mentorRoom.getCareerList()}" varStatus="status">
+                        <p><c:out value="${careers}"/> <input type="hidden" name="career" value="${careers}"> <a class="delev">삭제</a></p>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
         </div>
         <div class="notMove">
             <input type="text" class="form-control" id="school" name="school" value="${loginUser.getUser_school()}" readonly>

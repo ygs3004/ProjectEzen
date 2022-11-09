@@ -15,7 +15,7 @@ public interface MentorRoomMapper {
     MentorRoom getRoomInfoByID(String user_id);
 
     // User_id 넣으면 MentorRoomNo 나옴
-    int getRoomNoByID(@Param("user_id") String user_id);
+    int getRoomNoByID(String user_id);
 //
 //    @Update("update users SET mentorRoomNo = #{num} where #{user_id}")
 //    public int mentorRoomNoIntoUsers(int num);

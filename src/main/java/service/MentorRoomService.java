@@ -37,6 +37,7 @@ public class MentorRoomService {
     }
 
     // ADD roomInfo
+    @Transactional
     public void createRoom(MentorRoom roomInfo, String user_id) {
         roomMapper.createRoom(roomInfo);
         int roomNo = getRoomNoByID(user_id); //id로 만들어진 roomNum 조회

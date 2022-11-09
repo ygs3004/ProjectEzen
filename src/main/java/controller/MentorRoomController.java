@@ -50,16 +50,10 @@ public class MentorRoomController {
         mentorRoom.setNum(0);
         mentorRoom.setUser_id(loginUserBean.getUser_id());
         mentorRoomService.createRoom(mentorRoom, loginUserBean.getUser_id());
-
-        //StudyInfo
-//        int user_role = userDao.getUserInfo(loginUserBean.getUser_id()).getUser_role();
         boolean checkHomeWork = myStudyService.checkHomeWork(loginUserBean.getUser_id());
-
         model.addAttribute("mentorRoom", mentorRoom);
-//        model.addAttribute("user_id",loginUserBean.getUser_id());
-//        model.addAttribute("user_role", user_role);
         model.addAttribute("checkHomeWork", checkHomeWork);
-        return "redirect:/MyStudy/StudyInfo";
+        return "/MyStudy/StudyInfo";
     }
 
     @GetMapping("/modifyRoom")
