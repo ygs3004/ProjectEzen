@@ -22,6 +22,10 @@ CREATE TABLE BOARDFILE
     ENABLE
 );
 
- 
--- BOARDFILE 테이블 샘플 데이터 조회
+-- BOARDFILE 저장
+
+commit;
+
+
+-- BOARDFILE 테이블 조회
 SELECT *  FROM BOARDFILE;
