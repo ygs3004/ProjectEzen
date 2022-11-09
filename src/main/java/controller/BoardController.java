@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,14 +28,14 @@ public class BoardController {
     private BoardService boardService;
 
     /** 게시판 - 목록 페이지 이동 */
-    @RequestMapping(value = "/boardList")
+    @GetMapping("/boardList")
     public String boardList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         return "board/boardList";
     }
 
     /** 게시판 - 목록 조회 */
-    @RequestMapping(value = "/getBoardList")
+    @GetMapping("/getBoardList")
     @ResponseBody
     public ResultUtil getBoardList(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
@@ -44,14 +45,14 @@ public class BoardController {
     }
 
     /** 게시판 - 상세 페이지 이동 */
-    @RequestMapping(value = "/boardDetail")
+    @GetMapping("/boardDetail")
     public String boardDetail(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         return "board/boardDetail";
     }
 
     /** 게시판 - 상세 조회 */
-    @RequestMapping(value = "/getBoardDetail")
+    @GetMapping("/getBoardDetail")
     @ResponseBody
     public BoardDto getBoardDetail(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
@@ -65,14 +66,14 @@ public class BoardController {
     }
 
     /** 게시판 - 작성 페이지 이동 */
-    @RequestMapping(value = "/boardWrite")
+    @GetMapping("/boardWrite")
     public String boardWrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         return "board/boardWrite";
     }
 
     /** 게시판 - 등록 */
-    @RequestMapping(value = "/insertBoard")
+    @GetMapping("/insertBoard")
     @ResponseBody
     public BoardDto insertBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
@@ -82,7 +83,7 @@ public class BoardController {
     }
 
     /** 게시판 - 삭제 */
-    @RequestMapping(value = "/deleteBoard")
+    @GetMapping("/deleteBoard")
     @ResponseBody
     public BoardDto deleteBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
@@ -92,14 +93,14 @@ public class BoardController {
     }
 
     /** 게시판 - 수정 페이지 이동 */
-    @RequestMapping(value = "/boardUpdate")
+    @GetMapping("/boardUpdate")
     public String boardUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         return "board/boardUpdate";
     }
 
     /** 게시판 - 수정 */
-    @RequestMapping(value = "/updateBoard")
+    @GetMapping("/updateBoard")
     @ResponseBody
     public BoardDto updateBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
@@ -109,14 +110,14 @@ public class BoardController {
     }
 
     /** 게시판 - 답글 페이지 이동 */
-    @RequestMapping(value = "/boardReply")
+    @GetMapping("/boardReply")
     public String boardReply(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         return "board/boardReply";
     }
 
     /** 게시판 - 답글 등록 */
-    @RequestMapping(value = "/insertBoardReply")
+    @GetMapping("/insertBoardReply")
     @ResponseBody
     public BoardDto insertBoardReply(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
@@ -126,7 +127,7 @@ public class BoardController {
     }
 
     /** 게시판 - 첨부파일 다운로드 */
-    @RequestMapping("/fileDownload")
+    @GetMapping("/fileDownload")
     public ModelAndView fileDownload(@RequestParam("fileNameKey") String fileNameKey
             ,@RequestParam("fileName") String fileName
             ,@RequestParam("filePath") String filePath) throws Exception {
