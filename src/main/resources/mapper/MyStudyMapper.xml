@@ -30,4 +30,13 @@
         select * from homework
     </select>
 
+    <update id="modifyHwInfo" parameterType="domain.HomeWorkInfo">
+        update hwInfo set hwName=#{hwName}, hwDeadLine=#{hwDeadLine}, hwContent=#{hwContent}, hwRegDate=sysdate
+        where writer = #{writer}
+    </update>
+
+    <delete id="deleteHwInfo">
+        delete from hwInfo where writer = #{writer}
+    </delete>
+
 </mapper>

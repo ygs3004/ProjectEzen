@@ -24,4 +24,8 @@ public interface MyStudyMapper {
     public int checkHomeWork(String mentor_id);
 
     public List<HomeWork> getHomeWorkList(String user_id);
+
+    public int modifyHwInfo(HomeWorkInfo hwInfo);
+
+    public int deleteHwInfo(String writer);
 }

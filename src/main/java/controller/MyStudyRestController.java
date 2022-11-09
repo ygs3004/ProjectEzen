@@ -1,6 +1,7 @@
 package controller;
 
 import domain.HomeWork;
+import domain.HomeWorkInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import org.springframework.core.io.FileSystemResource;
@@ -31,6 +32,32 @@ public class MyStudyRestController {
         log.info(writer + "의 과제리스트 전달"+hwList.get(0));
 
         return new ResponseEntity<>(hwList, HttpStatus.OK);
+    }
+
+    @PatchMapping("/{writer}")
+    @ResponseBody
+    public ResponseEntity<String> modifyHwInfo(
+            @RequestBody HomeWorkInfo hwInfo,
+            @PathVariable String writer
+            ){
+
+        hwInfo.setWriter(writer);
+        int updateCount = myStudyService.modifyHwInfo(hwInfo);
+
+        return updateCount == 1
+                ? new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @DeleteMapping("/{writer}")
+    @ResponseBody
+    public ResponseEntity<String> modifyHwInfo(@PathVariable String writer){
+
+        int deleteCount = myStudyService.deleteHwInfo(writer);
+
+        return deleteCount == 1
+                ? new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping( value = "/downloadHw", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
@@ -72,5 +99,8 @@ public class MyStudyRestController {
 
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }
+//
+//    @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
+//            value = /
 
 }

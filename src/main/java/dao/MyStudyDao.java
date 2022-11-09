@@ -4,12 +4,14 @@ import domain.HomeWork;
 import domain.HomeWorkInfo;
 import domain.MentorRoom;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
 import mapper.MyStudyMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@Log4j
 @RequiredArgsConstructor
 public class MyStudyDao {
 
@@ -37,5 +39,14 @@ public class MyStudyDao {
 
     public List<HomeWork> getHomeWorkList(String user_id) {
         return mapper.getHomeWorkList(user_id);
+    }
+
+    public int modifyHwInfo(HomeWorkInfo hwInfo) {
+        log.info("MyStudyMapper의 modifyHwInfo 실행");
+        return mapper.modifyHwInfo(hwInfo);
+    }
+
+    public int deleteHwInfo(String writer) {
+        return mapper.deleteHwInfo(writer);
     }
 }
