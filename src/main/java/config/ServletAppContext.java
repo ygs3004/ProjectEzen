@@ -2,7 +2,6 @@ package config;
 import dao.UserDao;
 import domain.User;
 import interceptor.CheckLoginInterceptor;
-import interceptor.UpdateUserStatus;
 import mapper.MyStudyMapper;
 import mapper.UserMapper;
 import org.apache.commons.dbcp2.BasicDataSource;
