@@ -19,6 +19,8 @@ $(function() {
     });
 });
 
+
+
 function addCreerList() {
     const addstr = document.getElementById('addCareer');
     const li = document.createElement('li');
@@ -141,3 +143,14 @@ function lastCheck() {
 //     document.getElementById("studyPeriod").focus();
 //     return false;
 // }
+//
+// $(function () {
+//     $('input[name="studyTimeStart"]').timepicker({
+//         timeFormat: 'HH:mm',
+//         interval: 10,
+//         startTime: '00:00',
+//         dynamic: false,
+//         dropdown: true,
+//         scrollbar: true
+//     });
+// });

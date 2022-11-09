@@ -106,7 +106,8 @@
 
         <div style="text-align: center; margin-bottom: 2%;">
             <button id="formCheck" type="submit" class="btn btn-primary">스터디수정</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="수정취소" onclick="history.back();">
+            &nbsp;&nbsp;<input type="button" class="btn btn-primary" value="수정취소" onclick="history.back();">
+            &nbsp;<
         </div>
     </div>
     </div>

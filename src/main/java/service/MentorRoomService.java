@@ -42,9 +42,7 @@ public class MentorRoomService {
         if(roomInfo.getUser_id()==null){
             roomInfo.setUser_id(user_id);
         }
-        if(roomInfo.getNum().equals(null)){
-            roomInfo.setNum(0);
-        }
+        roomInfo.setNum(0);
         roomMapper.createRoom(roomInfo);
         int roomNo = getRoomNoByID(user_id); //id로 만들어진 roomNum 조회
         usersAddRoomNo(roomNo, user_id);
