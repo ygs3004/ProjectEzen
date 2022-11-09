@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>과제 정보</title>
+    <script type="text/javascript" src="/js/myStudyScript.js"></script>
 </head>
 <style>
 
@@ -74,15 +75,15 @@
             <tbody>
             <tr>
                 <th scope="row">과제 이름</th>
-                <td class="hwName"><c:out value="${homeWork.hwName}"/></td>
+                <td class="hwName" id="hwName"><c:out value="${homeWork.hwName}"/></td>
             </tr>
             <tr>
                 <th scope="row">제출기한</th>
-                <td class="hwDeadLine"> <c:out value="${homeWork.hwDeadLine}"/> </td>
+                <td class="hwDeadLine" id="hwDeadLine"> <c:out value="${homeWork.hwDeadLine}"/> </td>
             </tr>
             <tr>
                 <th scope="row">과제내용</th>
-                <td class="hwContent">
+                <td class="hwContent" id="hwContent">
                     <c:out value="${homeWork.hwContent}"/>
                 </td>
             </tr>
@@ -101,7 +102,7 @@
             </tbody>
         </table>
         <div class="modifyInfo">
-            <button type="button" class="btn btn-outline-success btn-sm">과제 내용 수정 / 삭제</button>
+            <button type="button" class="btn btn-outline-success btn-sm modifyInfoBtn">과제 내용 수정 / 삭제</button>
         </div>
     </div>
 </div>
@@ -142,37 +143,54 @@
 
     let writer = '<c:out value="${homeWork.writer}"/>';
 
+
     $(function(){
         $.getJSON("/MyStudy/homeWorkList", {writer:writer}, function(hwList) {
             console.log(hwList);
             showUploadedHwList(hwList);
-
         });
 
-        $(".modifyInfo").on("click", () =>{
-            const hwName = $(".hwName");
-            const hwDeadLine = $(".hwDeadLine");
-            const hwContent = $(".hwContent");
-            const modifyAndDeleteButton = $(".modifyInfo");
+        const hwName = $(".hwName");
+        const hwDeadLine = $(".hwDeadLine");
+        const hwContent = $(".hwContent");
+        const modifyAndDeleteButton = $(".modifyInfo");
 
-            const hwNameInput = "<input name='hwName' value='<c:out value="${homeWork.hwName}"/>'/>"
-            const hwDeadLineInput = "<input name='hwDeadLine' type='date' value='<c:out value="${homeWork.hwDeadLine}"/>'/>"
-            const hwContentTextarea = "<textarea rows='10' cols='40' value='${homeWork.hwContent}'></textarea>"
+        $(".modifyInfoBtn").on("click", () =>{
+
+            const hwNameInput = "<input id='hwName' name='hwName' value='<c:out value="${homeWork.hwName}"/>'/>"
+            const hwDeadLineInput = "<input id='hwDeadLine' name='hwDeadLine' type='date' value='<c:out value="${homeWork.hwDeadLine}"/>'/>"
+            const hwContentTextarea = "<textarea id='hwContent' rows='10' cols='40'><c:out value='${homeWork.hwContent}'/></textarea>"
             const divideButton = "<button type='button' class='btn btn-outline-success btn-sm' data-oper='modify'>수정완료</button>"
                                 + "&nbsp;&nbsp;<button type='button' class='btn btn-outline-success btn-sm' data-oper='delete'>삭제</button>"
 
+            console.log("수정 요청")
             hwName.html(hwNameInput);
             hwDeadLine.html(hwDeadLineInput);
             hwContent.html(hwContentTextarea);
             modifyAndDeleteButton.html(divideButton);
         })
 
-        $("button[data-oper='modify']").on("click", () =>{
+        $(document).on("click", "button[data-oper='modify']", () =>{
+            console.log("수정 완료 요청")
+            if(!checkSubmit()) return;
 
+            const hwInfo = {hwName: $("input[id='hwName']").val(),
+                hwDeadLine: $("input[id='hwDeadLine']").val(),
+                hwContent: $("textarea[id='hwContent']").val()}
+            console.log("요청된 정보 : ", hwInfo)
+
+            hwInfoModifyAjax(hwInfo, () => {
+                alert("수정되었습니다")
+                location.reload();
+            })
         })
 
-        $("button[data-oper='delete']").on("click", () =>{
-            location.href="histori"
+        $(document).on("click", "button[data-oper='delete']", () =>{
+            console.log("삭제 요청")
+            hwInfoDeleteAjax(() => {
+                alert("삭제완료");
+                history.go(-1);
+            })
         })
 
     })

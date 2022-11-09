@@ -106,4 +106,11 @@ public class MyStudyService {
 
     }
 
+    public int modifyHwInfo(HomeWorkInfo hwInfo) {
+        return myStudyDao.modifyHwInfo(hwInfo);
+    }
+
+    public int deleteHwInfo(String writer) {
+        return myStudyDao.deleteHwInfo(writer);
+    }
 }
