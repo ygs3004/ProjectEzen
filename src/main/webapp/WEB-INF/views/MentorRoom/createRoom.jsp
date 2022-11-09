@@ -8,12 +8,11 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <link rel="stylesheet" type="text/css" href="/css/mentorRoomStyles.css">
 <script type="text/javascript" src="/js/mentorRoomScripts.js"></script>
-<form action="/MentorRoom/roomInfo" method="POST" name="createForm" id="createForm" onsubmit="return doCheck()">
+<form action="/MentorRoom/roomInfo" class="shadow p-3 mb-5 bg-white rounded formBody" method="POST" name="createForm" id="createForm" onsubmit="return doCheck()">
     <section class="formHeader">
             <span id="formTitle"><b>스터디 개설</b></span>
             <p id="formDes">스터디를 개설해 멘티들을 모아볼까요?</p>
     </section>
-    < class="shadow p-3 mb-5 bg-white rounded formBody">
         <div class="user_name">
             <span> ${loginUser.getUser_name()} 님 (${loginUser.getUser_id()})</span>
         </div>
@@ -59,7 +58,7 @@
             </div>
             <div style="display: flex; justify-content: space-between;">
             <div class="useMove">
-                <div><input type="time" class="form-control" id="studyTimeStart" name="studyTimeStart">
+                <div><input type="time" class="form-control" id="studyTimeStart" name="studyTimeStart" >
                     <label for="studyTimeStart"><span>스터디 시간</span></label></div>
             </div>
             <div class="useMove">

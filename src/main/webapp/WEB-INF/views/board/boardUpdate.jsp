@@ -191,6 +191,7 @@
 </script>
 </head>
 <body>
+<%@ include file="../includes/header.jsp" %>
 <div id="wrap">
     <div id="container">
         <div class="inner">    
@@ -232,5 +233,6 @@
         </div>
     </div>
 </div>
+<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

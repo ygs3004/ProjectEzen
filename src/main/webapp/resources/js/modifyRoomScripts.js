@@ -14,6 +14,26 @@
 //     //     $('[value=weeklys]').prop("checked", true);
 //     // };
 // }
+$(function() {
+    $('input[name="studyPeriod"]').daterangepicker({
+        autoUpdateInput: false,
+        minDate: new Date(),
+        // changeMonth: true,
+        locale: {
+            format: "YYYY-MM-DD",
+            applyLabel :"선택",
+            cancelLabel:"취소",
+            daysOfWeek:['일','월','화','수','목','금','토'],
+            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+        }
+    });
+    $('input[name="studyPeriod"]').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
+    });
+    $('input[name="studyPeriod"]').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+    });
+});
 
 function addCreerList() {
     const addstr = document.getElementById('addCareer');
