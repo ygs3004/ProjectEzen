@@ -1,7 +1,7 @@
 
--- TB_BOARD 테이블 삭제
-DROP TABLE board;
- 
+-- 시퀀스 생성
+CREATE SEQUENCE BOARD_SEQ START WITH 1 INCREMENT BY 1;
+
 -- TB_BOARD 테이블 생성 및 코멘트 추가
 CREATE TABLE BOARD
 (
@@ -27,13 +27,14 @@ CREATE TABLE BOARD
 -- 저장하기 위한 commit
 commit;
 
--- 시퀀스 생성
-CREATE SEQUENCE BOARD_SEQ START WITH 1 INCREMENT BY 1;
-
-
--- TB_BOARD 테이블 샘플 데이터 입력
-INSERT INTO board (BOARD_RE_REF, BOARD_RE_LEV, BOARD_RE_SEQ, BOARD_WRITER, BOARD_SUBJECT, BOARD_CONTENT, INS_USER_ID, INS_DATE)
+-- BOARD 테이블 샘플 데이터 입력
+INSERT INTO BOARD (BOARD_RE_REF, BOARD_RE_LEV, BOARD_RE_SEQ, BOARD_WRITER, BOARD_SUBJECT, BOARD_CONTENT, INS_USER_ID, INS_DATE)
             VALUES (0, 0, 0, '게시글 작성자_1', '게시글 제목_1', '게시글 내용_1', 'NONMEMBER', sysdate, 'NONMEMBER', sysdate);
 
--- TB_BOARD 테이블 샘플 데이터 조회
-SELECT * FROM board;
+-- BOARD 테이블 샘플 데이터 조회
+SELECT * FROM BOARD;
+
+
+
+-- BOARD 테이블 삭제
+DROP TABLE board;
