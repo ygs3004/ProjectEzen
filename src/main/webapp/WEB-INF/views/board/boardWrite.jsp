@@ -6,12 +6,18 @@
 <title>게시판 작성</title>
 <!-- 공통 CSS -->
 
+	<link rel = stylesheet href="/css/bootstrap.css" >
+
+
+
 <!-- 공통 JavaScript -->
 <script type="text/javascript" src="/js/common/jquery.js"></script>
 <script type="text/javascript" src="/js/common/jquery.form.js"></script>
-<script type="text/javascript">
 
-	$(document).ready(function(){		
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
 
 	});
 		
@@ -61,7 +67,7 @@
 		    }).submit();			 
 		}
 	}
-	
+
 	/** 게시판 - 작성 콜백 함수 */
 	function insertBoardCallback(obj){
 	
@@ -78,7 +84,7 @@
 			}
 		}
 	}
-	
+
 </script>
 </head>
 <body>
@@ -89,23 +95,26 @@
 			<h2 align="center">게시글 작성</h2>
 			<form id="boardForm" name="boardForm" action="/board/insertBoard" enctype="multipart/form-data" method="post" onsubmit="return false;">
 				<table class="table table-dark table-sm">
-				<caption><strong><span class="t_red">*</span> 표시는 필수입력 항목입니다.</strong></caption>
+				<caption><strong><span class="$danger">*</span> 표시는 필수입력 항목입니다.</strong></caption>
 				    <colgroup>
 				        <col width="20%">
 				        <col width="*">
 				    </colgroup>
 				    <tbody id="tbody">
 						<tr>
-							<th>제목<span class="t_red">*</span></th>
-							<td><input id="board_subject" name="board_subject" value="" class="tbox01"/></td>
+							<th>제목<span class="$danger">*</span></th>
+							<td><input id="board_subject" name="board_subject" value="" class="tbox01"
+									   placeholder="제목을 입력해주세요"/></td>
 						</tr>
 						<tr>
-							<th>작성자<span class="t_red">*</span></th>
-							<td><input id="board_writer" name="board_writer" value="" class="tbox01"/></td>
+							<th>작성자<span class="$danger">*</span></th>
+							<td><input id="board_writer" name="board_writer" value="" class="tbox01"
+									   placeholder="작성자를 입력해주세요"/></td>
 						</tr>
 						<tr>
-							<th>내용<span class="t_red">*</span></th>
-							<td><textarea id="board_content" name="board_content" cols="10" rows="5" class="textarea01"></textarea></td>
+							<th>내용<span class="$danger">*</span></th>
+							<td><textarea id="board_content" name="board_content" style="height: 100px; weight:250px" class="form-floating"
+										  placeholder="내용을 입력해주세요"></textarea></td>
 						</tr>
 						<tr>
 							<th scope="row">첨부파일</th>
