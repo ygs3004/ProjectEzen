@@ -6,19 +6,24 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface MentorRoomMapper {
 
+
+
+    //Insert MentorRoom
     int createRoom(MentorRoom mentorRoom);
 
-    // RoomInfo by num
+    // Update MentorRoom
+    int updateRoom(MentorRoom mentorRoom);
+
+    // Select RoomINFO BY num
     MentorRoom getRoomInfoByNum(int num);
 
-    // RoomInfo by user_id
+    // Select RoomINFO BY user_id
     MentorRoom getRoomInfoByID(String user_id);
 
-    // User_id 넣으면 MentorRoomNo 나옴
+    // Select RoomNUM BY user_id
     int getRoomNoByID(String user_id);
-//
-//    @Update("update users SET mentorRoomNo = #{num} where #{user_id}")
-//    public int mentorRoomNoIntoUsers(int num);
+
+
 
 
 }

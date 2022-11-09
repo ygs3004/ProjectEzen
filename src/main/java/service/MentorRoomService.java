@@ -39,17 +39,27 @@ public class MentorRoomService {
     // ADD roomInfo
     @Transactional
     public void createRoom(MentorRoom roomInfo, String user_id) {
+        if(roomInfo.getUser_id()==null){
+            roomInfo.setUser_id(user_id);
+        }
+        if(roomInfo.getNum().equals(null)){
+            roomInfo.setNum(0);
+        }
         roomMapper.createRoom(roomInfo);
         int roomNo = getRoomNoByID(user_id); //id로 만들어진 roomNum 조회
         usersAddRoomNo(roomNo, user_id);
     }
 
-    // ADD RoomNum TO users BY user_id
+    /**
+     * Update RoomNUM TO users (BY user_id)
+     */
     public void usersAddRoomNo(int mentorRoomNo, String user_id){
         userMapper.updateRoomNo(mentorRoomNo, user_id);
     }
 
-    // CHECK RoomNum BY user_id
+    /**
+     * Select RoomNUM (BY user_id)
+     */
     public int getRoomNoByID(String user_id){
         int roomNum = roomMapper.getRoomInfoByID(user_id).getNum();
         return roomNum;
