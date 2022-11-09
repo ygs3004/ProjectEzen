@@ -47,8 +47,6 @@ public class MentorRoomController {
     //스터디개설 후 이동
     @PostMapping("/roomInfo")
     public String createRoom(MentorRoom mentorRoom, Model model){
-        mentorRoom.setNum(0);
-        mentorRoom.setUser_id(loginUserBean.getUser_id());
         mentorRoomService.createRoom(mentorRoom, loginUserBean.getUser_id());
         boolean checkHomeWork = myStudyService.checkHomeWork(loginUserBean.getUser_id());
         model.addAttribute("mentorRoom", mentorRoom);
@@ -61,6 +59,12 @@ public class MentorRoomController {
         MentorRoom roomInfo = mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id());
         model.addAttribute("mentorRoom",roomInfo);
         return "/MentorRoom/modifyRoom";
+    }
+
+    @PostMapping("/modifyRoom")
+    public String modifiedRoom(MentorRoom roomInfo, Model model){
+
+    return "/MyStudy/StudyInfo";
     }
 
 }

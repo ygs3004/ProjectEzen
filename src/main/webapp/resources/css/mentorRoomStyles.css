@@ -1,6 +1,5 @@
 #formTitle{font-size: 40px; font-weight: bold;}
 #formDes{font-size: 19px;}
-#careerList{margin-left:5px; font-size: 15px;}
 #errorLine {color:red; font-size:10px;}
 #delBtn{color:#6c757d; font-size:12px;}
 input[type="text"][id="addCareer"]{display:inline; width:700px; outline:none; vertical-align:middle}
