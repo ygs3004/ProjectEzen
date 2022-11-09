@@ -55,46 +55,55 @@
         margin-bottom: 15px;
     }
 
+    .modifyInfo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
 </style>
 <body>
 <div class="container">
-<div class="container-sm study-informartion">
-    <table class="table">
-        <thead class="thead-dark">
-        <tr style="background-color: rgba(0, 0, 0, 0.9)">
-            <th scope="col" colspan="2" style="color:white">과제 정보</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">과제 이름</th>
-            <td><c:out value="${homeWork.hwName}"/></td>
-        </tr>
-        <tr>
-            <th scope="row">제출기한</th>
-            <td> <c:out value="${homeWork.hwDeadLine}"/> </td>
-        </tr>
-        <tr>
-            <th scope="row">과제내용</th>
-            <td>
-                <c:out value="${homeWork.hwContent}"/>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">제출인원 / <br> 스터디인원</th>
-            <td> <c:out value="${homeWork.completeMentee} / ${mentorRoom.nowCapacity} 명" /> </td>
-        </tr>
-        <tr>
-            <th scope="row">제출자 명단 ajax</th>
-            <td>
-                <ul class="uploadedHwList">
-                    <%--ajax 출력--%>
-                </ul>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+    <div class="container-sm study-informartion">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr style="background-color: rgba(0, 0, 0, 0.9)">
+                <th scope="col" colspan="2" style="color:white">과제 정보</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">과제 이름</th>
+                <td class="hwName"><c:out value="${homeWork.hwName}"/></td>
+            </tr>
+            <tr>
+                <th scope="row">제출기한</th>
+                <td class="hwDeadLine"> <c:out value="${homeWork.hwDeadLine}"/> </td>
+            </tr>
+            <tr>
+                <th scope="row">과제내용</th>
+                <td class="hwContent">
+                    <c:out value="${homeWork.hwContent}"/>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">제출인원 / <br> 스터디인원</th>
+                <td> <c:out value="${homeWork.completeMentee} / ${mentorRoom.nowCapacity} 명" /> </td>
+            </tr>
+            <tr>
+                <th scope="row">제출자 명단 ajax</th>
+                <td>
+                    <ul class="uploadedHwList">
+                        <%--ajax 출력--%>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="modifyInfo">
+            <button type="button" class="btn btn-outline-success btn-sm">과제 내용 수정 / 삭제</button>
+        </div>
+    </div>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -139,21 +148,35 @@
             showUploadedHwList(hwList);
 
         });
+
+        $(".modifyInfo").on("click", () =>{
+            const hwName = $(".hwName");
+            const hwDeadLine = $(".hwDeadLine");
+            const hwContent = $(".hwContent");
+            const modifyAndDeleteButton = $(".modifyInfo");
+
+            const hwNameInput = "<input name='hwName' value='<c:out value="${homeWork.hwName}"/>'/>"
+            const hwDeadLineInput = "<input name='hwDeadLine' type='date' value='<c:out value="${homeWork.hwDeadLine}"/>'/>"
+            const hwContentTextarea = "<textarea rows='10' cols='40' value='${homeWork.hwContent}'></textarea>"
+            const divideButton = "<button type='button' class='btn btn-outline-success btn-sm' data-oper='modify'>수정완료</button>"
+                                + "&nbsp;&nbsp;<button type='button' class='btn btn-outline-success btn-sm' data-oper='delete'>삭제</button>"
+
+            hwName.html(hwNameInput);
+            hwDeadLine.html(hwDeadLineInput);
+            hwContent.html(hwContentTextarea);
+            modifyAndDeleteButton.html(divideButton);
+        })
+
+        $("button[data-oper='modify']").on("click", () =>{
+
+        })
+
+        $("button[data-oper='delete']").on("click", () =>{
+            location.href="histori"
+        })
+
     })
-       /* 참고 예제
-        $.getJSON("/replies/pages/"+bno+"/"+page+".json",
-            function(data){
-                if(callback){
-                    //callback(data); // 댓글 목록만 가져오는 경우
-                    callback(data.replyCnt, data.list);
-                }
-            }).fail(function(xhr, status, er){
-                if(error){
-                    error();
-                }
-            }
-        );
-        */
+
 
 </script>
 

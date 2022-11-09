@@ -28,8 +28,7 @@
                     , TO_CHAR( UPD_DATE, 'YYYY-MM-DD HH24:MI:SS' )
                FROM BOARD
                ORDER BY BOARD_RE_REF DESC, BOARD_RE_SEQ ASC
-              ) T1
-        LIMIT #{limit} OFFSET #{offset}
+              )
     
     </select>
     
@@ -81,7 +80,7 @@
                 FROM BOARDFILE
                 WHERE BOARD_SEQ = #{board_seq}
                 AND DEL_YN = 'N'
-              ) T1        
+              )
             
     </select>
     

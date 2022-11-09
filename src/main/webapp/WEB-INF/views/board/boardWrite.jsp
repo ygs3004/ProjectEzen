@@ -31,10 +31,17 @@
 
 		var boardSubject = $("#board_subject").val();
 		var boardContent = $("#board_content").val();
-			
+		var boardWriter = $("#board_writer").val();
+
 		if (boardSubject == ""){			
 			alert("제목을 입력해주세요.");
 			$("#board_subject").focus();
+			return;
+		}
+
+		if (boardWriter == ""){
+			alert("작성자를 입력해주세요.");
+			$("#board_writer").focus();
 			return;
 		}
 		
