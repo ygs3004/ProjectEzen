@@ -55,7 +55,7 @@ public class BoardController {
     }
 
     /** 게시판 - 상세 조회 */
-    @GetMapping("/getBoardDetail")
+    @PostMapping("/getBoardDetail")
     @ResponseBody
     public BoardDto getBoardDetail(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
@@ -86,7 +86,7 @@ public class BoardController {
     }
 
     /** 게시판 - 삭제 */
-    @GetMapping("/deleteBoard")
+    @PostMapping("/deleteBoard")
     @ResponseBody
     public BoardDto deleteBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
@@ -103,7 +103,7 @@ public class BoardController {
     }
 
     /** 게시판 - 수정 */
-    @GetMapping("/updateBoard")
+    @PostMapping("/updateBoard")
     @ResponseBody
     public BoardDto updateBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
@@ -120,7 +120,7 @@ public class BoardController {
     }
 
     /** 게시판 - 답글 등록 */
-    @GetMapping("/insertBoardReply")
+    @PostMapping("/insertBoardReply")
     @ResponseBody
     public BoardDto insertBoardReply(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
