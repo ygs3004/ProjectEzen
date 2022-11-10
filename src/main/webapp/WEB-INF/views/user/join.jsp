@@ -29,6 +29,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
+<style>
+.shadow{
+    margin-bottom: 100px;
+}
+</style>
 <script>
 
 
@@ -99,6 +104,7 @@
 
 </script>
 <body>
+
 
 <c:import url="/WEB-INF/views/includes/header.jsp"/>
 <br>

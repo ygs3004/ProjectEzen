@@ -2,26 +2,15 @@ package config;
 import dao.UserDao;
 import domain.User;
 import interceptor.CheckLoginInterceptor;
-import mapper.MyStudyMapper;
-import mapper.UserMapper;
-import org.apache.commons.dbcp2.BasicDataSource;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
-import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.*;
-
 import javax.annotation.Resource;
 
 // Spring MVC 프로젝트에 관련된 설정을 하는 클래스
@@ -94,5 +83,6 @@ public class ServletAppContext implements WebMvcConfigurer {
 //        reg2.addPathPatterns("/MyStudy/**", "/MentorRoom/**");
 
     }
+
 
 }
