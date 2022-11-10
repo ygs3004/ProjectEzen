@@ -162,6 +162,7 @@
             const hwContentTextarea = "<textarea id='hwContent' rows='10' cols='40'><c:out value='${homeWork.hwContent}'/></textarea>"
             const divideButton = "<button type='button' class='btn btn-outline-success btn-sm' data-oper='modify'>수정완료</button>"
                                 + "&nbsp;&nbsp;<button type='button' class='btn btn-outline-success btn-sm' data-oper='delete'>삭제</button>"
+                                + "&nbsp;&nbsp;<button type='button' class='btn btn-outline-success btn-sm' onclick='location.reload()'>수정 취소</button>"
 
             console.log("수정 요청")
             hwName.html(hwNameInput);
@@ -186,11 +187,13 @@
         })
 
         $(document).on("click", "button[data-oper='delete']", () =>{
-            console.log("삭제 요청")
-            hwInfoDeleteAjax(() => {
-                alert("삭제완료");
-                history.go(-1);
-            })
+            if(confirm("정말로 삭제하시겠습니까?")) {
+                console.log("삭제 요청")
+                hwInfoDeleteAjax(() => {
+                    alert("삭제완료");
+                    history.go(-1);
+                })
+            }
         })
 
     })

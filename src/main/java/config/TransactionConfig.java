@@ -30,7 +30,6 @@ public class TransactionConfig {
 
     private final PlatformTransactionManager transactionManager;
 
-
     TransactionInterceptor transactionAdvice() {
         TransactionInterceptor txAdvice = new TransactionInterceptor();
         NameMatchTransactionAttributeSource txAttributeSource = new NameMatchTransactionAttributeSource();

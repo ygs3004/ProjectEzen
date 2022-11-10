@@ -38,8 +38,8 @@
 
 <div class="container-sm study-information">
 <table class="table">
-    <thead class="thead-dark">
-    <tr style="background-color: rgba(0, 0, 0, 0.9)">
+    <thead class="thead-light">
+    <tr style="background-color: #066173">
         <th scope="col" colspan="2" style="color:white; height:70px" >스터디 정보</th>
     </tr>
     </thead>

@@ -73,7 +73,7 @@
           <button type="reset" class="btn btn-primary">다시작성</button>
       </form>
 </div>
-
+</body>
 <script>
 
     var maxSize = 5242880; // 5mb
@@ -108,7 +108,5 @@
     })
 
 </script>
-
-</body>
 </html>
 <c:import url="/WEB-INF/views/includes/footer.jsp"/>

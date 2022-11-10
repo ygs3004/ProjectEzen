@@ -25,8 +25,8 @@ public class MyStudyDao {
         return mapper.uploadHomeWorkInfo(homeWorkInfo);
     }
 
-    public HomeWorkInfo getHomeWork(String mentor_id) {
-        return mapper.getHomeWork(mentor_id);
+    public HomeWorkInfo getHomeWorkInfo(String mentor_id) {
+        return mapper.getHomeWorkInfo(mentor_id);
     }
 
     public void homeWorkSubmit(HomeWork homeWork) {
@@ -48,5 +48,9 @@ public class MyStudyDao {
 
     public int deleteHwInfo(String writer) {
         return mapper.deleteHwInfo(writer);
+    }
+
+    public HomeWork getHomeWork(String user_id) {
+        return mapper.getHomeWork(user_id);
     }
 }

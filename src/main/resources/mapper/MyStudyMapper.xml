@@ -13,7 +13,7 @@
         values(#{hwName}, #{hwContent}, #{writer}, SYSDATE, #{hwDeadLine}, 0)
     </insert>
 
-    <select id="getHomeWork"  resultType="domain.HomeWorkInfo">
+    <select id="getHomeWorkInfo"  resultType="domain.HomeWorkInfo">
         select * from hwInfo
     </select>
 
@@ -38,5 +38,9 @@
     <delete id="deleteHwInfo">
         delete from hwInfo where writer = #{writer}
     </delete>
+
+    <select id="getHomeWork" resultType="domain.HomeWork">
+        select * from homework where user_id = #{user_id}
+    </select>
 
 </mapper>
