@@ -5,6 +5,12 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>게시판 목록</title>
+    <style>
+        .shadow{
+            margin-bottom: 70px;
+        }
+
+    </style>
 
     <!-- 공통 CSS -->
 
@@ -131,7 +137,12 @@
 <body>
 
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
-<div class="text-primary">
+<div class="container" style="margin-top:100px">
+    <div class="container" id="shadow">
+
+        <div>
+            <div class="card shadow">
+                <div class="card-body">
             <h1 align="center">
                 게시글 목록
             </h1>
@@ -143,10 +154,10 @@
                     <span class="total_count"><strong>전체</strong> : <span id="total_count" class="$red-500">0</span>개</span>
                 </div>
 
-                <table class="table table-dark table-sm">
+                <table class="table table-primary table-sm">
 
                     <thead>
-                    <tr>
+                    <tr class="table-success">
                         <th>글번호</th>
                         <th>제목</th>
                         <th>조회수</th>
@@ -158,16 +169,18 @@
 
                     </tbody>
                 </table>
+                <div>
+                    <button type="button" class="btn btn-primary" style="float: right" onclick="javascript:goBoardWrite();">작성하기</button>
+                </div>
             </form>
-            <div>
-                <button type="button" class="btn btn-dark" onclick="javascript:goBoardWrite();">작성하기</button>
+
+                </div>
             </div>
         </div>
-
         <div></div>
-
     </div>
 </div>
+
 <%@ include file="/WEB-INF/views/includes/footer.jsp" %>
 </body>
 </html>
