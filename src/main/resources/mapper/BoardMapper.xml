@@ -64,7 +64,7 @@
         
     <select id="getBoardFileList" parameterType="form.BoardFileForm" resultType="domain.board.BoardFileDto">
     
-        SELECT T1.*
+        SELECT BOARD(*)
         FROM (
                 SELECT BOARD_SEQ
                      , FILE_NO

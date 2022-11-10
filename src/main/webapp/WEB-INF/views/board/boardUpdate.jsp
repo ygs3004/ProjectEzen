@@ -17,8 +17,9 @@
     <link rel = stylesheet href="/css/bootstrap.css" >
 
 <!-- 공통 JavaScript -->
-<script type="text/javascript" src="/js/common/jquery.js"></script>
-<script type="text/javascript" src="/js/common/jquery.form.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"></script>
 <script type="text/javascript">
     
     $(document).ready(function(){        

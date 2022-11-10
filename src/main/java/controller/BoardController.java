@@ -11,10 +11,7 @@ import domain.User;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import common.ResultUtil;
@@ -41,7 +38,7 @@ public class BoardController {
     }
 
     /** 게시판 - 목록 조회 */
-    @GetMapping("/getBoardList")
+    @PostMapping("/getBoardList")
     @ResponseBody
     public ResultUtil getBoardList(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 
@@ -79,7 +76,7 @@ public class BoardController {
     }
 
     /** 게시판 - 등록 */
-    @GetMapping("/insertBoard")
+    @PostMapping ("/insertBoard")
     @ResponseBody
     public BoardDto insertBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
 

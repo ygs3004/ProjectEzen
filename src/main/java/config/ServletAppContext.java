@@ -1,4 +1,5 @@
 package config;
+import common.LoggerInterceptor;
 import dao.UserDao;
 import domain.User;
 import interceptor.CheckLoginInterceptor;
@@ -18,7 +19,7 @@ import javax.annotation.Resource;
 // Controller 어노테이션이 셋팅되어 있는 클래스를 Controller로 등록한다.
 @EnableWebMvc
 //스캔할 패키지를 지정한다.
-@ComponentScan(basePackages = "controller")
+@ComponentScan(basePackages = {"controller", "common"})
 public class ServletAppContext implements WebMvcConfigurer {
 
     @Resource(name = "loginUserBean")
@@ -68,16 +69,21 @@ public class ServletAppContext implements WebMvcConfigurer {
 //        return new User();
 //    }
 
+
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // TODO Auto-generated method stub
         WebMvcConfigurer.super.addInterceptors(registry);
 
         CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean);
+        LoggerInterceptor loggerInterceptor = new LoggerInterceptor();
 //        UpdateUserStatus updateUserStatus = new UpdateUserStatus(loginUserBean, userDao);
 
         InterceptorRegistration reg1 = registry.addInterceptor(checkLoginInterceptor);
+        InterceptorRegistration reg2 = registry.addInterceptor(loggerInterceptor);
         reg1.addPathPatterns("/user/login_pro");
+        reg2.addPathPatterns("/**");
 //
 //        InterceptorRegistration reg2 = registry.addInterceptor(updateUserStatus);
 //        reg2.addPathPatterns("/MyStudy/**", "/MentorRoom/**");

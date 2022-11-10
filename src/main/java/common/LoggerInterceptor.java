@@ -17,14 +17,14 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
     @SuppressWarnings("rawtypes")
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.debug("==================== LoggerInterceptor START ====================");
-        logger.debug(" URI [{}]," + request.getRequestURI());
+        logger.info("==================== LoggerInterceptor START ====================");
+        logger.info(" URI [{}]," + request.getRequestURI());
  
         Enumeration paramNames = request.getParameterNames();
         while (paramNames.hasMoreElements()) {
             String key = (String) paramNames.nextElement();
             String value = request.getParameter(key);
-            logger.debug(" RequestParameter Data ==>  " + key + " : " + value + "");
+            logger.info(" RequestParameter Data ==>  " + key + " : " + value + "");
         }
  
         return super.preHandle(request, response, handler);
@@ -34,6 +34,6 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
             throws Exception {
  
-        logger.debug("==================== LoggerInterceptor END ====================");
+        logger.info("==================== LoggerInterceptor END ====================");
     }
 }
