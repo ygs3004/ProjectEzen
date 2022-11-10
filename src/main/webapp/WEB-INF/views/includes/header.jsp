@@ -81,8 +81,8 @@
                     </c:otherwise>
                 </c:choose>
 
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about time">어바웃(타임)</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#movie contact">(영화)콘택트</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#abouttime">어바웃(타임)</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#moviecontact">(영화)콘택트</a></li>
                 <c:choose>  <%-- 로그인 했을경우 회원탈퇴란 생성--%>
                     <c:when test="${loginUser.userLogin}">
                         <li class="nav-item">
