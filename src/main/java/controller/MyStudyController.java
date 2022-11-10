@@ -71,7 +71,7 @@ public class MyStudyController {
 
         String user_id = loginUserBean.getUser_id();
 
-        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(user_id);
         MentorRoom mentorRoom = myStudyService.getMyStudyRoom(user_id);
         List<HomeWork> hwList = myStudyService.getHomeWorkList(user_id);
 
@@ -86,9 +86,11 @@ public class MyStudyController {
     public String MenteeHomeWorkInfo(Model model){
 
         String user_id = loginUserBean.getUser_id();
-        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(user_id);
+        HomeWork homeWork = myStudyService.getHomeWork(user_id);
 
-        model.addAttribute("homeWork", homeWorkInfo);
+        model.addAttribute("homeWork", homeWork);
+        model.addAttribute("homeWorkInfo", homeWorkInfo);
 
         return "/MyStudy/MenteeHomeWorkInfo";
     }
@@ -97,7 +99,7 @@ public class MyStudyController {
     public String HomeWorkSubmit(Model model){
 
         String user_id = loginUserBean.getUser_id();
-        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWork(user_id);
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(user_id);
 
         model.addAttribute("homeWork", homeWorkInfo);
 

@@ -131,7 +131,7 @@
 <body>
 
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
-<div class="text-bg-primary p-3">
+<div class="text-primary">
             <h1 align="center">
                 게시글 목록
             </h1>
@@ -139,8 +139,8 @@
                 <input type="hidden" id="function_name" name="function_name" value="getBoardList" />
                 <input type="hidden" id="current_page_no" name="current_page_no" value="1" />
 
-                <div class="text-bg-primary p-3">
-                    <span class="total_count"><strong>전체</strong> : <span id="total_count" class="t_red">0</span>개</span>
+                <div class="text-primary">
+                    <span class="total_count"><strong>전체</strong> : <span id="total_count" class="$red-500">0</span>개</span>
                 </div>
 
                 <table class="table table-dark table-sm">

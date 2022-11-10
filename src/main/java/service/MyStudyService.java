@@ -40,9 +40,9 @@ public class MyStudyService {
         return myStudyDao.getHomeWorkList(user_id);
     }
 
-    public HomeWorkInfo getHomeWork(String user_id) {
+    public HomeWorkInfo getHomeWorkInfo(String user_id) {
         String mentor_id = userDao.getMentorId(user_id);
-        return myStudyDao.getHomeWork(mentor_id);
+        return myStudyDao.getHomeWorkInfo(mentor_id);
     }
 
     public boolean checkHomeWork(String user_id){
@@ -55,6 +55,33 @@ public class MyStudyService {
     }
 
     public void homeWorkSubmit(HomeWork homeWork, MultipartFile[] uploadFile){
+        HomeWork uploadedHomeWork = uploadFileToServer(homeWork, uploadFile);
+        log.info("HomeWork 업로드실행 : "+uploadedHomeWork.toString());
+        myStudyDao.homeWorkSubmit(homeWork);
+    }
+
+    private String getFolder(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String str = sdf.format(date);
+        log.info("저장경로 c:upload\\temp\\" + str.replace("-", File.separator));
+        return str.replace("-", File.separator);
+
+    }
+
+    public int modifyHwInfo(HomeWorkInfo hwInfo) {
+        return myStudyDao.modifyHwInfo(hwInfo);
+    }
+
+    public int deleteHwInfo(String writer) {
+        return myStudyDao.deleteHwInfo(writer);
+    }
+
+    public HomeWork getHomeWork(String user_id) {
+        return myStudyDao.getHomeWork(user_id);
+    }
+
+    public HomeWork uploadFileToServer(HomeWork homeWork, MultipartFile[] uploadFile){
         String uploadFolder = "C:\\upload\\temp";
         log.info("첨부된 파일은 c:upload\\temp 폴더에 저장됩니다, 에러시 폴더가 있는지 확인");
 
@@ -93,17 +120,6 @@ public class MyStudyService {
             }
 
         }
-        log.info("MyStudyService.howeWorkSubmit 실행 : "+homeWork.toString());
-        myStudyDao.homeWorkSubmit(homeWork);
+        return homeWork;
     }
-
-    private String getFolder(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        String str = sdf.format(date);
-        log.info("저장경로 c:upload\\temp\\" + str.replace("-", File.separator));
-        return str.replace("-", File.separator);
-
-    }
-
 }

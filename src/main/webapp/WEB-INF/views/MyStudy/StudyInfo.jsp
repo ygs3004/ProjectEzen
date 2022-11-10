@@ -23,13 +23,23 @@
         text-align: center;
         width:30%;
     }
-
+    .centerBtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .hwBtn{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
 </style>
 
 <div class="container-sm study-information">
 <table class="table">
-    <thead class="thead-dark">
-    <tr style="background-color: rgba(0, 0, 0, 0.9)">
+    <thead class="thead-light">
+    <tr style="background-color: #066173">
         <th scope="col" colspan="2" style="color:white; height:70px" >스터디 정보</th>
     </tr>
     </thead>
@@ -65,7 +75,7 @@
     <tr>
         <th scope="row">진행중인 과제</th>
         <%--<c:if test="${과제 == null}">버튼 넣기</c:if> 과제 있는지 없는지 체크할것 --%>
-        <td>
+        <td class="hwBtn">
             <c:choose>
                 <%--멘토일때--%>
                 <c:when test="${loginUser.user_role == 1}">
@@ -101,10 +111,15 @@
                     </c:choose>
                 </c:when>
             </c:choose>
-
         </td>
     </tr>
     </tbody>
 </table>
+    <div class="centerBtn">
+    <c:if test="${loginUser.user_role == 1}">
+        <button type="button" class="btn btn-outline-success btn-sm"
+                onclick="location.href='/MentorRoom/modifyRoom'">스터디 정보 수정하기</button>
+    </c:if>
+    </div>
 </div>
 <%@ include file="../includes/footer.jsp"%>

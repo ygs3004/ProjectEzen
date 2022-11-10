@@ -17,11 +17,17 @@ public interface MyStudyMapper {
 
     public int uploadHomeWorkInfo(HomeWorkInfo homeWorkInfo);
 
-    public HomeWorkInfo getHomeWork(String mentor_id);
+    public HomeWorkInfo getHomeWorkInfo(String mentor_id);
 
     public void homeWorkSubmit(HomeWork homeWork);
 
     public int checkHomeWork(String mentor_id);
 
     public List<HomeWork> getHomeWorkList(String user_id);
+
+    public int modifyHwInfo(HomeWorkInfo hwInfo);
+
+    public int deleteHwInfo(String writer);
+
+    public HomeWork getHomeWork(String user_id);
 }

@@ -35,10 +35,10 @@ public class MentorRoomController {
         if(result){
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>alert('스터디는 한개만 개설할 수 있습니다.'); history.back();</script>");
+            out.println("<script>alert('스터디는 한개만 개설할 수 있습니다.');</script>");
             out.close();
 //            request.setAttribute("message", "스터디는 한개만 개설할 수 있습니다.");
-            return homeController.home();
+            return "redirect:/";
         }else{
             return "/MentorRoom/createRoom";
         }
@@ -47,18 +47,7 @@ public class MentorRoomController {
     //스터디개설 후 이동
     @PostMapping("/roomInfo")
     public String createRoom(MentorRoom mentorRoom, Model model){
-        mentorRoom.setNum(0);
-        mentorRoom.setUser_id(loginUserBean.getUser_id());
         mentorRoomService.createRoom(mentorRoom, loginUserBean.getUser_id());
-
-        //StudyInfo
-//        int user_role = userDao.getUserInfo(loginUserBean.getUser_id()).getUser_role();
-        boolean checkHomeWork = myStudyService.checkHomeWork(loginUserBean.getUser_id());
-
-        model.addAttribute("mentorRoom", mentorRoom);
-//        model.addAttribute("user_id",loginUserBean.getUser_id());
-//        model.addAttribute("user_role", user_role);
-        model.addAttribute("checkHomeWork", checkHomeWork);
         return "redirect:/MyStudy/StudyInfo";
     }
 
@@ -67,6 +56,12 @@ public class MentorRoomController {
         MentorRoom roomInfo = mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id());
         model.addAttribute("mentorRoom",roomInfo);
         return "/MentorRoom/modifyRoom";
+    }
+
+    @PostMapping("/modifyRoom")
+    public String modifiedRoom(MentorRoom roomInfo, Model model){
+
+    return "/MyStudy/StudyInfo";
     }
 
 }

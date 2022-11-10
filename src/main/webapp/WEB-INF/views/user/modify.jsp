@@ -104,6 +104,12 @@
                 </div>
               </div>
               <form:errors path="user_email" style='color:red'/>
+              <!-- 전화번호 -->
+              <div class="form-group">
+                <form:label path="user_phone">전화번호 ( - 포함 13자리 입력)</form:label>
+                <form:input path="user_phone" class='form-control' width="80px"/>
+                <form:errors path="user_phone" style='color:red'/>
+              </div>
               <br>
               <div class="form-group">
               <div class="text-right">

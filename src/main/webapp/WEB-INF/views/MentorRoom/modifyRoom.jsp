@@ -84,11 +84,17 @@
             </div>
             <input type="button" class="form-control btn-outline-primary" id="addList" value="add" onclick="addCreerList()">
         </div>
-        <div id="careerList">
-            <c:forEach var="careers" items="${mentorRoom.getCareerList()}" varStatus="status">
-                <p><c:out value="${careers}" /><input type="hidden" name="career" value="${careers}"></p>
-            </c:forEach>
-        </div>
+        <ul id="careerList" style="padding-left:0px; line-height: 25px; list-style:none; font-size: 15px;">
+            <c:choose>
+                <c:when test="${mentorRoom.getCareer() eq null}">
+                </c:when>
+                <c:otherwise>
+                    <c:forEach var="careers" items="${mentorRoom.getCareerList()}" varStatus="status">
+                        <li><c:out value="${careers}"/> <input type="hidden" name="career" value="${careers}"> <a id="delBtn" onclick="delAct()" >삭제</a></li>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+        </ul>
         <div class="notMove">
             <input type="text" class="form-control" id="school" name="school" value="${loginUser.getUser_school()}" readonly>
             <label for="school"><span class="block">멘토 학력</span></label>
@@ -100,7 +106,8 @@
 
         <div style="text-align: center; margin-bottom: 2%;">
             <button id="formCheck" type="submit" class="btn btn-primary">스터디수정</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-primary" value="수정취소" onclick="history.back();">
+            &nbsp;&nbsp;<input type="button" class="btn btn-primary" value="수정취소" onclick="history.back();">
+            &nbsp;<
         </div>
     </div>
     </div>

@@ -27,6 +27,7 @@ public class BoardForm extends CommonForm {
     String delete_file;
  
     public List<MultipartFile> getFiles() {
+
         return files;
     }
  
@@ -35,10 +36,12 @@ public class BoardForm extends CommonForm {
     }
  
     public int getBoard_seq() {
+
         return board_seq;
     }
  
     public void setBoard_seq(int board_seq) {
+
         this.board_seq = board_seq;
     }
  
