@@ -37,40 +37,49 @@
     </style>
 </head>
 <body>
+
+<%-- 아래로 수정 필요--%>
 <div class="container submit">
-    <form action="/MyStudy/HomeWorkSubmit" class="submit" method="post" enctype="multipart/form-data">
-        <div class="form-row">
+    <form action="/MyStudy/HomeWorkModify" class="submit" method="post" enctype="multipart/form-data">
+       <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="mentorId">멘토</label>
-                <input type="text" class="form-control" id="mentorId" name="mentorId" value="${homeWork.writer}"
+                <input type="text" class="form-control" id="mentorId" name="mentorId" value="${homeWorkInfo.writer}"
                        readonly>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="hwDeadLine">제출기한</label>
-                <input type="text" class="form-control" id="hwDeadLine" name="hwDeadLine" value="${homeWork.hwDeadLine}"
+                <input type="text" class="form-control" id="hwDeadLine" name="hwDeadLine" value="${homeWorkInfo.hwDeadLine}"
                        readonly>
             </div>
         </div>
-
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="user_id">제출자(멘티)</label>
-                <input type="text" class="form-control" id="user_id" name="user_id" value="${loginUser.user_id}"
+                <input type="text" class="form-control" id="user_id" name="user_id" value="${sessionScope.loginUser.user_id}"
                        readonly>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="hwName">과제명</label>
-                <input type="text" class="form-control" id="hwName" name="hwName" value="${homeWork.hwName}" readonly>
+                <input type="text" class="form-control" id="hwName" name="hwName" value="${homeWorkInfo.hwName}" readonly>
             </div>
         </div>
         <div class="form-row">
             <label for="content">과제내용 / 멘토에게 전할말</label>
             <textarea type="text" rows="15" class="form-control" id="content" name="content"
-                      placeholder="과제 내용을 입력해주세요"></textarea>
+                      placeholder=""></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            <label>과제내용 / 멘토에게 전할말</label>
+            <ul class="uploadedFileList">
+
+            </ul>
+            </div>
         </div>
         <div class="form-row">
             <label for="uploadFile">파일 첨부</label>
@@ -78,14 +87,28 @@
             <input type="file" class="form-control" name="uploadFile" placeholder="첨부파일">
             <input type="file" class="form-control" name="uploadFile" placeholder="첨부파일">
         </div>
-        <button type="submit" id="submitButton" class="btn btn-primary">제출</button>
-        <button type="reset" class="btn btn-primary">다시작성</button>
+        <button type="submit" id="submitButton" class="btn btn-primary">수정</button>
+        <button type="reset" class="btn btn-primary">삭제</button>
     </form>
 </div>
 </body>
 <script>
 
-    var maxSize = 5242880; // 5mb
+    const writer = '<c:out value="${homeWorkInfo.writer}"/>';
+    const user_id = '<c:out value="${sessionScope.loginUser.user_id}"/>';
+
+    $(function(){
+        $.getJSON("/MyStudy/getHomeWork", {writer, user_id}, function(homeWork) {
+            console.log(homeWork);
+            showUploadedHw(homeWork);
+        });
+    })
+
+    const showUploadedHw = (homewWork) => {
+        str += <li></li>
+    }
+
+    const maxSize = 5242880; // 5mb
 
     function checkFile(filename, fileSize) {
         if (fileSize >= maxSize) {

@@ -67,7 +67,7 @@ public class MyStudyController {
     }
 
     @GetMapping("/MentorHomeWorkInfo")
-    public String MentorHomeWorkInfo (Model model) {
+    public String mentorHomeWorkInfo (Model model) {
 
         String user_id = loginUserBean.getUser_id();
 
@@ -83,7 +83,7 @@ public class MyStudyController {
     }
 
     @GetMapping("/MenteeHomeWorkInfo")
-    public String MenteeHomeWorkInfo(Model model){
+    public String menteeHomeWorkInfo(Model model){
 
         String user_id = loginUserBean.getUser_id();
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(user_id);
@@ -96,12 +96,12 @@ public class MyStudyController {
     }
 
     @GetMapping("/HomeWorkSubmitForm")
-    public String HomeWorkSubmit(Model model){
+    public String homeWorkSubmit(Model model){
 
         String user_id = loginUserBean.getUser_id();
         HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(user_id);
 
-        model.addAttribute("homeWork", homeWorkInfo);
+        model.addAttribute("homeWorkInfo", homeWorkInfo);
 
         return "/MyStudy/HomeWorkSubmitForm";
     }
@@ -114,5 +114,15 @@ public class MyStudyController {
         return "redirect:/MyStudy/MenteeHomeWorkInfo";
     }
 
+    @GetMapping("/HomeWorkModifyForm")
+    public String homeWorkModify(Model model){
+
+        String user_id = loginUserBean.getUser_id();
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(user_id);
+
+        model.addAttribute("homeWorkInfo", homeWorkInfo);
+
+        return "/MyStudy/HomeWorkModifyForm";
+    }
 
 }

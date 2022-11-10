@@ -31,8 +31,22 @@ public class MyStudyRestController {
         List<HomeWork> hwList = myStudyService.getHomeWorkList(writer);
         log.info(writer + "의 과제리스트 전달"+hwList.get(0));
 
-        return new ResponseEntity<>(hwList, HttpStatus.OK);
+        return hwList.size() != 0
+                ? new ResponseEntity<>(hwList, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/getHomeWork")
+    @ResponseBody
+    public ResponseEntity<HomeWork> getHomeWork(String writer, String user_id){
+
+        HomeWork homeWork = myStudyService.getHomeWork(user_id);
+
+        return homeWork != null
+            ? new ResponseEntity<>(homeWork, HttpStatus.OK)
+            : new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 
     @PatchMapping("/{writer}")
     @ResponseBody
@@ -99,8 +113,5 @@ public class MyStudyRestController {
 
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }
-//
-//    @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
-//            value = /
 
 }
