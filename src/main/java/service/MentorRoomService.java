@@ -41,7 +41,7 @@ public class MentorRoomService {
         return roomMapper.getRoomInfoByID(user_id);
     }
 
-    // ADD roomInfo
+    // Insert roomInfo
     @Transactional
     public void createRoom(MentorRoom roomInfo, String user_id) {
         if(roomInfo.getUser_id()==null){
@@ -53,17 +53,26 @@ public class MentorRoomService {
         usersAddRoomNo(roomNo, user_id);
     }
 
-    /**
-     * Update RoomNUM TO users (BY user_id)
-     */
+    // Delete roomInfo
+    public void delRoomInfo(String user_id){
+        roomMapper.delRoomInfo(user_id);
+        userMapper.updateRoomNo(0, user_id);
+        loginUserBean.setMentorRoomNo(0);
+    }
+
+    // Update roomInfo
+    public void updateRoom(MentorRoom mentorRoom){
+        mentorRoom.setUser_id(loginUserBean.getUser_id());
+        roomMapper.updateRoom(mentorRoom);
+    }
+
+    // Update RoomNUM TO users (BY user_id)
     public void usersAddRoomNo(int mentorRoomNo, String user_id){
         userMapper.updateRoomNo(mentorRoomNo, user_id);
         loginUserBean.setMentorRoomNo(mentorRoomNo);
     }
 
-    /**
-     * Select RoomNUM (BY user_id)
-     */
+    // Select RoomNUM (BY user_id)
     public int getRoomNoByID(String user_id){
         int roomNum = roomMapper.getRoomInfoByID(user_id).getNum();
         return roomNum;

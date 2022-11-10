@@ -4,6 +4,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 작성</title>
+	<style>
+		.shadow{
+			margin-bottom: 70px;
+		}
+
+	</style>
 <!-- 공통 CSS -->
 
 	<link rel = stylesheet href="/css/bootstrap.css" >
@@ -97,10 +103,12 @@
 </head>
 <body>
 <%@ include file="../includes/header.jsp" %>
-<table>
-<div >
-	<div>
-		<div >
+<div class="container" style="margin-top:100px">
+	<div class="container" id="shadow">
+
+		<div>
+			<div class="card shadow">
+				<div class="card-body">
 			<h2 align="center">게시글 작성</h2>
 			<form id="boardForm" name="boardForm" action="/board/insertBoard" enctype="multipart/form-data" method="post" onsubmit="return false;">
 				<table class="table table-success table-sm">
@@ -122,7 +130,7 @@
 						</tr>
 						<tr>
 							<th>내용<span class="$danger">*</span></th>
-							<td><textarea id="board_content" name="board_content" style="height: 100px; weight:250px" class="form-floating"
+							<td><textarea id="board_content" name="board_content" style="height: 100px; weight:450px" class="form-floating"
 										  placeholder="내용을 입력해주세요"></textarea></td>
 						</tr>
 						<tr>
@@ -131,15 +139,16 @@
 						</tr>
 				    </tbody>
 				</table>
+				<div style="text-align: right; margin-bottom: 1%;">
+					<button type="button" class="btn btn-primary" onclick="javascript:goBoardList();">목록으로</button>
+					&nbsp;
+					<button type="button" class="btn btn-primary" onclick="javascript:insertBoard();">등록하기</button>
+				</div>
 			</form>
-			<div>
-				<button type="button" class="btn btn-primary" onclick="javascript:goBoardList();">목록으로</button>
-				<button type="button" class="btn btn-primary" onclick="javascript:insertBoard();">등록하기</button>
-			</div>
+
 		</div>
 	</div>
 </div>
-</table>
 <%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

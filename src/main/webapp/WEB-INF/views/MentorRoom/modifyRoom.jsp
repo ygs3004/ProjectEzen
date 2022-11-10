@@ -10,7 +10,7 @@
 <%@ include file="../includes/header.jsp"%>
 <script type="text/javascript" src="/js/modifyRoomScripts.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/mentorRoomStyles.css">
-<form action="/MentorRoom/modifyRoom" method="POST" name="createForm" id="createForm" onsubmit="return doCheck()">
+<form action="/MentorRoom/modifyedRoom" method="POST" name="createForm" id="createForm" onsubmit="return doCheck()">
     <section class="formHeader">
         <span id="formTitle"><b>스터디 정보 수정</b></span>
         <p id="formDes">스터디 정보를 수정하는 페이지입니다.</p>
@@ -26,9 +26,9 @@
         <div class="useMove">
             <input type="text" class="form-control" id="studyPeriod" name="studyPeriod" value="${mentorRoom.studyPeriod}">
             <label for="studyPeriod"><span>스터디 기간</span></label>
-            <form:errors id="errorLine" path="studyPeriod"/>
         </div>
         <div class="notMove">
+<%--            <input type="hidden" id="weeklyList" value="<c:out value="${mentorRoom.getWeeklyList()}"/>">--%>
             <div style="display: flex;justify-content: space-between;">
                 <div>
                     <input type="checkbox" class="btn-check" name="studyWeekly" id="mon" value="1">
@@ -74,6 +74,10 @@
             <input type="number" class="form-control" id="capacity" name="capacity" value="${mentorRoom.capacity}" min="1" max="30">
             <label for="capacity"><span>모집인원</span></label>
         </div>
+        <div class="notMove">
+            <input type="number" class="form-control" id="nowCapacity" name="nowCapacity" value="${mentorRoom.nowCapacity}" readonly>
+            <label for="nowCapacity"><span class="block">현재인원</span></label>
+        </div>
         <div class="desc">
             <span> * 최대인원 30명</span>
         </div>
@@ -106,8 +110,8 @@
 
         <div style="text-align: center; margin-bottom: 2%;">
             <button id="formCheck" type="submit" class="btn btn-primary">스터디수정</button>
-            &nbsp;&nbsp;<input type="button" class="btn btn-primary" value="수정취소" onclick="history.back();">
-            &nbsp;<
+            &nbsp;<input type="button" class="btn btn-primary" value="수정취소" onclick="history.back();">
+            &nbsp;<input type="button" class="btn btn-danger" value="스터디삭제" onclick="delCheck()">
         </div>
     </div>
     </div>

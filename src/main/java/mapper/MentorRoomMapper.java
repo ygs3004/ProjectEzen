@@ -6,8 +6,6 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface MentorRoomMapper {
 
-
-
     //Insert MentorRoom
     int createRoom(MentorRoom mentorRoom);
 
@@ -22,6 +20,9 @@ public interface MentorRoomMapper {
 
     // Select RoomNUM BY user_id
     int getRoomNoByID(String user_id);
+
+    // Delete RoomINFO BY user_id
+    int delRoomInfo(String user_id);
 
 
 
