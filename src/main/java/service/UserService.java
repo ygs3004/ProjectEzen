@@ -80,6 +80,21 @@ public class UserService {
 
         userDao.modifyUserInfo(modifyUserBean);
     }
+
+    public void getDeleteUserInfo(User deleteUserBean) {
+        User tempDeleteUserBean = userDao.getDeleteUserInfo(loginUserBean.getUser_idx());
+
+        deleteUserBean.setUser_id(tempDeleteUserBean.getUser_id());
+        deleteUserBean.setUser_name(tempDeleteUserBean.getUser_name());
+
+        deleteUserBean.setUser_idx(loginUserBean.getUser_idx());
+    }
+    public void deleteUserInfo(User deleteUserBean) {
+
+        deleteUserBean.setUser_idx(loginUserBean.getUser_idx());
+
+        userDao.deleteUserInfo(deleteUserBean);
+    }
     /**
      *  user_id를 넣엇을때 mentee의 아이디면 mentor id를 알려주는 method
     */
