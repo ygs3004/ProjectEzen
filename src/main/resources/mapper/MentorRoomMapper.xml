@@ -24,6 +24,10 @@
         WHERE user_id = #{user_id}
     </update>
 
+    <delete id="delRoomInfo">
+        DELETE FROM MentorRoom WHERE user_id = #{user_id}
+    </delete>
+
     <select id="getRoomInfoByNum"  resultType="domain.MentorRoom">
         select * from MentorRoom where num = #{num}
     </select>

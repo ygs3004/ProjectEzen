@@ -83,6 +83,12 @@ function doCheck(){
         return false;
     }
 
+    else if(document.getElementById('studyTimeEnd').value < document.getElementById('studyTimeStart').value){
+        alert('스터디 종료 시간은 스터디 시작 시간보다 빠를 수 없습니다.');
+        document.getElementById('studyTimeStart').focus();
+        return false;
+    }
+
     else if(document.getElementById("capacity").value.length == 0){
         alert('모집인원을 입력해주세요.');
         document.getElementById("capacity").focus();

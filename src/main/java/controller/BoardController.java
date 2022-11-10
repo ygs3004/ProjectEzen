@@ -3,9 +3,11 @@ package controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.User;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,9 +29,13 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+    @Resource(name = "loginUserBean")
+    private User loginUserBean;
+
     /** 게시판 - 목록 페이지 이동 */
     @GetMapping("/boardList")
     public String boardList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
 
         return "board/boardList";
     }

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 @Controller
 @RequestMapping("/MentorRoom")
 @RequiredArgsConstructor
@@ -58,10 +59,25 @@ public class MentorRoomController {
         return "/MentorRoom/modifyRoom";
     }
 
-    @PostMapping("/modifyRoom")
-    public String modifiedRoom(MentorRoom roomInfo, Model model){
+    @GetMapping("/delRoom")
+    public String deleteRoom(){
+        mentorRoomService.delRoomInfo(loginUserBean.getUser_id());
+        return "redirect:/";
+    }
 
-    return "/MyStudy/StudyInfo";
+    @PostMapping("/modifyedRoom")
+    public String modifyedRoom(MentorRoom mentorRoom){
+        mentorRoom.toString();
+        mentorRoomService.updateRoom(mentorRoom);
+        return "redirect:/MyStudy/StudyInfo/";
+    }
+
+
+    @PostMapping("/getRoomInfo.do")
+    public @ResponseBody Object getRoomInfoByJSON (){
+        Object roomInfo = mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id());
+        System.out.println(roomInfo.toString());
+    return roomInfo;
     }
 
 }
