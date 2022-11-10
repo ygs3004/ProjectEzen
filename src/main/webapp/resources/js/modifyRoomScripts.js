@@ -20,7 +20,20 @@
 //         console.log(list.valueOf());
 //     }
 // }
-let list = "";
+let weekarr = {
+    "1":"mon",
+    "2":"tue",
+    "3":"wed",
+    "4":"thur",
+    "5":"fri",
+    "6":"sat",
+    "7":"sun"
+}
+
+let minPeriod ="";
+let beforePeriod ="";
+let endPeriod = "";
+
 window.onload =(function() {
     $.ajax({
         url: "/MentorRoom/getRoomInfo",
@@ -28,35 +41,40 @@ window.onload =(function() {
         dataType: "json",
         contentType: "application/json",
         success: function(mentorRoom) {
+            //json -> stringify(String으로 만들기) -> parse(obj로 만들기)
             console.log(mentorRoom);
-            for(let weeks in mentorRoom.weeklyList){
 
-            }
+            minPeriod = strTodate((mentorRoom.studyPeriod).slice(0,10).replace("/","").replace("/",""));
+            endPeriod = strTodate((mentorRoom.studyPeriod).slice(13,23).replace("/","").replace("/",""));
 
-            let strinfo = JSON.stringify(mentorRoom);
-            console.log("stringify" + strinfo);
+            console.log(minPeriod);
+            console.log(endPeriod);
+            beforePeriod = mentorRoom.studyPeriod;
 
-            let jsoninfo = JSON.parse(strinfo);
-            console.log("parse" + jsoninfo);
-
-            // alert("성공");
-            //
-            // console.log("mentorRoom"+mentorRoom);
-            //
-
-            //
-
-        },
-        error: function (errorThrown) {
+            //일주일 리스트 불러와서 체크
+            for(let a of mentorRoom.weeklyList){
+                document.getElementById(weekarr[a]).checked=true;
+                }
+            },
+        error: function(errorThrown) {
             alert(errorThrown.statusText);
         }
     });
 });
 
+// String to Date
+function strTodate(str) {
+    var y = str.substr(0, 4);
+    var m = str.substr(4, 2);
+    var d = str.substr(6, 2);
+    return new Date(y,m-1,d);
+}
+
 $(function() {
     $('input[name="studyPeriod"]').daterangepicker({
-        autoUpdateInput: false,
-        minDate: new Date(),
+        // autoUpdateInput: false,
+        minDate: new Date(minPeriod),
+        setDate: beforePeriod,
         // changeMonth: true,
         locale: {
             format: "YYYY-MM-DD",

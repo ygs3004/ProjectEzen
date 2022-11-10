@@ -74,7 +74,7 @@
             <c:choose>
                 <c:when test="${homeWork != null}">
                     <button type="button" class="btn btn-outline-success btn-sm"
-                            onclick="location.href='#'">제출 과제 수정 / 삭제</button>
+                            onclick="location.href='HomeWorkModifyForm'">제출 과제 수정 / 삭제</button>
                 </c:when>
                 <c:otherwise>
                     <button type="button" class="btn btn-outline-success btn-sm"
@@ -84,5 +84,6 @@
         </div>
     </div>
 </body>
+
 </html>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

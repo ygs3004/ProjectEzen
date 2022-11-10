@@ -21,7 +21,8 @@
 			integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
 			crossorigin="anonymous"></script>
 
-
+	<script type="text/javascript" src="/js/common/jquery.js"></script>
+	<script type="text/javascript" src="/js/common/jquery.form.js"></script>
 	<script type="text/javascript">
 
 	$(document).ready(function(){
@@ -78,7 +79,7 @@
 			    },	       
 			    error 	: function(xhr, status, error) {}
 			    
-		    }).submit();			 
+		    }).submit();
 		}
 	}
 

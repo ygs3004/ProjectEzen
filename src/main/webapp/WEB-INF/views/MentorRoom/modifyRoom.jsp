@@ -24,7 +24,7 @@
             <label for="title"><span>스터디 이름</span></label>
         </div>
         <div class="useMove">
-            <input type="text" class="form-control" id="studyPeriod" name="studyPeriod" value="${mentorRoom.studyPeriod}">
+            <input type="text" class="form-control" id="studyPeriod" name="studyPeriod">
             <label for="studyPeriod"><span>스터디 기간</span></label>
         </div>
         <div class="notMove">
