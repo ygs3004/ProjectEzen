@@ -26,7 +26,6 @@
                     , TO_CHAR( INS_DATE, 'YYYY-MM-DD HH24:MI:SS' ) AS INS_DATE
                     , UPD_USER_ID
                     , TO_CHAR( UPD_DATE, 'YYYY-MM-DD HH24:MI:SS' ) AS UPD_DATE
-
                FROM BOARD
                ORDER BY BOARD_RE_REF DESC, BOARD_RE_SEQ ASC
               )
@@ -38,7 +37,7 @@
         UPDATE BOARD
            SET BOARD_HITS = BOARD_HITS + 1             
              , UPD_USER_ID = 'NONMEMBER'
-             , UPD_DATE = sysdate
+             , UPD_DATE = NOW()
          WHERE BOARD_SEQ = #{board_seq}
     
     </delete>
@@ -65,7 +64,7 @@
         
     <select id="getBoardFileList" parameterType="form.BoardFileForm" resultType="domain.board.BoardFileDto">
     
-        SELECT BOARD
+        SELECT T1.*
         FROM (
                 SELECT BOARD_SEQ
                      , FILE_NO

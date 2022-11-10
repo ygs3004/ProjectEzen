@@ -96,12 +96,13 @@
 </head>
 <body>
 <%@ include file="../includes/header.jsp" %>
+<table>
 <div >
 	<div>
 		<div >
 			<h2 align="center">게시글 작성</h2>
 			<form id="boardForm" name="boardForm" action="/board/insertBoard" enctype="multipart/form-data" method="post" onsubmit="return false;">
-				<table class="table table-dark table-sm">
+				<table class="table table-success table-sm">
 				<caption><strong><span class="$danger">*</span> 표시는 필수입력 항목입니다.</strong></caption>
 				    <colgroup>
 				        <col width="20%">
@@ -109,7 +110,7 @@
 				    </colgroup>
 				    <tbody id="tbody">
 						<tr>
-							<th>제목<span class="$danger">*</span></th>
+							<th>제목<span class="$danger" >*</span></th>
 							<td><input id="board_subject" name="board_subject" value="" class="tbox01"
 									   placeholder="제목을 입력해주세요"/></td>
 						</tr>
@@ -131,12 +132,13 @@
 				</table>
 			</form>
 			<div>
-				<button type="button" class="btn btn-dark" onclick="javascript:goBoardList();">목록으로</button>
-				<button type="button" class="btn btn-dark" onclick="javascript:insertBoard();">등록하기</button>
+				<button type="button" class="btn btn-primary" onclick="javascript:goBoardList();">목록으로</button>
+				<button type="button" class="btn btn-primary" onclick="javascript:insertBoard();">등록하기</button>
 			</div>
 		</div>
 	</div>
 </div>
+</table>
 <%@ include file="../includes/footer.jsp" %>
 </body>
 </html>
