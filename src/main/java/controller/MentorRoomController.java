@@ -73,9 +73,10 @@ public class MentorRoomController {
     }
 
 
-    @PostMapping("/getRoomInfo.do")
-    public @ResponseBody Object getRoomInfoByJSON (){
-        Object roomInfo = mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id());
+    @GetMapping("/getRoomInfo")
+    public @ResponseBody MentorRoom getRoomInfoByJSON (){
+        System.out.println(loginUserBean.getUser_id());
+        MentorRoom roomInfo = mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id());
         System.out.println(roomInfo.toString());
     return roomInfo;
     }

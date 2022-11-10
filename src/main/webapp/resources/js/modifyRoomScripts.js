@@ -23,15 +23,29 @@
 let list = "";
 window.onload =(function() {
     $.ajax({
-        url: "/getRoomInfo",
-        type: "post",
-        data: Object,
+        url: "/MentorRoom/getRoomInfo",
+        type: "get",
         dataType: "json",
         contentType: "application/json",
         success: function(mentorRoom) {
-            alert("성공");
-            const obj = JSON.parse(mentorRoom);
-            console.log(obj);
+            console.log(mentorRoom);
+            for(let weeks in mentorRoom.weeklyList){
+
+            }
+
+            let strinfo = JSON.stringify(mentorRoom);
+            console.log("stringify" + strinfo);
+
+            let jsoninfo = JSON.parse(strinfo);
+            console.log("parse" + jsoninfo);
+
+            // alert("성공");
+            //
+            // console.log("mentorRoom"+mentorRoom);
+            //
+
+            //
+
         },
         error: function (errorThrown) {
             alert(errorThrown.statusText);
