@@ -129,7 +129,7 @@
 						</tr>
 						<tr>
 							<th>내용<span class="$danger">*</span></th>
-							<td><textarea id="board_content" name="board_content" style="height: 100px; weight:250px" class="form-floating"
+							<td><textarea id="board_content" name="board_content" style="height: 100px; weight:450px" class="form-floating"
 										  placeholder="내용을 입력해주세요"></textarea></td>
 						</tr>
 						<tr>
@@ -138,11 +138,10 @@
 						</tr>
 				    </tbody>
 				</table>
-				<div>
-					<button type="button" class="btn btn-outline-primary" style="float: right" onclick="javascript:goBoardList();">목록으로</button>
-				</div>
-				<div>
-					<button type="button" class="btn btn-outline-primary" style="float: right" onclick="javascript:insertBoard();">등록하기</button>
+				<div style="text-align: right; margin-bottom: 1%;">
+					<button type="button" class="btn btn-primary" onclick="javascript:goBoardList();">목록으로</button>
+					&nbsp;
+					<button type="button" class="btn btn-primary" onclick="javascript:insertBoard();">등록하기</button>
 				</div>
 			</form>
 
