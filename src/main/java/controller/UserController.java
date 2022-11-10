@@ -105,6 +105,26 @@ public class UserController {
         return "user/not_login";
     }
 
+
+    //회원 탈퇴
+
+    @GetMapping("/delete")
+    public String delete(@ModelAttribute("deleteUserBean") User deleteUserBean) {
+
+        userService.getDeleteUserInfo(deleteUserBean);
+        return "user/delete";
+    }
+    @PostMapping("/delete_pro")
+    public String delete_pro(@Valid @ModelAttribute("deleteUserBean") User deleteUserBean, BindingResult result) {
+
+        if(result.hasErrors()) {
+            return "user/delete";
+        }
+        userService.deleteUserInfo(deleteUserBean);
+        loginUserBean.setUserLogin(false);
+
+        return "user/delete_success";
+    }
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         UserValidator validator1 = new UserValidator();

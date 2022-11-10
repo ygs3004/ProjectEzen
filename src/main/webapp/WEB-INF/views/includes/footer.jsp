@@ -32,7 +32,6 @@
         <p class="lead mb-0">
           한국은행 010-1001000-10000
           <a href="http://startbootstrap.com">Start Bootstrap</a>
-          .
         </p>
       </div>
     </div>

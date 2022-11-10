@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Welcome Our Mentor</title>
+    <title>-Welcome Our Mentor-</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/assets/favicons.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -83,6 +83,13 @@
 
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about time">어바웃(타임)</a></li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#movie contact">(영화)콘택트</a></li>
+                <c:choose>  <%-- 로그인 했을경우 회원탈퇴란 생성--%>
+                    <c:when test="${loginUser.userLogin}">
+                        <li class="nav-item">
+                            <a href="${root}/user/delete" class="nav-link">회원탈퇴</a>
+                        </li>
+                    </c:when>
+                </c:choose>
             </ul>
         </div>
 

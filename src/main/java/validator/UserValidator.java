@@ -20,7 +20,7 @@ public class UserValidator implements Validator {
 
         String beanName = errors.getObjectName();
         System.out.println(beanName);
-        if(!beanName.equals("tempLoginUserBean") && !beanName.equals("modifyUserBean") ) {
+        if(!beanName.equals("tempLoginUserBean") && !beanName.equals("modifyUserBean") && !beanName.equals("deleteUserBean")) {
             if (beanName.equals("joinUser") ) {
                 if (userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
                     errors.rejectValue("user_pw", "NotEquals");
@@ -45,6 +45,11 @@ public class UserValidator implements Validator {
             }
             if (userBean.isUserEmailExist() == false) {
                 errors.rejectValue("user_email", "DontCheckUserEmailExist");
+            }
+        }if(beanName.equals("deleteUserBean")) {
+            if (userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
+                errors.rejectValue("user_pw", "NotEquals");
+                errors.rejectValue("user_pw2", "NotEquals");
             }
         }
     }
