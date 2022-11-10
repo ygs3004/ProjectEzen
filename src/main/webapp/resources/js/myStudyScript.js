@@ -47,6 +47,7 @@ const hwInfoModifyAjax = (hwInfo, callback, error) => (
         type :'patch',
         url :'/MyStudy/' + writer,
         data : JSON.stringify(hwInfo),
+
         contentType : "application/json;charset=utf-8",
         success : function(result, status, xhr) {
             if (callback) {

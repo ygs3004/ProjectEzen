@@ -37,13 +37,13 @@
           <div class="form-row">
               <div class="form-group col-md-6">
                   <label for="mentorId">멘토</label>
-                  <input type="text" class="form-control" id="mentorId" name="mentorId" value="${homeWork.writer}" readonly>
+                  <input type="text" class="form-control" id="mentorId" name="mentorId" value="${homeWorkInfo.writer}" readonly>
               </div>
           </div>
           <div class="form-row">
               <div class="form-group col-md-6">
                   <label for="hwDeadLine">제출기한</label>
-                  <input type="text" class="form-control" id="hwDeadLine" name="hwDeadLine" value="${homeWork.hwDeadLine}" readonly>
+                  <input type="text" class="form-control" id="hwDeadLine" name="hwDeadLine" value="${homeWorkInfo.hwDeadLine}" readonly>
               </div>
           </div>
 
@@ -56,7 +56,7 @@
           <div class="form-row">
               <div class="form-group col-md-6">
                   <label for="hwName">과제명</label>
-                  <input type="text" class="form-control" id="hwName" name="hwName" value="${homeWork.hwName}" readonly>
+                  <input type="text" class="form-control" id="hwName" name="hwName" value="${homeWorkInfo.hwName}" readonly>
               </div>
           </div>
           <div class="form-row">

@@ -112,7 +112,7 @@
         crossorigin="anonymous"></script>
 <script>
 
-    var uploadedHwList = $(".uploadedHwList");
+    const uploadedHwList = $(".uploadedHwList");
 
     function showUploadedHwList(uploadedHwResultArr){
 
@@ -143,9 +143,8 @@
 
     let writer = '<c:out value="${homeWork.writer}"/>';
 
-
     $(function(){
-        $.getJSON("/MyStudy/homeWorkList", {writer:writer}, function(hwList) {
+        $.getJSON("/MyStudy/homeWorkList", {writer}, function(hwList) {
             console.log(hwList);
             showUploadedHwList(hwList);
         });
@@ -178,6 +177,7 @@
             const hwInfo = {hwName: $("input[id='hwName']").val(),
                 hwDeadLine: $("input[id='hwDeadLine']").val(),
                 hwContent: $("textarea[id='hwContent']").val()}
+
             console.log("요청된 정보 : ", hwInfo)
 
             hwInfoModifyAjax(hwInfo, () => {
