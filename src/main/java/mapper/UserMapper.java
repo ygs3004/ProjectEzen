@@ -41,12 +41,5 @@ public interface UserMapper {
     // mentorRoom 생성 후 users에 mentorRoomNo update
     @Update("update USERS set MENTORROOMNO = #{mentorRoomNo} where user_id = #{user_id}")
     public int updateRoomNo(@Param("mentorRoomNo") int mentorRoomNo, @Param("user_id") String user_id);
-
-
-    @Select("select user_id, user_name from users where user_idx = #{user_idx}")
-    User getDeleteUserInfo(int user_idx);;
-
-    @Delete("delete from users where user_idx = #{user_idx} ")
-    void deleteUserInfo(User deleteUserBean);
 }
 

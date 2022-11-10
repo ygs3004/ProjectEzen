@@ -32,15 +32,9 @@
         <p class="lead mb-0">
           한국은행 010-1001000-10000
           <a href="http://startbootstrap.com">Start Bootstrap</a>
+          .
         </p>
       </div>
-      <c:choose>  <%-- 로그인 했을경우 회원탈퇴란 생성--%>
-        <c:when test="${loginUser.userLogin}">
-          <li class="nav-item">
-            <a href="${root}/user/delete" class="nav-link">회원탈퇴</a>
-          </li>
-        </c:when>
-      </c:choose>
     </div>
   </div>
 </footer>
