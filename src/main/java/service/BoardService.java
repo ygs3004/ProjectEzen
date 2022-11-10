@@ -30,6 +30,7 @@ public class BoardService {
     private BoardDao boardDao;
 
 
+
     public ResultUtil getBoardList(BoardForm boardForm) throws Exception {
 
         ResultUtil resultUtil = new ResultUtil();

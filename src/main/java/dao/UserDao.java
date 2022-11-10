@@ -43,6 +43,13 @@ public class UserDao {
         userMapper.modifyUserInfo(modifyUserBean);
     }
 
+    public User getDeleteUserInfo(int user_idx) {
+        return userMapper.getDeleteUserInfo(user_idx);
+    }
+    public void deleteUserInfo(User deleteUserBean) {
+        userMapper.deleteUserInfo(deleteUserBean);
+    }
+
 
     public User getUserInfo(String user_id){
         return userMapper.getUserInfo(user_id);
