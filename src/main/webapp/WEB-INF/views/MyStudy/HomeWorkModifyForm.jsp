@@ -34,6 +34,13 @@
         textarea {
             resize: none;
         }
+
+        .uploadedFileList{
+            padding: 5px;
+        }
+        .uploadedFileWrapper{
+            margin : 15px 0;
+        }
     </style>
 </head>
 <body>
@@ -74,10 +81,10 @@
                       placeholder=""></textarea>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-            <label>과제내용 / 멘토에게 전할말</label>
+            <div class="form-group col-md-6 uploadedFileWrapper">
+                <label>기존 첨부파일<strong style="color:red">(과제 수정시 파일을 다시 첨부해주세요)</strong></label>
             <ul class="uploadedFileList">
-
+                현재 첨부된 파일이 없습니다
             </ul>
             </div>
         </div>
@@ -104,8 +111,17 @@
         });
     })
 
-    const showUploadedHw = (homewWork) => {
-        str += <li></li>
+    const showUploadedHw = (homeWork) => {
+        $("#content").html(homeWork.content);
+        const filenames = homeWork.filename.split(",");
+        let str = "";
+        filenames.forEach((file) => {
+            if(file.length!==0){
+                console.log(file);
+                str += "<li>"+file+"</li>"
+            }
+        })
+
     }
 
     const maxSize = 5242880; // 5mb
@@ -124,12 +140,16 @@
     }
 
     $("#submitButton").on("click", function (e) {
+        if(!confirm("과제 수정시 기존 첨부파일은 삭제 됩니다.")) {
+            e.preventDefault();
+            return;
+        }
 
-        var inputFile = $("input[name='uploadFile']");
-        var files = inputFile[0].files;
+        let inputFile = $("input[name='uploadFile']");
+        let files = inputFile[0].files;
         console.log(files);
 
-        for (var i = 0; i < files.length; i++) {
+        for (let i = 0; i < files.length; i++) {
             if (!checkFile(files[i].name, files[i].size)) {
                 e.preventDefault();
                 return false;
