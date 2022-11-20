@@ -17,6 +17,9 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/**")
+    public void goPagsdaadsfdse(){}
+
 
     @GetMapping("/r")
     public String references(){
